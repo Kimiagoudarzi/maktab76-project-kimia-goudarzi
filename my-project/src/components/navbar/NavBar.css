@@ -15,6 +15,9 @@
   font-size: 2.6rem;
   color: #fd2c7a;
 }
+.parag-nav :hover{
+  color: #fa2976;
+}
 .search-nav {
   width: 40rem;
   margin-left: 6rem;
@@ -69,4 +72,7 @@
   color: #fff;
   margin-left: 102rem;
   font-size: 19px;
+}
+.nav2-prog :hover{
+  color: #fff;
 }

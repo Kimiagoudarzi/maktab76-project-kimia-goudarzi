@@ -45,7 +45,7 @@ const NavBar = () => {
         <Navbar key={expand} expand={expand} className="mb-3 nav-2">
           <Container fluid>
             <Navbar.Toggle className="nav-toggel" />
-            <Navbar.Brand className="nav2-prog">دسته بندی محصولات</Navbar.Brand>
+            <Navbar.Brand><p className="nav2-prog">دسته بندی محصولات</p></Navbar.Brand>
             <Navbar.Offcanvas placement="end">
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>همه محصولات</Offcanvas.Title>
