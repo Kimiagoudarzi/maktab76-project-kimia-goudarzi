@@ -1,10 +1,16 @@
-import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import NavBar from "./components/navbar/NavBar";
+// import HomeBody from "./components/homePage/HomeBody";
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
+// Routes, Route,
 
 function App() {
   return (
-    <div className="App">
-    
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      {/* <HomeBody /> */}
+    </BrowserRouter>
   );
 }
 
