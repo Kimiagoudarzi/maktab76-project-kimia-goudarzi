@@ -1,43 +1,74 @@
-// import {  CDBFooter,CDBBtn,CDBIcon,CDBBox} from "cdbreact";
-// import butter from '../../images/butter.png';
-// import './Footer.css';
+import "./Footer.css";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
-// const Footer = () => {
-//   return (
-//     <CDBFooter className="shadow">
-//       <CDBBox
-//         display="flex"
-//         justifyContent="between"
-//         alignItems="center"
-//         className="mx-auto py-4 flex-wrap"
-//         style={{ width: "80%" }}
-//       >
-//         <CDBBox display="flex" alignItems="center">
-//           <a href="/" className="d-flex align-items-center p-0 text-dark">
-//             <img
-//               alt="logo"
-//               src={butter}
-//               className="img-footer"
-//             />
-//             <span className="ml-2 h5 mb-3 font-weight-bold">میا لند</span>
-//           </a>
-//           <small className="ml-4">
-//              MiaLand, 2022. All rights reserved.&copy;
-//           </small>
-//         </CDBBox>
-//         <CDBBox display="flex">
-//           <CDBBtn flat color="dark" className="p-2">
-//             <CDBIcon fab icon="facebook-f" />
-//           </CDBBtn>
-//           <CDBBtn flat color="dark" className="mx-3 p-2">
-//             <CDBIcon fab icon="twitter" />
-//           </CDBBtn>
-//           <CDBBtn flat color="dark" className="p-2">
-//             <CDBIcon fab icon="instagram" />
-//           </CDBBtn>
-//         </CDBBox>
-//       </CDBBox>
-//     </CDBFooter>
-//   );
-// };
-// export default Footer;
+const Footer = () => {
+  return (
+    <>
+      <footer className="site-footer">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12 col-md-6">
+              <h3>فروشگاه اینترنتی میا لند</h3>
+              <p className="text-justify">
+                معرفی و فروش آنلاین لوازم آرایشی و بهداشتی اصل در دسته بندی هایی
+                از جمله انواع لوازم آرایش ( رژلب ؛ رژگونه ؛ کرم پودر ؛ رنگ مو و
+                ریمل ؛ کانسیلر و انواع پاک کننده ها ) ؛ محصولات مراقبتی و زیبایی
+                پوست ( شامپو ؛ کرم ضد آفتاب ؛ کرم آبرسان و مرطوب کننده ؛ کرم ضد
+                چروک ؛ کرم دور چشم ؛ کرم روشن کننده ؛ ضد لک ) ؛ محصولات مراقبتی
+                و زیبایی مو و بدن ( شامپو سر و بدن ؛ ژل بهداشتی ؛ بادی میلک ؛
+                بادی باتر ؛ کرم دست و صورت ؛ برنزه کننده ؛ اسپری و ژل ضد تعریق ؛
+                ژل و فوم اصلاح صورت و بدن ؛ تیغ اصلاح و افترشیو ؛ کرم و ژل موبر
+                ) ؛ انواع شامپو ؛ اسپری و ژل مو ؛ کیت رنگ مو و انواع اکسیدان ؛
+                حجم دهنده مو و انواع عطر و ادکلن ؛ لوازم شخصی برقی ( ماشین اصلاح
+                و ریش تراش ؛ اپیلاتور و سشوار ) ؛ زیورآلات و اکسسوری مردانه و
+                زنانه ( انواع بدلیجات ؛ انگشتر ؛ گردنبند و گوشواره ) ؛ محصولات
+                مادر و کودک ( ضد ترک ؛ پودر بچه ؛ دستمال مرطوب کودک ؛ روغن بدن
+                کودک ) در فروشگاه اینترنتی میا لند انجام می گردد. هدف فروشگاه
+                اینترنتی میا لند از همان ابتدا در معرفی و فروش آنلاین محصولات
+                آرایشی و بهداشتی اصل بوده است. خرید اینترنتی لوازم آرایش به صورت
+                آنلاین از فروشگاه اینترنتی میا لند به راحت ترین شکل قابل انجام
+                می باشد.
+              </p>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 col-sm-6 col-xs-12">
+              <p className="copyright-text">
+                Copyright &copy; 2017 All Rights Reserved by
+                <a href="/" className="link-footer-mia">
+                   MiaLand
+                </a>
+              </p>
+            </div>
+
+            <div className="col-md-4 col-sm-6 col-xs-12">
+              <ul className="social-icons">
+                <li>
+                  <a href="https://github.com/Kimiagoudarzi">
+                    <FaGithub />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com">
+                    <FaInstagram />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/kimia-goudarzi-998545238/">
+                    <FaLinkedinIn />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+};
+export default Footer;
