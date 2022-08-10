@@ -1,6 +1,8 @@
 .carousel {
-  position: absolute;
-  margin-right: 22rem;
+
+  width: 100%;
+  z-index: -1;
+  /* margin-right: 22rem; */
   margin-top: 10rem;
   display: flex;
   justify-content: center;

@@ -41,7 +41,7 @@ const Footer = () => {
               <p className="copyright-text">
                 Copyright &copy; 2017 All Rights Reserved by
                 <a href="/" className="link-footer-mia">
-                   MiaLand
+                  MiaLand
                 </a>
               </p>
             </div>

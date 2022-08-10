@@ -1,41 +1,22 @@
-// const HomeCard = () => {
-//   return (
-//     <>
-//       <div>
-//         <h1></h1>
-//         <h1>a</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//         <h1>a</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//         <h1>a</h1>
-//         <h1>aaa</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//         <h1>a</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//         <h1>a</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//         <h1>a</h1>
-//         <h1>aaa</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//         <h1>a</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//         <h1>a</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//         <h1>a</h1>
-//         <h1>aaa</h1>
-//         <h1>aa</h1>
-//         <h1>aa</h1>
-//       </div>
-//     </>
-//   );
-// };
+import './HomeCard.css';
+const HomeCard = () => {
+  return (
+    <>
+      <div className="div1">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </div>
+    </>
+  );
+};
 
-// export default HomeCard;
+export default HomeCard;
