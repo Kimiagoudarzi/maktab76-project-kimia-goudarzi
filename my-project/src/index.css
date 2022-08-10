@@ -1,5 +1,6 @@
 body {
   direction: rtl;
+  overflow-x: hidden;
 }
 @font-face {
   font-family: 'shabnam';

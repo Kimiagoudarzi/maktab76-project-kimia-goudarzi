@@ -5,7 +5,6 @@ import cream from "../../../images/1.jpg";
 import body from "../../../images/3.jpg";
 import shampo from "../../../images/sh.jfif";
 import perfume from "../../../images/4.jpg";
-import perfume2 from "../../../images/6.jpg";
 import suny from "../../../images/5.jpg";
 import "./HomeSlider.css";
 
@@ -40,9 +39,6 @@ const HomeSlider = () => {
           </Carousel.Item>
           <Carousel.Item>
             <img className="d-block c-item" src={perfume} alt="6 slide" />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block c-item" src={perfume2} alt="7 slide" />
           </Carousel.Item>
         </Carousel>
       </div>
