@@ -116,3 +116,18 @@
 .link-footer-mia{
   text-decoration: none;
 }
+.img-f-wrapper{
+  /* background-color: #a636b2; */
+  margin-top: 4rem;
+}
+.img1-footer{
+  margin-right: 8rem;
+}
+.img2-footer{
+  margin-right:2rem ;
+}
+.img3-footer{
+  width: 130px;
+  height: 150px;
+  margin-right: 2rem;
+}

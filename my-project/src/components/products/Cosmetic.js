@@ -5,6 +5,7 @@ const Cosmetic = () => {
   return (
     <>
          <NavBar/>
+  
     </>
   )
 }

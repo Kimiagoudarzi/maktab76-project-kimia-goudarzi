@@ -1,14 +1,17 @@
 import "./Footer.css";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import logo from '../../images/logo.png';
+import logo2 from '../../images/logoo2.png';
+import logo3 from '../../images/logo3.png';
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-
+import { FaTwitter } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
       <footer className="site-footer">
         <div className="container">
-          <div className="row">
+          <div className="row d-flex ">
             <div className="col-sm-12 col-md-6">
               <h3>فروشگاه اینترنتی میا لند</h3>
               <p className="text-justify">
@@ -32,6 +35,11 @@ const Footer = () => {
                 می باشد.
               </p>
             </div>
+            <div className="col-sm-12 col-md-6 img-f-wrapper">
+              <img src={logo} alt="logo" className="img1-footer"/>
+              <img src={logo2} alt="logo" className="img2-footer"/>
+              <img src={logo3} alt="logo" className="img3-footer"/>
+            </div>
           </div>
           <hr />
         </div>
@@ -49,8 +57,8 @@ const Footer = () => {
             <div className="col-md-4 col-sm-6 col-xs-12">
               <ul className="social-icons">
                 <li>
-                  <a href="https://github.com/Kimiagoudarzi">
-                    <FaGithub />
+                  <a href="https://www.facebook.com/">
+                    <FaFacebook />
                   </a>
                 </li>
                 <li>
@@ -59,8 +67,13 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/kimia-goudarzi-998545238/">
-                    <FaLinkedinIn />
+                  <a href="https://web.telegram.org/">
+                    <FaTelegramPlane />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/?lang=en">
+                    <FaTwitter />
                   </a>
                 </li>
               </ul>
