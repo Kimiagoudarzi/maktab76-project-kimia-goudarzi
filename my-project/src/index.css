@@ -1,3 +1,10 @@
 body {
   direction: rtl;
 }
+@font-face {
+  font-family: 'shabnam';
+  src: url('./fonts/Shabnam.woff2');
+}
+*{
+  font-family: 'shabnam';
+}
