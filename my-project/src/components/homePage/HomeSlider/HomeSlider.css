@@ -1,12 +1,12 @@
 .carousel {
   position: absolute;
-  margin-right: 26rem;
-  margin-top: 12rem;
+  margin-right: 22rem;
+  margin-top: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .c-item {
-  width: 56vw;
-  height: 60vh;
+  width: 63vw;
+  height: 70vh;
 }

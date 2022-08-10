@@ -3,14 +3,21 @@ import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
-// import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { NavLink } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BsBagDash } from "react-icons/bs";
 import butterfly from "../../images/butter.png";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const navLinkStyle = ({ isActive }) => ({
+    fontWeight: "bold",
+    textDecoration: "none",
+    backGroundColor: "#fd2c7a",
+    color: "black",
+  });
+
   return (
     <>
       <Navbar className="nav" variant="light">
@@ -40,23 +47,45 @@ const NavBar = () => {
       </Navbar>
 
       {/* Navbar2 */}
-
+      
       {[false].map((expand) => (
         <Navbar key={expand} expand={expand} className="mb-3 nav-2">
           <Container fluid>
             <Navbar.Toggle className="nav-toggel" />
-            <Navbar.Brand><p className="nav2-prog">دسته بندی محصولات</p></Navbar.Brand>
+            <Navbar.Brand>
+              <p className="nav2-prog">دسته بندی محصولات</p>
+            </Navbar.Brand>
             <Navbar.Offcanvas placement="end">
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>همه محصولات</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">لوازم آرایشی</Nav.Link>
-                  <Nav.Link href="#action2"> پوست</Nav.Link>
-                  <Nav.Link href="#action1">مو</Nav.Link>
-                  <Nav.Link href="#action1">کرم های ضد آفتاب</Nav.Link>
-                  <Nav.Link href="#action1"> عطر و ادکلن</Nav.Link>
+                  <Nav.Link>
+                    <NavLink to="/cosmetic" style={navLinkStyle}>
+                      لوازم آرایشی
+                    </NavLink>
+                  </Nav.Link>
+                  <Nav.Link>
+                    <NavLink to="/skin" style={navLinkStyle}>
+                      پوست
+                    </NavLink>
+                  </Nav.Link>
+                  <Nav.Link>
+                    <NavLink to="/hair" style={navLinkStyle}>
+                      مو
+                    </NavLink>
+                  </Nav.Link>
+                  <Nav.Link>
+                    <NavLink to="/suncream" style={navLinkStyle}>
+                      کرم ضد آفتاب
+                    </NavLink>
+                  </Nav.Link>
+                  <Nav.Link>
+                    <NavLink to="/perfume" style={navLinkStyle}>
+                      عطر و ادکلن
+                    </NavLink>
+                  </Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
