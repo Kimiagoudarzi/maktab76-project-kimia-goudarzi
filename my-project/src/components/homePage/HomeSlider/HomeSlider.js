@@ -16,7 +16,7 @@ const HomeSlider = () => {
   };
   return (
     <>
-      <div>
+      <div className="main-slider">
         <Carousel
           activeIndex={index}
           onSelect={handleSelect}

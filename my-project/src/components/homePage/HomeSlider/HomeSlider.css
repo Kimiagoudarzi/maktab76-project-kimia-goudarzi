@@ -1,12 +1,13 @@
+.main-slider{
+  margin-right: 20rem;
+}
 .carousel {
-
   width: 100%;
   z-index: -1;
   /* margin-right: 22rem; */
   margin-top: 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
+ 
 }
 .c-item {
   width: 63vw;
