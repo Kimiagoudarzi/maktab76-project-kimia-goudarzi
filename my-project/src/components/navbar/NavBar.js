@@ -25,7 +25,7 @@ const NavBar = () => {
             </Button>
             <Form.Control
               type="search"
-              placeholder="محصول مورد نظر خودتان را جستجو کنید"
+              placeholder="محصول مورد نظرتان را جستجو کنید"
               className="search-nav"
               aria-label="Search"
             />
