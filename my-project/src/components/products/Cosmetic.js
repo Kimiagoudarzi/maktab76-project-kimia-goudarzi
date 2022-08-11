@@ -1,10 +1,35 @@
+import Footer from '../footer/Footer';
 import NavBar from '../navbar/NavBar';
-import './Cosmetic.css'
+
 
 const Cosmetic = () => {
   return (
     <>
          <NavBar/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <Footer/>
   
     </>
   )

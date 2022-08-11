@@ -1,7 +1,7 @@
 import "./Footer.css";
-import logo from '../../images/logo.png';
-import logo2 from '../../images/logoo2.png';
-import logo3 from '../../images/logo3.png';
+import logo from '../../assets/images/logo.png';
+import logo2 from '../../assets/images/logoo2.png';
+import logo3 from '../../assets/images/logo3.png';
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";

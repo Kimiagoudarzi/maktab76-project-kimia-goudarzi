@@ -7,7 +7,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { NavLink } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BsBagDash } from "react-icons/bs";
-import butterfly from "../../images/butter.png";
+import butterfly from "../../assets/images/butter.png";
 import "./NavBar.css";
 
 const NavBar = () => {

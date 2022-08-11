@@ -4,7 +4,7 @@ import HomeSlider from "./components/homePage/HomeSlider/HomeSlider";
 import Footer from "./components/footer/Footer";
 import HomeCard from "./components/homePage/HomeCard/HomeCard";
 import Cosmetic from "./components/products/Cosmetic";
-import Hair from "./components/products/Heir";
+import Hair from "./components/products/Hair";
 import Perfume from "./components/products/Perfume";
 import Skin from "./components/products/Skin";
 import SunCream from "./components/products/SunCream";
