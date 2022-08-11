@@ -15,7 +15,7 @@
   font-size: 2.6rem;
   color: #fd2c7a;
 }
-.parag-nav :hover{
+.parag-nav :hover {
   color: #fa2976;
 }
 .search-nav {
@@ -32,14 +32,36 @@
   margin-left: 0.5rem;
   color: #fd2c7a;
 }
-.btn-login {
+
+
+.rainbow {
+  background-color: #fd2c7a;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
   padding: 8px 22px;
-  background-color: #fff;
-  border: 1px solid #fd2c7a;
-  border-radius: 10px;
-  color: #fd2c7a;
   margin-left: -17rem;
   font-weight: 700;
+}
+.rainbow-5:hover {
+  background-image: linear-gradient(
+    to right,
+    #e7484f,
+    #e7484f 16.65%,
+    #f68b1d 16.65%,
+    #f68b1d 33.3%,
+    #fced00 33.3%,
+    #fced00 49.95%,
+    #009e4f 49.95%,
+    #009e4f 66.6%,
+    #00aac3 66.6%,
+    #00aac3 83.25%,
+    #732982 83.25%,
+    #732982 100%,
+    #e7484f 100%
+  );
+  animation: slidebg 2s linear infinite;
 }
 
 .btn-bag {
@@ -76,6 +98,6 @@
   margin-left: 101rem;
   font-size: 19px;
 }
-.nav2-prog1 :hover{
+.nav2-prog1 :hover {
   color: #fff;
 }

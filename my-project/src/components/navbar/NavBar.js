@@ -38,9 +38,9 @@ const NavBar = () => {
                 aria-label="Search"
               />
             </Form>
-            <Button className="btn-login" variant="light">
+            <button type="submit" className="rainbow rainbow-5">
               ورود
-            </Button>
+            </button>
             <button className="btn-bag">
               <BsBagDash style={{ fontSize: "45", marginBottom: "10" }} />
             </button>
