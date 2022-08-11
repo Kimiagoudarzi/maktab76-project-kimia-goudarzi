@@ -54,7 +54,7 @@ const NavBar = () => {
             <Container fluid>
               <Navbar.Toggle className="nav-toggel" />
               <Navbar.Brand>
-                <p className="nav2-prog">دسته بندی محصولات</p>
+                <p className="nav2-prog1">دسته بندی محصولات</p>
               </Navbar.Brand>
               <Navbar.Offcanvas placement="end">
                 <Offcanvas.Header closeButton>
