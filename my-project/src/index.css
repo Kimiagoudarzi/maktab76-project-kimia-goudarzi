@@ -4,7 +4,7 @@ body {
 }
 @font-face {
   font-family: 'shabnam';
-  src: url('./fonts/Shabnam.woff2');
+  src: url('./assets/fonts/Shabnam.woff2');
 }
 *{
   font-family: 'shabnam';
