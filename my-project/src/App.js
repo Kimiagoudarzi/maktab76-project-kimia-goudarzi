@@ -19,9 +19,9 @@ const Layout = () => {
     <>
       <div className="container-app">
         <NavBar />
-        {/* <HomeSlider />
-        <HomeCard /> */}
-        {/* <Footer className="footer-app" /> */}
+        <HomeSlider />
+        <HomeCard />
+        <Footer className="footer-app" />
       </div>
     </>
   );
