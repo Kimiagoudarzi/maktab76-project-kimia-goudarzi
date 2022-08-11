@@ -1,4 +1,5 @@
 import "./HomeCard.css";
+import { Link } from "react-router-dom";
 import cosmetic from "../../../images/1card.jpg";
 import cream from "../../../images/2card.jpg";
 import body from "../../../images/3card.jpg";
@@ -9,34 +10,43 @@ const HomeCard = () => {
       <div className="card-wrapper">
         <div className="row d-flex justify-content-center">
           <div className="col-4 ">
-            <div className="card">
-              <div className="image">
-                <img src={cosmetic} alt="pic" />
+            <Link to="/Cosmetic">
+              <div className="card">
+                <div className="image">
+                  <img src={cosmetic} alt="pic" />
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
           <div className="col-4">
-            <div className="card">
-              <div className="image">
-                <img src={cream} alt="pic" />
+            <Link to="/perfume">
+              <div className="card">
+                <div className="image">
+                  <img src={cream} alt="pic" />
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
+
         <div className="row d-flex justify-content-center">
           <div className="col-4">
+            <Link to='/hair'>
             <div className="card">
               <div className="image">
                 <img src={Hair} alt="pic" />
               </div>
             </div>
+            </Link>
           </div>
           <div className="col-4">
+            <Link to='/skin'>
             <div className="card">
               <div className="image">
                 <img src={body} alt="pic" />
               </div>
             </div>
+            </Link>
           </div>
         </div>
       </div>
