@@ -45,7 +45,7 @@ const NavBar = () => {
               </button>
             </Link>
             <button className="btn-bag">
-              <Link to="/cart">
+              <Link to="/cart" style={{color: '#787878'}}>
                 <BsBagDash style={{ fontSize: "45", marginBottom: "10" }} />
               </Link>
             </button>
