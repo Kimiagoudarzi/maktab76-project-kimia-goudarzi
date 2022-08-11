@@ -1,15 +1,11 @@
-.main-slider{
-  margin-right: 20rem;
+.main-slider {
+  margin: 13rem;
 }
 .carousel {
   width: 100%;
   z-index: -1;
-  /* margin-right: 22rem; */
-  margin-top: 10rem;
-  
- 
 }
 .c-item {
-  width: 63vw;
-  height: 70vh;
+  width: 80vw;
+  height: 75vh;
 }
