@@ -122,12 +122,14 @@
 }
 .img1-footer{
   margin-right: 8rem;
+  width: 130px;
 }
 .img2-footer{
   margin-right:2rem ;
+  margin-left: 1rem;
 }
 .img3-footer{
-  width: 130px;
+  width: 120px;
   height: 150px;
   margin-right: 2rem;
 }
