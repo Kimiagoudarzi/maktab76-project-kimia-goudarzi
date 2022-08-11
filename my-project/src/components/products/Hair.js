@@ -1,6 +1,5 @@
-import NavBar from '../navbar/NavBar';
-import Footer from '../footer/Footer';
-
+import Footer from '../../layout/footer/Footer';
+import NavBar from '../../layout/navbar/NavBar';
 
 const Hair = () => {
   return (
