@@ -4,8 +4,21 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
 import pic from "../../assets/images/p44.png";
 import butterfly from "../../assets/images/butter.png";
+import { useEffect,useState } from "react";
 
 const Login = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [isValid, setValid] = useState(false);
+
+  const validate = () => {
+    return userName.length & password.length;
+  };
+  useEffect(() => {
+    const isValid = validate();
+    setValid(isValid);
+  }, [userName, password]);
+
   return (
     <section className="login-body">
       <MDBContainer className="login-container gradient-form">
@@ -26,20 +39,24 @@ const Login = () => {
               <MDBInput
                 wrapperClass="mb-4"
                 placeholder="نام کاربری"
+                value={userName}
                 id="form1"
-                type="email"
+                type="text"
+                onChange={(e) => setUserName(e.target.value)}
                 required
               />
               <MDBInput
                 wrapperClass="mb-4"
                 placeholder="رمز عبور"
                 id="form2"
+                value={password}
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <div className="text-center pt-1 mb-5 pb-1">
                 <Link to="/loginForm/admin">
-                  <button className="mb-4 w-100 gradient-custom-2">ورود</button>
+                  <button className="mb-4 w-100 gradient-custom-2" disabled={!isValid}>ورود</button>
                 </Link>
                 <a className="text-muted" href="#!">
                   فراموشی رمز عبور!
