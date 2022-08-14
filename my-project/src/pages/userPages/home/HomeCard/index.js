@@ -1,9 +1,9 @@
 import "./HomeCard.css";
 import { Link } from "react-router-dom";
-import cosmetic from "../../../assets/images/1card.jpg";
-import cream from "../../../assets/images/2card.jpg";
-import body from "../../../assets/images/3card.jpg";
-import Hair from "../../../assets/images/4card.jpg";
+import cosmetic from "../../../../assets/images/1card.jpg";
+import cream from "../../../../assets/images/2card.jpg";
+import body from "../../../../assets/images/3card.jpg";
+import Hair from "../../../../assets/images/4card.jpg";
 const HomeCard = () => {
   return (
     <>

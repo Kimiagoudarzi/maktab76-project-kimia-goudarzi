@@ -1,5 +1,5 @@
-import Footer from '../../layout/footer/Footer';
-import NavBar from '../../layout/navbar/NavBar';
+import Footer from '../../layout/userLayoute/footer/index';
+import NavBar from '../../layout/userLayoute/navbar/index';
 
 
 const Cosmetic = () => {

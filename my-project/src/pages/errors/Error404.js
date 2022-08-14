@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Alert from "react-bootstrap/Alert";
-// import Button from "react-bootstrap/Button";
 
-function NoMatched() {
+
+function Error404() {
   const [show, setShow] = useState(true);
 
   if (show) {
@@ -15,7 +15,7 @@ function NoMatched() {
       </Alert>
     );
   }
-//   return <Button onClick={() => setShow(true)}>Show Alert</Button>;
+
 }
 
-export default NoMatched;
+export default Error404;

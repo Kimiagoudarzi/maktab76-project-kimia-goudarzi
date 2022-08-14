@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BsBagDash } from "react-icons/bs";
-import butterfly from "../../assets/images/butter.png";
+import butterfly from "../../../assets/images/butter.png";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -68,7 +68,7 @@ const NavBar = () => {
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
                     <Nav.Link>
-                      <NavLink to="/Cosmetic" style={navLinkStyle}>
+                      <NavLink to="/cosmetic" style={navLinkStyle}>
                         لوازم آرایشی
                       </NavLink>
                     </Nav.Link>
