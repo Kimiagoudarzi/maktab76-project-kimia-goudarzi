@@ -1,0 +1,27 @@
+.header-admin-nav {
+  font-size: 28px;
+  color: #fd2c7a;
+}
+.btn-admin-nav {
+  border: none;
+  background-color: #fd2c7a;
+  margin-right: 2rem;
+  border-radius: 10px;
+  padding: 0.5rem 2rem;
+  color: #fff;
+}
+.admin-nav {
+  height: 96px;
+  width: 100vw;
+  padding: 12px 36px;
+  box-shadow: 0 3px 20px 0 rgb(0 0 0 / 30%);
+  background-color: #ffffff;
+}
+.admin-nav-items {
+  margin-left: 8rem;
+}
+.btn-back{
+    background-color: #7e3d7c;
+    color: #fff;
+    margin-left: -14rem;
+}

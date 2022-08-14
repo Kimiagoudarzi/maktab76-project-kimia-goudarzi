@@ -1,11 +1,14 @@
 import React from 'react'
 import NavBar from '../../../layout/adminLayout/navbar';
 
-const Admin = () => {
+const Products = () => {
   return (
     <>
         <NavBar/>
+        <div>
+          hiii products
+        </div>
     </>
   )
 }
-export default Admin;
+export default Products;
