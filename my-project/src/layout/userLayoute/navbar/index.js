@@ -39,7 +39,7 @@ const NavBar = () => {
                 aria-label="Search"
               />
             </Form>
-            <Link to='/admin'>
+            <Link to='/loginForm'>
               <button type="submit" className="rainbow rainbow-5">
                 ورود
               </button>

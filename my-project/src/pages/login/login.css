@@ -1,0 +1,39 @@
+.login-body {
+  background: url(../../assets/images/background.jpg);
+  width: 100vw;
+}
+.gradient-custom-2 {
+  padding: 0.5rem 3rem;
+  border-radius: 3rem;
+  background: #be9ce4;
+  border: none;
+  
+}
+.row-login {
+  margin-top: 3rem;
+}
+
+.img-login {
+  width: 20vw;
+  height: 50vh;
+}
+.login-container {
+  margin-top: 8rem;
+  border-radius: 5rem;
+  background-color: #f3f3f3;
+  padding: 2rem 5rem;
+}
+.btn-login-back {
+    padding: 0.5rem 1.5rem;
+  background: -webkit-linear-gradient(
+    to right,
+ 
+    #d8363a,
+    #dd3675,
+    #b44593
+  );
+  background: linear-gradient(to right, #d8367f, #dd36b9, #6e2368);
+  border: none;
+  border-radius: 3rem;
+  color: #ffffff;
+}
