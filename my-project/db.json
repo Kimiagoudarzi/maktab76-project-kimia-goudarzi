@@ -3,32 +3,38 @@
     {
       "id": 1,
       "name": "کرم پودر مات کننده این لی",
-      "price": 150000
+      "price": 150000,
+      "image": "https://inlaycosmetics.com/wp-content/uploads/2020/06/slide-kerempodr.jpg"
     },
     {
       "id": 2,
       "name": "پنکیک این لی" ,
-      "price": 160000 
+      "price": 160000,
+      "image": "https://inlaycosmetics.com/wp-content/uploads/2020/06/pankek2.jpg"
     },
     {
       "id": 3,
       "name": "رژ گونه این لی" ,
-      "price": 150000
+      "price": 150000,
+      "image": "https://inlaycosmetics.com/wp-content/uploads/2020/06/rojh-gone.jpg"
     },
     {
       "id": 4,
       "name": "کانسیلر قلمی این لی" ,
-      "price": 180000
+      "price": 180000,
+      "image": "https://inlaycosmetics.com/wp-content/uploads/2020/06/slide-kansiler.jpg"
     },
     {
       "id": 5,
       "name": "پرایمر این لی" ,
-      "price": 130000
+      "price": 130000,
+      "image": "https://inlaycosmetics.com/wp-content/uploads/2020/06/inlay-primer1.jpg"
     },
     {
       "id": 6,
       "name": "خط چشم مازیکی مک" ,
-      "price": 120000
+      "price": 120000,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/945977.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     },
     {
       "id": 7,

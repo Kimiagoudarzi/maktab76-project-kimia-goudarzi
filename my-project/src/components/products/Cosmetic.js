@@ -2,6 +2,8 @@ import { useState, useCallback, useEffect } from "react";
 import Card from "../product's card/Card";
 import Footer from "../../layout/userLayoute/footer/index";
 import NavBar from "../../layout/userLayoute/navbar/index";
+const COSMETIC_URL = "http://localhost:3000/cosmetic";
+
 
 const Cosmetic = () => {
   const [name, setName] = useState("");
@@ -10,7 +12,7 @@ const Cosmetic = () => {
 
   const fetchPost = useCallback(async () => {
     try {
-      const response = await fetch("http://localhost:3000/cosmetic");
+      const response = await fetch(`${COSMETIC_URL}`);
       const data = await response.json();
       setPost(data);
     } catch (error) {
@@ -28,7 +30,7 @@ const Cosmetic = () => {
       <br />
       <br />
       <br />
-      <Card posts= {post}/>
+      <Card posts={post}/>
       <Footer />
     </>
   );
