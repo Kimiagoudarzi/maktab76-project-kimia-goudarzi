@@ -1,0 +1,36 @@
+.table-main {
+  margin: 4rem 15rem;
+}
+.edit-icon-admin {
+  font-size: 30px;
+  color: #7e377c;
+  margin-right: 3rem;
+  margin-left: 1rem;
+}
+.trash-icon-admin {
+  font-size: 28px;
+  color: #7e377c;
+  margin-left: -6rem;
+}
+.h1-admin-product {
+  margin-right: 15rem;
+  color: #7e377c;
+}
+.product-admin-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fffeff; 
+}
+.img-admin {
+  margin-bottom: -55rem;
+  width: 40rem;
+}
+.btn-add-product{
+  border: none;
+  background-color: #b141adcf;
+  margin-right: 67rem;
+  border-radius: 10px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: #fff;
+}

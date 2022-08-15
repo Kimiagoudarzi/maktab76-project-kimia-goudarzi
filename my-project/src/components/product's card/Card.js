@@ -11,21 +11,21 @@ const ProductsCard = (props) => {
       <Row xs={1} md={3} className="g-4">
         {Array.from({ length: 6 }).map((_, idx) => (
           <Col>
-            {props.posts.map((item) => {
-              const { id, name, price } = item;
-              return (
-                <Card className="main-card" key={id}>
+            {/* {props.posts.map((item) => {
+              const { id, name, price } = item; */}
+          
+                <Card className="main-card">
                   <Card.Img variant="top" src={pic2} />
                   <Card.Body>
-                    <Card.Text>{name}</Card.Text>
-                    <Card.Title>{price}</Card.Title>
+                    <Card.Text>name</Card.Text>
+                    <Card.Title>price</Card.Title>
                     <Button variant="secondary" className="btn-check-card">
                       جزئیات محصول
                     </Button>
                   </Card.Body>
                 </Card>
-              );
-            })}
+            
+            {/* })} */}
           </Col>
         ))}
       </Row>

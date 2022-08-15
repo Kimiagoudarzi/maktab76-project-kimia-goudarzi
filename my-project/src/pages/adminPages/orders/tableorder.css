@@ -1,0 +1,29 @@
+.table-main {
+  margin: 4rem 15rem;
+}
+.h1-admin-order {
+  margin-right: 15rem;
+  color: #7e377c;
+}
+.order-admin-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fffeff;
+}
+.img-admin {
+  margin-bottom: -48rem;
+  width: 40rem;
+}
+.checkbox-order {
+  margin-right: 40rem;
+  margin-top: 1rem;
+}
+.btn-check-order {
+  background-color: #fd2c7a;
+  border: 2px solid #fd2c7a;
+  color: #fffeff;
+  border-radius: 10px;
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-right: 1rem;
+}

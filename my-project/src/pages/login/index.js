@@ -55,7 +55,7 @@ const Login = () => {
                 required
               />
               <div className="text-center pt-1 mb-5 pb-1">
-                <Link to="/loginForm/admin">
+                <Link to="/loginForm/admin/products">
                   <button className="mb-4 w-100 gradient-custom-2" disabled={!isValid}>ورود</button>
                 </Link>
                 <a className="text-muted" href="#!">

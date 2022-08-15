@@ -15,7 +15,7 @@ const NavBar = () => {
           پنل مدیریت میا لند
         </Navbar.Brand>
         <ButtonGroup className=" admin-nav-items">
-          <Link to="/admin/products">
+          <Link to="/loginForm/admin/products">
             <button className="btn-admin-nav">کالا ها</button>
           </Link>
           <Link to="/admin/prices">

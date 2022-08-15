@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import Cart from "../pages/cart/index";
-import Admin from "../pages/adminPages/admin/index";
+// import Admin from "../pages/adminPages/admin/index";
 import Error404 from "../pages/errors/Error404";
 import Cosmetic from "../components/products/Cosmetic";
 import Hair from "../components/products/Hair";
@@ -25,8 +25,8 @@ const AppRoutes = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/loginForm" element={<Login />} />
         <Route path="*" element={<Error404 />} />
-        <Route path="/loginForm/admin" element={<Admin/>}/>
-        <Route path="/admin/products" element={<Products />} />
+        {/* <Route path="/loginForm/admin" element={<Admin/>}/> */}
+        <Route path="/loginForm/admin/products" element={<Products />} />
         <Route path="/admin/prices" element={<Prices />} />
         <Route path="/admin/orders" element={<Orders />} />
       </Routes>
