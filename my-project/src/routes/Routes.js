@@ -7,7 +7,6 @@ import Cosmetic from "../components/products/Cosmetic";
 import Hair from "../components/products/Hair";
 import Perfume from "../components/products/Perfume";
 import Skin from "../components/products/Skin";
-import SunCream from "../components/products/SunCream";
 import Login from '../pages/login/index';
 import Home from "../pages/userPages/home/Home";
 import Products from "../pages/adminPages/products/Products";
@@ -23,7 +22,6 @@ const AppRoutes = () => {
         <Route path="/hair" element={<Hair />} />
         <Route path="/perfume" element={<Perfume />} />
         <Route path="/skin" element={<Skin />} />
-        <Route path="/suncream" element={<SunCream />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/loginForm" element={<Login />} />
         <Route path="*" element={<Error404 />} />

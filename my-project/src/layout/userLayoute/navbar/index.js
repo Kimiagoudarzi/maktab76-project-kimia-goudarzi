@@ -83,11 +83,6 @@ const NavBar = () => {
                       </NavLink>
                     </Nav.Link>
                     <Nav.Link>
-                      <NavLink to="/suncream" style={navLinkStyle}>
-                        کرم ضد آفتاب
-                      </NavLink>
-                    </Nav.Link>
-                    <Nav.Link>
                       <NavLink to="/perfume" style={navLinkStyle}>
                         عطر و ادکلن
                       </NavLink>
