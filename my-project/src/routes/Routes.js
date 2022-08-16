@@ -8,9 +8,9 @@ import Perfume from "components/products/Perfume";
 import Skin from "components/products/Skin";
 import Login from 'pages/login/index';
 import Home from "pages/userPages/home/Home";
-import Products from "pages/adminPages/products/Products";
-import Prices from "pages/adminPages/prices/Prices";
-import Orders from "pages/adminPages/orders/Orders";
+import Products from "pages/adminPages/products";
+import Prices from "pages/adminPages/prices";
+import Orders from "pages/adminPages/orders";
 
 const AppRoutes = () => {
   return (
