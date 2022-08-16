@@ -27,7 +27,7 @@ const Prices = () => {
               <tr>
                 <th scope="row">1</th>
                 <td>کرم پودر این لی </td>
-                <td>150000</td>
+                <td><input type='text' style={{border:"none"}} value="150000"/></td>
                 <td>12</td>
               </tr>
               <tr>
