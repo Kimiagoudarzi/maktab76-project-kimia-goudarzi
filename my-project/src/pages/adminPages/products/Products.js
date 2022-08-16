@@ -1,12 +1,24 @@
-import React from "react";
-import "./table.css";
-import NavBar from "../../../layout/adminLayout/navbar";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { FaPenSquare, FaTrash } from "react-icons/fa";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import wave from "../../../assets/images/wave.png";
+import NavBar from "layout/adminLayout/navbar";
+import React from "react";
+import "./table.css";
+// import wave from "../../../assets/images/wave.png";
 
 const Products = () => {
+  const [data, setData] = useState([]);
+  async function getData() {
+    const response = await fetch("http://localhost:4000/cosmetic");
+    const responseData = await response.json();
+    console.log(responseData);
+    setData(responseData);
+  }
+  useEffect(() => {
+    getData();
+  }, []);
+  
   return (
     <div className="product-admin-container">
       <NavBar />
@@ -25,23 +37,22 @@ const Products = () => {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-            
-            <tr>
-              <th scope="row">1</th>
-              <td>کرم پودر این لی </td>
-              <td>لوازم آرایشی</td>
-              <td>
-                <Link to="/eee">
-                  <FaPenSquare className="edit-icon-admin" />
-                </Link>
-                <Link to="/eee">
-                  <FaTrash className="trash-icon-admin" />
-                </Link>
-              </td>
-            </tr>
-
-
-            <tr>
+            {data.map((item, i) => (
+              <tr key={i}>
+                <th scope="row">1</th>
+                <td>{item.name}</td>
+                <td>{item.Grouping}</td>
+                <td>
+                  <Link to="/eee">
+                    <FaPenSquare className="edit-icon-admin" />
+                  </Link>
+                  <Link to="/eee">
+                    <FaTrash className="trash-icon-admin" />
+                  </Link>
+                </td>
+              </tr>
+            ))}
+            {/* <tr>
               <th scope="row">2</th>
               <td></td>
               <td></td>
@@ -52,11 +63,11 @@ const Products = () => {
               <td></td>
               <td></td>
               <td></td>
-            </tr>
+            </tr> */}
           </MDBTableBody>
         </MDBTable>
       </div>
-      <img src={wave} alt="wave" className="img-admin" />
+      {/* <img src={wave} alt="wave" className="img-admin" /> */}
     </div>
   );
 };

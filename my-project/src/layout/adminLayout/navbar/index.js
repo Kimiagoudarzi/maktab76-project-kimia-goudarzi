@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
+import { FaAngleLeft } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import butterfly from "../../../assets/images/butter.png";
+import butterfly from "assets/images/butter.png";
 import "./navbar.css";
-import { Link } from "react-router-dom";
-import { FaAngleLeft } from "react-icons/fa";
+
 
 const NavBar = () => {
   return (

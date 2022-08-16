@@ -1,6 +1,6 @@
-import NavBar from "../../../layout/userLayoute/navbar/index";
+import NavBar from "layout/userLayoute/navbar/index";
 import HomeSlider from "./HomeSlider/index";
-import Footer from "../../../layout/userLayoute/footer/index";
+import Footer from "layout/userLayoute/footer/index";
 import HomeCard from "./HomeCard/index";
 
 const Home = () => {

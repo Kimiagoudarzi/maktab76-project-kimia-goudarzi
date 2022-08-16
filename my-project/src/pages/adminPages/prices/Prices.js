@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from "../../../layout/adminLayout/navbar";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
-import wave from "../../../assets/images/wave.png";
+import NavBar from "layout/adminLayout/navbar";
+import wave from "assets/images/wave.png";
 import "./tableprice.css";
 
 const Prices = () => {

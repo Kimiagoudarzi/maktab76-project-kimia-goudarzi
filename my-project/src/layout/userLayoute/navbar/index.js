@@ -1,14 +1,14 @@
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
+import { BsBagDash } from "react-icons/bs";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { BsSearch } from "react-icons/bs";
-import { BsBagDash } from "react-icons/bs";
-import butterfly from "../../../assets/images/butter.png";
+import butterfly from "assets/images/butter.png";
 import "./NavBar.css";
 
 const NavBar = () => {

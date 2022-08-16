@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import cosmetic from "../../../../assets/images/2.jpg"
-import cream from "../../../../assets/images/1.jpg";
-import body from "../../../../assets/images/3.jpg";
-import shampo from "../../../../assets/images/sh.jfif";
-import perfume from "../../../../assets/images/4.jpg";
-import suny from "../../../../assets/images/5.jpg";
+import cosmetic from "assets/images/2.jpg"
+import cream from "assets/images/1.jpg";
+import body from "assets/images/3.jpg";
+import shampo from "assets/images/sh.jfif";
+import perfume from "assets/images/4.jpg";
+import suny from "assets/images/5.jpg";
 import "./HomeSlider.css";
 
 const HomeSlider = () => {

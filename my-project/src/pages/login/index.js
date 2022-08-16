@@ -1,10 +1,13 @@
 import React from "react";
-import "./login.css";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
-import pic from "../../assets/images/p44.png";
-import butterfly from "../../assets/images/butter.png";
 import { useEffect,useState } from "react";
+import pic from "assets/images/p44.png";
+import butterfly from "assets/images/butter.png";
+import "./login.css";
+
+
+
 
 const Login = () => {
   const [userName, setUserName] = useState("");
