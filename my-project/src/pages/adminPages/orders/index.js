@@ -7,6 +7,7 @@ import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
 import Form from "react-bootstrap/Form";
 import "./tableorder.css";
+import DatePicker from "react-datepicker";
 
 const Orders = () => {
   const [posts, setPosts] = useState([]);
@@ -16,7 +17,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/orders")
+      .get("http://localhost:3001/orders?state=false&&state=true")
       .then((res) => {
         setPosts(res.data);
       })
@@ -27,14 +28,22 @@ const Orders = () => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
+  const handleWaiting = () => {
+    axios
+      .get("http://localhost:3001/orders?state=false")
+      .then((res) => setPosts(res.data));
+  };
+  const handleDeleverd = () => {
+    axios
+      .get("http://localhost:3001/orders?state=true")
+      .then((res) => setPosts(res.data));
+  };
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
 
   return (
     <>
@@ -43,22 +52,34 @@ const Orders = () => {
         <div className="d-flex mt-5">
           <h1 className="h1-admin-order">مدیریت سفارش ها</h1>
           <Form className="d-flex checkbox-order">
-            <div
-              className="mb-3"
-              style={{ marginLeft: "2rem", fontSize: "19px" }}
-            >
-              <Form.Check
-                type="checkbox"
-                id="checkbox"
-                label="سفارش های در انتظار ارسال"
+            <div>
+              <input
+                type="radio"
+                id="tahvil"
+                name="sefaresh"
+                value="HTML"
+                onClick={handleDeleverd}
               />
+              <label for="tahvil" style={{ marginRight: "10px" }}>
+                سفارش های تحویل شده
+              </label>
             </div>
-            <div className="mb-3" style={{ fontSize: "19px" }}>
-              <Form.Check
-                type="checkbox"
-                id="checkbox"
-                label="سفارش های تحویل شده"
+            <div style={{ marginRight: "40px" }}>
+              <input
+                type="radio"
+                id="entezar"
+                name="sefaresh"
+                value="entezar"
+                onClick={handleWaiting}
               />
+              <label
+                for="entezar"
+                style={{
+                  marginRight: "10px",
+                }}
+              >
+                سفارش های در انتظار ارسال
+              </label>
             </div>
           </Form>
         </div>
@@ -77,7 +98,7 @@ const Orders = () => {
                 <tr>
                   <th scope="row">{post.username}</th>
                   <td>{post.totalPrice}</td>
-                  <td>1401/05/09</td>
+                  <td>{post.time}</td>
                   <td>
                     <button className="btn-check-order">بررسی سفارش</button>
                   </td>
@@ -87,10 +108,10 @@ const Orders = () => {
           </MDBTable>
         </div>
         <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
-        paginate={paginate}
-      />
+          postsPerPage={postsPerPage}
+          totalPosts={posts.length}
+          paginate={paginate}
+        />
         <img src={wave} alt="wave" className="img-admin" />
       </div>
     </>

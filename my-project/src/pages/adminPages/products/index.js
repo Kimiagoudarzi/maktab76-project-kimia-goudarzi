@@ -44,7 +44,7 @@ const ProductsAdmin = () => {
         <button className="btn-add-product">افزودن کالا</button>
       </div>
       <div className="table-main">
-        <MDBTable bordered style={{ borderColor: "#521850" }}>
+        <MDBTable bordered hover style={{ borderColor: "#521850" }}>
           <MDBTableHead>
             <tr>
               <th scope="col">شماره کالا</th>
