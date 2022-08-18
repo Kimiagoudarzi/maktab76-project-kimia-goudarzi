@@ -1,6 +1,5 @@
 .site-footer {
-
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
@@ -32,6 +31,7 @@
 }
 .site-footer .social-icons {
   text-align: right;
+  margin-top: 12px;
 }
 .site-footer .social-icons a {
   width: 40px;
@@ -60,7 +60,6 @@
     text-align: center;
   }
 }
-
 
 .social-icons {
   padding-left: 0;
@@ -113,24 +112,42 @@
     font-weight: 600;
   }
 }
-.link-footer-mia{
+.link-footer-mia {
   text-decoration: none;
 }
-.img-f-wrapper{
-  /* background-color: #a636b2; */
+.img-f-wrapper {
   margin-top: 4rem;
 }
-.img1-footer{
+.img1-footer {
   margin-right: 8rem;
   width: 130px;
   margin-top: 1rem;
 }
-.img2-footer{
-  margin-right:2rem ;
+.img2-footer {
+  margin-right: 2rem;
   margin-left: 1rem;
 }
-.img3-footer{
+.img3-footer {
   width: 120px;
   height: 150px;
   margin-right: 2rem;
+}
+.footer-image-top {
+  width: 100vw;
+  height: 10vh;
+  background-color: #eeeded;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.badge-item {
+  display: flex;
+  flex-basis: 15%;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 0;
+}
+.badge-item h6 {
+  margin-top: 16px;
+  color: black;
 }

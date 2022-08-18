@@ -2,6 +2,9 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import img1 from "assets/images/asl.webp";
+import img2 from "assets/images/return.webp";
+import img3 from "assets/images/car.webp";
 import logo from 'assets/images/logo.png';
 import logo2 from 'assets/images/logoo2.png';
 import logo3 from 'assets/images/logo3.png';
@@ -11,6 +14,21 @@ const Footer = () => {
   return (
     <>
       <footer className="site-footer">
+      <div className="footer-image-top">
+            <div className="badge-item">
+              <img src ={img1} alt="zemanat"/>
+              <h6>ضمانت اصل بودن کالا</h6>
+            </div>
+            <div className="badge-item">
+              <img src ={img2} alt="zemanat"/>
+              <h6> هفت روز ضمانت برگشت کالا</h6>
+            </div>
+            <div className="badge-item">
+              <img src ={img3} alt="zemanat"/>
+              <h6>ارسال سریع</h6>
+            </div>
+          </div>
+          <hr/>
         <div className="container">
           <div className="row d-flex ">
             <div className="col-sm-12 col-md-6">
@@ -56,6 +74,7 @@ const Footer = () => {
             </div>
 
             <div className="col-md-4 col-sm-6 col-xs-12">
+            <h6>میا لند را در شبکه های اجتماعی دنبال کنید</h6>
               <ul className="social-icons">
                 <li>
                   <a href="https://www.facebook.com/">

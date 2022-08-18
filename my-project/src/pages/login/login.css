@@ -20,7 +20,8 @@
 .login-container {
   margin-top: 8rem;
   border-radius: 5rem;
-  background-color: #f3f3f3;
+  /* background-color: #f3f3f3; */
+  background: linear-gradient(#F5E6FC,#f7f9fb);
   padding: 2rem 5rem;
 }
 .btn-login-back {
