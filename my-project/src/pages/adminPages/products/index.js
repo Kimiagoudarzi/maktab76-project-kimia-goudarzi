@@ -2,23 +2,38 @@ import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { FaPenSquare, FaTrash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Paginnation from "./Pagination";
 import NavBar from "layout/adminLayout/navbar";
 import React from "react";
 import "./table.css";
 // import wave from "../../../assets/images/wave.png";
 
 const Products = () => {
-  const [data, setData] = useState([]);
-  async function getData() {
-    const response = await fetch("http://localhost:3001/products");
-    const responseData = await response.json();
-    console.log(responseData);
-    setData(responseData);
-  }
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage] = useState(18);
+
   useEffect(() => {
-    getData();
+    const fetchPost = async () => {
+      setLoading(true);
+      const res = axios.get("http://localhost:3001/products");
+      setPosts(res.data);
+      setLoading(false);
+    };
+    fetchPost();
   }, []);
-  
+  console.log(posts);
+
+  // get current post
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  // change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="product-admin-container">
       <NavBar />
@@ -37,11 +52,11 @@ const Products = () => {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-            {data.map((item, i) => (
-              <tr key={i}>
+            {currentPosts.map((post) => (
+              <tr key={post.id}>
                 <th scope="row">1</th>
-                <td>{item.name}</td>
-                <td>{item.barnd}</td>
+                <td>{post.name}</td>
+                <td>{post.price}</td>
                 <td>
                   <Link to="/eee">
                     <FaPenSquare className="edit-icon-admin" />
@@ -67,6 +82,11 @@ const Products = () => {
           </MDBTableBody>
         </MDBTable>
       </div>
+      <Paginnation
+        postPerPage={postPerPage}
+        totalPosts={posts.length}
+        paginate={paginate}
+      />
       {/* <img src={wave} alt="wave" className="img-admin" /> */}
     </div>
   );
