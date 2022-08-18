@@ -2,36 +2,38 @@ import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { FaPenSquare, FaTrash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Pagination from "./Pagination";
 import axios from "axios";
-import Paginnation from "./Pagination";
 import NavBar from "layout/adminLayout/navbar";
-import React from "react";
+import wave from "assets/images/wave.png";
 import "./table.css";
-// import wave from "../../../assets/images/wave.png";
 
-const Products = () => {
+const ProductsAdmin = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(18);
+  const [postsPerPage] = useState(18);
 
   useEffect(() => {
-    const fetchPost = async () => {
-      setLoading(true);
-      const res = axios.get("http://localhost:3001/products");
-      setPosts(res.data);
-      setLoading(false);
-    };
-    fetchPost();
+    setLoading(true);
+    axios
+      .get("http://localhost:3001/products")
+      .then((res) => {
+        setPosts(res.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        alert("There was an error while retrieving the data");
+      });
   }, []);
-  console.log(posts);
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
-  // get current post
-  const indexOfLastPost = currentPage * postPerPage;
-  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  // change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -54,9 +56,9 @@ const Products = () => {
           <MDBTableBody>
             {currentPosts.map((post) => (
               <tr key={post.id}>
-                <th scope="row">1</th>
+                <th scope="row">{post.id}</th>
                 <td>{post.name}</td>
-                <td>{post.price}</td>
+                <td>{post.category}</td>
                 <td>
                   <Link to="/eee">
                     <FaPenSquare className="edit-icon-admin" />
@@ -67,28 +69,16 @@ const Products = () => {
                 </td>
               </tr>
             ))}
-            {/* <tr>
-              <th scope="row">2</th>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr> */}
           </MDBTableBody>
         </MDBTable>
       </div>
-      <Paginnation
-        postPerPage={postPerPage}
+      <Pagination
+        postsPerPage={postsPerPage}
         totalPosts={posts.length}
         paginate={paginate}
       />
-      {/* <img src={wave} alt="wave" className="img-admin" /> */}
+      <img src={wave} alt="wave" className="img-admin" />
     </div>
   );
 };
-export default Products;
+export default ProductsAdmin;

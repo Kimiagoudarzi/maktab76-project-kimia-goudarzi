@@ -1,11 +1,41 @@
 import React from "react";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
+import { useState, useEffect } from "react";
+import Pagination from "./PaginationOrders";
+import axios from "axios";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
 import Form from "react-bootstrap/Form";
 import "./tableorder.css";
 
 const Orders = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/orders")
+      .then((res) => {
+        setPosts(res.data);
+      })
+      .catch(() => {
+        alert("There was an error while retrieving the data");
+      });
+  }, []);
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+
+
   return (
     <>
       <div className="order-admin-container">
@@ -43,30 +73,24 @@ const Orders = () => {
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-              <tr>
-                <th scope="row">کیمیا گودرزی</th>
-                <td>150000</td>
-                <td>1401/05/09</td>
-
-                <td>
-                  <button className="btn-check-order">بررسی سفارش</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">کیمیا گودرزی</th>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row">کیمیا گودرزی</th>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              {currentPosts.map((post) => (
+                <tr>
+                  <th scope="row">{post.username}</th>
+                  <td>{post.totalPrice}</td>
+                  <td>1401/05/09</td>
+                  <td>
+                    <button className="btn-check-order">بررسی سفارش</button>
+                  </td>
+                </tr>
+              ))}
             </MDBTableBody>
           </MDBTable>
         </div>
+        <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={posts.length}
+        paginate={paginate}
+      />
         <img src={wave} alt="wave" className="img-admin" />
       </div>
     </>

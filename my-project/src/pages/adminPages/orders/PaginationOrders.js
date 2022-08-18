@@ -1,6 +1,6 @@
 import React from 'react';
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.css";
-import "./table.css";
+import "./tableorder.css";
 
 
 const Pagination = ({postsPerPage, totalPosts,paginate}) => {
