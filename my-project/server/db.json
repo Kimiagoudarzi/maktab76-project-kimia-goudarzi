@@ -684,7 +684,7 @@
       "username": "میا حسینی",
       "address": "تهران خیابان فرشته",
       "phone": "09129532165",
-      "totalPrice": "200000",
+      "totalPrice": "200,000",
       "state": true, 
       "time" : "1401/06/03",
       "products": [
@@ -701,7 +701,7 @@
       "username": "کوروش زراندوز",
       "address": "تهران خیبان پاسداران",
       "phone": "0912232132",
-      "totalPrice": "120000",
+      "totalPrice": "120,000",
       "state": false,
       "time" : "1401/06/03", 
       "products": [
@@ -718,7 +718,7 @@
       "username": "کیمیا کاشانی",
       "address": "تهران خیابان نیکو منش",
       "phone": "0912876523459",
-      "totalPrice": "120000",
+      "totalPrice": "120,000",
       "state": true, 
       "time" : "1401/06/03",
       "products": [
@@ -735,7 +735,7 @@
       "username": "فاطمه ابراهیمی",
       "address": "تهران خیابان نیاوران",
       "phone": "0912873459",
-      "totalPrice": "220000",
+      "totalPrice": "220,000",
       "state": false, 
       "time" : "1401/05/03",
       "products": [
@@ -752,7 +752,7 @@
       "username": "دنیا صابری",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "220000",
+      "totalPrice": "220,000",
       "state": true, 
       "time" : "1401/06/05",
       "products": [
@@ -771,7 +771,7 @@
       "username": "ربکا حسینی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "320000",
+      "totalPrice": "320,000",
       "state": false, 
       "time" : "1401/02/03",
       "products": [
@@ -788,7 +788,7 @@
       "username": "پریسا اکبری",
       "address": "تهران خیابان نیروهوایی",
       "phone": "09129532165",
-      "totalPrice": "240000",
+      "totalPrice": "240,000",
       "state": true, 
       "time" : "1401/10/03",
       "products": [
@@ -805,7 +805,7 @@
       "username": "مینا صالحی",
       "address": "تهران خیابان نیروهوایی",
       "phone": "09129532165",
-      "totalPrice": "130000",
+      "totalPrice": "130,000",
       "state": false,
       "time" : "1401/06/03", 
       "products": [
@@ -822,7 +822,7 @@
       "username": "حامد احمدی",
       "address": "تهران خیابان نیروهوایی",
       "phone": "09129532165",
-      "totalPrice": "150000",
+      "totalPrice": "150,000",
       "state": true, 
       "time" : "1401/05/09",
       "products": [
@@ -839,7 +839,7 @@
       "username": "حمید یاسینی",
       "address": "تهران خیابان نیروهوایی",
       "phone": "09129532165",
-      "totalPrice": "130000",
+      "totalPrice": "130,000",
       "state": false, 
       "time" : "1401/03/03",
       "products": [
@@ -856,7 +856,7 @@
       "username": "مریم حسین زاده",
       "address": "تهران خیابان نیروهوایی",
       "phone": "09129532165",
-      "totalPrice": "350000",
+      "totalPrice": "350,000",
       "state": true, 
       "time" : "1401/02/03",
       "products": [
@@ -873,7 +873,7 @@
       "username": "مهسا رحیمی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "150000",
+      "totalPrice": "150,000",
       "state": false, 
       "time" : "1401/06/09",
       "products": [
@@ -890,7 +890,7 @@
       "username": "دینا ابراهیم زاده",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "260000",
+      "totalPrice": "260,000",
       "state": true, 
       "time" : "1401/06/03",
       "products": [
@@ -907,7 +907,7 @@
       "username": "مهیا حسنی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "100000",
+      "totalPrice": "100,000",
       "state": false, 
       "time" : "1401/01/10",
       "products": [
@@ -924,7 +924,7 @@
       "username": "آریانا کرمی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "160000",
+      "totalPrice": "160,000",
       "state": true, 
       "time" : "1401/12/11",
       "products": [
@@ -943,7 +943,7 @@
       "username": "مهدیه گودرزی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "190000",
+      "totalPrice": "190,000",
       "state": false, 
       "time" : "1401/06/12",
       "products": [
@@ -960,7 +960,7 @@
       "username": "ملینا دادرسان",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "120000",
+      "totalPrice": "120,000",
       "state": true, 
       "time" : "1401/06/31",
       "products": [
@@ -977,7 +977,7 @@
       "username": "علیرضا فاتحی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "110000",
+      "totalPrice": "110,000",
       "state": false, 
       "time" : "1401/06/23",
       "products": [
@@ -994,7 +994,7 @@
       "username": "ملیکا حسینی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "100000",
+      "totalPrice": "100,000",
       "state": true, 
       "time" : "1401/06/10",
       "products": [
@@ -1011,7 +1011,7 @@
       "username": "یاسمن حمیدی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "250000",
+      "totalPrice": "250,000",
       "state": false, 
       "time" : "1401/05/24",
       "products": [
@@ -1028,7 +1028,7 @@
       "username": "هلیا احمدی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "230000",
+      "totalPrice": "230,000",
       "state": true, 
       "time" : "1401/01/03",
       "products": [
@@ -1045,7 +1045,7 @@
       "username": "حنانه عسگری",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "60000",
+      "totalPrice": "60,000",
       "state": false, 
       "time" : "1401/11/10",
       "products": [
@@ -1062,7 +1062,7 @@
       "username": "آیناز رجبی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "230000",
+      "totalPrice": "230,000",
       "state": true, 
       "time" : "1401/11/23",
       "products": [
@@ -1079,7 +1079,7 @@
       "username": "فاطمه مودت",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "130000",
+      "totalPrice": "130,000",
       "state": true, 
       "time" : "1401/06/03",
       "products": [
@@ -1096,7 +1096,7 @@
       "username": "ربکا طهرانی",
       "address": "تهران خیابان نیکو منش",
       "phone": "09129532165",
-      "totalPrice": "300000",
+      "totalPrice": "300,000",
       "state": false, 
       "time" : "1401/04/23",
       "products": [

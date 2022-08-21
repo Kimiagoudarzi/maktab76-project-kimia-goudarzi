@@ -2,10 +2,14 @@ body {
   direction: rtl;
   overflow-x: hidden;
 }
-@font-face {
-  font-family: 'shabnam';
-  src: url('./assets/fonts/Shabnam.woff2');
-}
-*{
-  font-family: 'shabnam';
+@font-face { 
+  font-family: "byekan"; 
+  src: url("./assets/fonts/BYekanWeb.eot"); 
+  src: url("./assets/fonts/BYekanWeb.woff") format("woff"); 
+  src: url("./assets/fonts/BYekanWeb.ttf") format("truetype"); 
+  font-weight: normal; 
+  font-style: normal; 
+} 
+* { 
+  font-family: "byekan"; 
 }
