@@ -1,13 +1,13 @@
 import React from "react";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import Pagination from "./PaginationOrders";
 import axios from "axios";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
 import Form from "react-bootstrap/Form";
 import "./tableorder.css";
-import DatePicker from "react-datepicker";
+
 
 const Orders = () => {
   const [posts, setPosts] = useState([]);
@@ -17,7 +17,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/orders?state=false&&state=true")
+      .get("http://localhost:3002/orders?state=false&&state=true")
       .then((res) => {
         setPosts(res.data);
       })
@@ -28,14 +28,22 @@ const Orders = () => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
+
+  const totalOrders = () =>{
+    axios
+      .get("http://localhost:3002/orders?state=false&&state=true")
+      .then((res) => {
+        setPosts(res.data);
+      })
+  }
   const handleWaiting = () => {
     axios
-      .get("http://localhost:3001/orders?state=false")
+      .get("http://localhost:3002/orders?state=false")
       .then((res) => setPosts(res.data));
   };
   const handleDeleverd = () => {
     axios
-      .get("http://localhost:3001/orders?state=true")
+      .get("http://localhost:3002/orders?state=true")
       .then((res) => setPosts(res.data));
   };
 
@@ -52,6 +60,23 @@ const Orders = () => {
         <div className="d-flex mt-5">
           <h1 className="h1-admin-order">مدیریت سفارش ها</h1>
           <Form className="d-flex checkbox-order">
+          <div style={{ marginLeft: "40px" , marginRight: "-85px"}}>
+              <input
+                type="radio"
+                id="entezar"
+                name="sefaresh"
+                value="entezar"
+                onClick={totalOrders}
+              />
+              <label
+                for="entezar"
+                style={{
+                  marginRight: "10px",
+                }}
+              >
+              کل سفارش ها
+              </label>
+            </div>
             <div>
               <input
                 type="radio"
@@ -90,7 +115,7 @@ const Orders = () => {
                 <th scope="col">نام کاربر</th>
                 <th scope="col">مجموع مبلغ</th>
                 <th scope="col">زمان ثبت سفارش</th>
-                <th scope="col"></th>
+                <th scope="col">وضعیت سفارش</th>
               </tr>
             </MDBTableHead>
             <MDBTableBody>

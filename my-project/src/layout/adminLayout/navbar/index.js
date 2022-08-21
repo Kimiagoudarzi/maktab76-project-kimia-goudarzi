@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import butterfly from "assets/images/butter.png";
 import "./navbar.css";
-
 
 const NavBar = () => {
   return (
@@ -27,7 +26,7 @@ const NavBar = () => {
           </Link>
         </ButtonGroup>
         <Link to="/">
-          <button type="button" class="btn mr-md-2 mb-md-0 mb-2 btn-back">
+          <button type="button" className="btn mr-md-2 mb-md-0 mb-2 btn-back">
             بازگشت به سایت
             <FaAngleLeft />
           </button>

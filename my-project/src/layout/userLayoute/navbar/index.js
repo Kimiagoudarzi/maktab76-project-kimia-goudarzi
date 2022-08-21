@@ -25,7 +25,7 @@ const NavBar = () => {
         <Navbar className="nav" variant="light">
           <Container className="d-flex">
             <Navbar.Brand href="#home" className="parag-nav">
-              <img alt="logo" src={butterfly} className="img-nav" />
+              <Link to="/"><img alt="logo" src={butterfly} className="img-nav" /></Link>
               میا لند
             </Navbar.Brand>
             <Form className="d-flex">
@@ -46,7 +46,7 @@ const NavBar = () => {
             </Link>
             <button className="btn-bag">
               <Link to="/cart" style={{color: '#787878'}}>
-                <BsBagDash style={{ fontSize: "45", marginBottom: "10" }} />
+                <BsBagDash style={{ fontSize: "41", marginBottom: "3" }} />
               </Link>
             </button>
           </Container>

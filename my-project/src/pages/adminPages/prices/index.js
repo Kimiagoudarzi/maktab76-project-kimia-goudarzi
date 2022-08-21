@@ -16,7 +16,7 @@ const Prices = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/products")
+      .get("http://localhost:3002/products")
       .then((res) => {
         setPosts(res.data);
       })

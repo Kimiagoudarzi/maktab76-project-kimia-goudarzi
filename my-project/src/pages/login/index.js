@@ -1,25 +1,13 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import pic from "assets/images/p44.png";
 import butterfly from "assets/images/butter.png";
 import "./login.css";
 
 
-
 const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [isValid, setValid] = useState(false);
-
-  const validate = () => {
-    return userName.length & password.length;
-  };
-  useEffect(() => {
-    const isValid = validate();
-    setValid(isValid);
-  }, [userName, password]);
 
   return (
     <section className="login-body">
@@ -38,29 +26,26 @@ const Login = () => {
                   <img src={butterfly} style={{ width: "185px" }} alt="logo" />
                   <h4 className="mt-1 mb-5 pb-1">ورود به پنل مدیریت میا لند</h4>
                 </div>
+                <form>
                 <MDBInput
                   wrapperClass="mb-4"
                   placeholder="نام کاربری"
-                  value={userName}
                   id="form1"
                   type="text"
-                  onChange={(e) => setUserName(e.target.value)}
                   required
                 />
                 <MDBInput
                   wrapperClass="mb-4"
                   placeholder="رمز عبور"
                   id="form2"
-                  value={password}
                   type="password"
-                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <div className="text-center pt-1 mb-5 pb-1">
                   <Link to="/loginForm/admin/products">
                     <button
                       className="mb-4 w-100 gradient-custom-2"
-                      disabled={!isValid}
+                      type="submit"
                     >
                       ورود
                     </button>
@@ -69,7 +54,7 @@ const Login = () => {
                     فراموشی رمز عبور!
                   </a>
                 </div>
-
+                </form>
                 <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
                   <Link to="/">
                     <button outline className="btn-login-back">

@@ -14,14 +14,23 @@
   height: 96px;
   width: 100vw;
   padding: 12px 36px;
-  box-shadow: 0 3px 20px 0 rgb(0 0 0 / 30%);
+  box-shadow: 0 3px 20px 0 rgb(0 0 0 / 10%);
   background-color: #ffffff;
 }
 .admin-nav-items {
   margin-left: 8rem;
 }
 .btn-back{
-    background-color: #7e3d7c;
+  background: -webkit-linear-gradient(
+    to right,
+ 
+    #d8363a,
+    #dd3675,
+    #b44593
+  );
+  background: linear-gradient(to right, #6401A0, #9002B4, #AD04C1);
     color: #fff;
     margin-left: -14rem;
+    border-radius: 20px;
 }
+

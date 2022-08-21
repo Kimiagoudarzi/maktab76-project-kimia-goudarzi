@@ -17,7 +17,7 @@ const ProductsAdmin = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3001/products")
+      .get("http://localhost:3002/products")
       .then((res) => {
         setPosts(res.data);
         setLoading(false);
@@ -50,7 +50,7 @@ const ProductsAdmin = () => {
               <th scope="col">شماره کالا</th>
               <th scope="col">نام کالا</th>
               <th scope="col">دسته بندی</th>
-              <th scope="col"></th>
+              <th scope="col-1">ویرایش</th>
             </tr>
           </MDBTableHead>
           <MDBTableBody>
