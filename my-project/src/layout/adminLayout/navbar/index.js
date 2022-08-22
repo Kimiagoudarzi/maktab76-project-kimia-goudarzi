@@ -26,7 +26,7 @@ const NavBar = () => {
           پنل مدیریت میا لند
         </Navbar.Brand>
         <ButtonGroup className=" admin-nav-items">
-          <NavLink to="/loginForm/admin/products" style={navLinkStyle}>
+          <NavLink to="/loginForm/products" style={navLinkStyle}>
            کالا ها
           </NavLink>
           <NavLink to="/admin/prices" style={navLinkStyle}>

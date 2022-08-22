@@ -67,7 +67,7 @@ const Login = () => {
                   <img src={butterfly} style={{ width: "185px" }} alt="logo" />
                   <h4 className="mt-1 mb-5 pb-1">ورود به پنل مدیریت میا لند</h4>
                 </div>
-                {Object.keys(formErrors).length === 0 && isSubmit ? (navigate("/loginForm/admin/products")): (console.log("error"))}
+                {Object.keys(formErrors).length === 0 && isSubmit ? (navigate("/loginForm/products")): (console.log("error"))}
                 <form onSubmit={handleSubmit}>
                 <MDBInput
                   wrapperClass="mb-4"
