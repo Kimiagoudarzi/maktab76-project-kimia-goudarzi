@@ -6,6 +6,17 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import butterfly from "assets/images/butter.png";
 import "./navbar.css";
 
+
+const navLinkStyle = ({isActive}) => {
+  return {
+   backgroundColor: isActive ? '#C065BC' : '#fd2c7a',
+   color:'#ffff',
+   textDecoration : "none",
+   marginRight: '2rem',
+   borderRadius: '10px',
+   padding: '0.5rem 2rem'
+};}
+
 const NavBar = () => {
   return (
     <Navbar className="admin-nav" variant="light">
@@ -15,15 +26,15 @@ const NavBar = () => {
           پنل مدیریت میا لند
         </Navbar.Brand>
         <ButtonGroup className=" admin-nav-items">
-          <Link to="/loginForm/admin/products">
-            <button className="btn-admin-nav">کالا ها</button>
-          </Link>
-          <Link to="/admin/prices">
-            <button className="btn-admin-nav">موجودی و قیمت ها</button>
-          </Link>
-          <Link to="/admin/orders">
-            <button className="btn-admin-nav">سفارش ها</button>
-          </Link>
+          <NavLink to="/loginForm/admin/products" style={navLinkStyle}>
+           کالا ها
+          </NavLink>
+          <NavLink to="/admin/prices" style={navLinkStyle}>
+            موجودی و قیمت ها
+          </NavLink>
+          <NavLink to="/admin/orders" style={navLinkStyle}>
+            سفارش ها
+          </NavLink>
         </ButtonGroup>
         <Link to="/">
           <button type="button" className="btn mr-md-2 mb-md-0 mb-2 btn-back">

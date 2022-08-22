@@ -2,14 +2,6 @@
   font-size: 28px;
   color: #fd2c7a;
 }
-.btn-admin-nav {
-  border: none;
-  background-color: #fd2c7a;
-  margin-right: 2rem;
-  border-radius: 10px;
-  padding: 0.5rem 2rem;
-  color: #fff;
-}
 .admin-nav {
   height: 96px;
   width: 100vw;
