@@ -12,11 +12,12 @@ import "./card.css";
 const ProductsCard = () => {
   
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products)
+  const products = useSelector((state) => state.products.products);
+  console.log(products);
  
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, []);
 
 
   return (

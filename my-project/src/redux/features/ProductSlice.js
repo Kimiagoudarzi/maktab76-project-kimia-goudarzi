@@ -7,14 +7,16 @@ const initialState = {
     loading: false,
     error: "",
 }
-export const fetchProducts = createAsyncThunk("products/fetchProducts", () => {
-    return axios
-      .get("http://localhost:3002/products")
-      .then((res) => res.data)
-      .catch((error) => error.massage);
+export const fetchProducts = createAsyncThunk("products/fetchProducts", async() => {
+    try {
+      const response = await axios.get("http://localhost:3002/products")
+      return response.data
+    }catch(error){ 
+      return Promise.reject(error);
+    }
   });
 
-const productSlice = createSlice({
+export const productSlice = createSlice({
     name : "products",
     initialState,
     extraReducers :(builder) => {
@@ -24,7 +26,7 @@ const productSlice = createSlice({
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
           console.log(action.payload);
           state.loading = false;
-          state.products.push(action.payload)
+          state.products = action.payload;
         });
         builder.addCase(fetchProducts.rejected, (state, action) => {
           state.loading = false;
