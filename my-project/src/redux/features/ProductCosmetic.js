@@ -5,11 +5,11 @@ import axios from "axios"
 const initialState = {
     products: [],
     loading: false,
-    error: "",
+    error: "error",
 }
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async() => {
     try {
-      const response = await axios.get("http://localhost:3002/products")
+      const response = await axios.get("http://localhost:3002/products?category=1")
       return response.data
     }catch(error){ 
       return Promise.reject(error);
@@ -24,7 +24,6 @@ export const productSlice = createSlice({
           state.loading = true;
         });
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
-          console.log(action.payload);
           state.loading = false;
           state.products = action.payload;
         });

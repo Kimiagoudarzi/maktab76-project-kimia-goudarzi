@@ -3,7 +3,6 @@
     margin-top: 1rem;
     background-color: #fd2c7a;
     border: none;
-    
 }
 .card-group-main{
     margin: 5rem 0rem;
@@ -12,4 +11,18 @@
 .main-card{
     width: 22rem;
     height: 38.9rem;
+}
+
+
+/* modal */
+.img-modal{
+    width: 13rem;
+    height: 18rem;
+}
+.btn-add-modal{
+    margin-top: 1rem;
+    margin-left: 18rem;
+    background-color: #fd2c7a;
+    border: none;
+
 }

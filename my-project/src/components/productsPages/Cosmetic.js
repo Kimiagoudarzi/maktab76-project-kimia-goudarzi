@@ -1,4 +1,4 @@
-import Card from "../product's card";
+import Card from "../productsCard/CosmeticProducts";
 import Footer from "../../layout/userLayoute/footer/index";
 import NavBar from "../../layout/userLayoute/navbar/index";
 
