@@ -13,16 +13,32 @@
     height: 38.9rem;
 }
 
-
 /* modal */
 .img-modal{
     width: 13rem;
     height: 18rem;
 }
 .btn-add-modal{
-    margin-top: 1rem;
-    margin-left: 18rem;
+    /* margin-top: 1rem; */
+    margin-left: 10rem;
     background-color: #fd2c7a;
     border: none;
-
 }
+.btn-counter-main{
+    border: 1px solid #d2d2d2;
+    border-radius: 10px;
+    padding: 4px;
+    color: #636363;
+    margin-left: 2rem;
+    margin-right: -9rem;
+}
+.btn-counter{
+    border: none;
+    background-color: transparent;
+    color: #636363;
+}
+.icon-heart{
+    color: #fd2c7a;
+    margin-right: 5rem;
+}
+
