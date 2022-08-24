@@ -44,7 +44,7 @@ const ProductsCard = () => {
         {productHair.map((item)=>(
          <Col>
          <Card className="main-card" key={item.id}>
-           <Card.Img variant="top" src={pic2} />
+           <Card.Img variant="top" src={item.image} />
            <Card.Body>
              <div onClick={() => setLgShow(true)}>
              <Card.Text style={{fontSize : "20px"}}>{item.name}</Card.Text>
