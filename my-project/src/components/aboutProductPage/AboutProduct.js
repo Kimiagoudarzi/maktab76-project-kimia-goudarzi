@@ -4,6 +4,7 @@ import { FaRegHeart} from "react-icons/fa";
 import { FaCalendarAlt} from "react-icons/fa";
 import { FaCreditCard } from "react-icons/fa";
 import { FaRegGem} from "react-icons/fa";
+import { Link } from "react-router-dom"
 import Button from "react-bootstrap/Button";
 import Footer from "layout/userLayoute/footer/index";
 import NavBar from "layout/userLayoute/navbar/index";
@@ -29,7 +30,6 @@ const AboutProduct = () => {
   return (
     <>
     <NavBar />
-
       <div className='about-main'>
         <div className='d-flex'>
             <div className="about-img-contain">
@@ -47,11 +47,13 @@ const AboutProduct = () => {
                 <h5>قیمت :320,000 تومان </h5>
                 
                 <div className="d-flex about-button">
-                    <Button variant="secondary" className="btn-add-about">
-                    افزودن به سبد خرید
-                    <BsBagDash style={{fontSize: "1.3rem", marginRight: "0.5rem"}}/>
-                    </Button>
-                    <div className="btn-counter-main">
+                    <Link to="/cart">
+                        <Button variant="secondary" className="btn-add-about">
+                            افزودن به سبد خرید
+                        <BsBagDash style={{fontSize: "1.3rem", marginRight: "0.5rem"}}/>
+                        </Button>
+                    </Link>
+                    <div className="btn-counter-main-about">
                         <button className="btn-counter-about" onClick={increase}>+</button>
                         <span className="counter__output">{counter}</span>
                         <button className="btn-counter-about" onClick={decrease}>-</button>

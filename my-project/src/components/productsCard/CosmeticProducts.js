@@ -13,9 +13,6 @@ import Row from "react-bootstrap/Row";
 import "./card.css";
 
 
-
-
-
 const ProductsCard = () => {
   const [lgShow, setLgShow] = useState(false);
   const [counter, setCounter] = useState(0);
@@ -50,8 +47,8 @@ const ProductsCard = () => {
            <Card.Img variant="top" src={pic2} />
            <Card.Body>
              <div onClick={() => setLgShow(true)}>
-             <Card.Text style={{fontSize : "22px"}}>{item.name}</Card.Text>
-             <Card.Title style={{marginRight: "19.8rem", marginTop : "-1rem"}}>{item.price}</Card.Title>
+             <Card.Text style={{fontSize : "20px"}}>{item.name}</Card.Text>
+             <Card.Title style={{marginRight: "17.6rem", marginTop : "-1rem"}}>{item.price}تومان</Card.Title>
              </div>
              <Link to="/cosmetic/aboutProduct">
                 <Button variant="secondary" className="btn-check-card">
