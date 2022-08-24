@@ -4,6 +4,7 @@ import { fetchProducts } from "redux/features/ProductCosmetic";
 import { Modal } from "react-bootstrap";
 import { BsBagDash } from "react-icons/bs";
 import { FaRegHeart} from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import pic2 from "../../assets/images/kerempodr-inlay.jpg";
 import Card from "react-bootstrap/Card";
@@ -25,7 +26,11 @@ const ProductsCard = () => {
     setCounter(count => count + 1);};
 
   const decrease = () => {
-    setCounter(count => count - 1);};
+    setCounter(count => count - 1);
+    if(counter < 1){
+      setCounter(0)
+  }
+  };
 
   // fetch
   const dispatch = useDispatch();
@@ -48,9 +53,11 @@ const ProductsCard = () => {
              <Card.Text style={{fontSize : "22px"}}>{item.name}</Card.Text>
              <Card.Title style={{marginRight: "19.8rem", marginTop : "-1rem"}}>{item.price}</Card.Title>
              </div>
-             <Button variant="secondary" className="btn-check-card">
-                  جزئیات محصول
-            </Button>
+             <Link to="/cosmetic/aboutProduct">
+                <Button variant="secondary" className="btn-check-card">
+                      جزئیات محصول
+                </Button>
+             </Link>
            </Card.Body>
          </Card>
        </Col>
@@ -72,7 +79,7 @@ const ProductsCard = () => {
 
           <Modal.Body>
             <Modal.Title>
-              name product
+              name
             </Modal.Title>
               <hr/>
             <li>product description</li> 
@@ -101,7 +108,6 @@ const ProductsCard = () => {
             </div>
           </Modal.Body>
         </div>
-        
       </Modal>
   </>
   );

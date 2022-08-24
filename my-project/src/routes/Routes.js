@@ -5,12 +5,14 @@ import Error404 from "pages/errors/Error404";
 import Cosmetic from "components/productsPages/Cosmetic";
 import Hair from "components/productsPages/Hair";
 import Perfume from "components/productsPages/Perfume";
+import AboutProduct from "components/aboutProductPage/AboutProduct";
 import Skin from "components/productsPages/Skin";
 import Login from "pages/login/index";
 import Home from "pages/userPages/home/Home";
 import Products from "pages/adminPages/products";
 import Prices from "pages/adminPages/prices";
 import Orders from "pages/adminPages/orders";
+
 
 const AppRoutes = () => {
   return (
@@ -27,6 +29,9 @@ const AppRoutes = () => {
           <Route path="/loginForm/products" element={<Products />} />
           <Route path="/admin/prices" element={<Prices />} />
           <Route path="/admin/orders" element={<Orders />} />
+        </Route>
+        <Route>
+          <Route path="/cosmetic/aboutProduct" element={<AboutProduct/>}/>
         </Route>
 
         <Route path="*" element={<Error404 />} />
