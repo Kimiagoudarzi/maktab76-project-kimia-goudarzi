@@ -48,7 +48,7 @@ const ProductsAdmin = () => {
         <MDBTable bordered hover style={{ borderColor: "#521850" }}>
           <MDBTableHead>
             <tr>
-              <th scope="col">شماره کالا</th>
+              <th scope="col">عکس کالا</th>
               <th scope="col">نام کالا</th>
               <th scope="col">دسته بندی</th>
               <th scope="col-1">ویرایش</th>
@@ -57,7 +57,7 @@ const ProductsAdmin = () => {
           <MDBTableBody>
             {currentPosts.map((post) => (
               <tr key={post.id}>
-                <th scope="row">{post.id}</th>
+                <th scope="row"><img src={post.image} alt="pic" className="img-table"/></th>
                 <td>{post.name}</td>
                 <td>{post.category}</td>
                 <td>

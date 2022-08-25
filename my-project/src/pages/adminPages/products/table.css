@@ -3,14 +3,16 @@
 }
 .edit-icon-admin {
   font-size: 30px;
-  color: #946892;
-  margin-right: 1rem;
+  color: #FD2C7A;
+  margin-right: 5rem;
   margin-left: 1rem;
+  margin-top: 1rem;
 }
 .trash-icon-admin {
   font-size: 28px;
-  color: #946892;
-  margin-left: -3rem;
+  color: #FD2C7A;
+  margin-left: -6rem;
+  margin-top: 1rem;
 }
 .h1-admin-product {
   margin-right: 15rem;
@@ -40,4 +42,9 @@
 .pagination-style li :hover {
   background-color: #946892;
   color: black;
+}
+.img-table{
+  width: 80px;
+  height: 70px;
+  margin-left: -3rem;
 }

@@ -52,7 +52,7 @@ const ProductsCard = () => {
              <Card.Text style={{fontSize : "20px"}}>{item.name}</Card.Text>
              <Card.Title style={{marginRight: "17.6rem", marginTop : "-1rem"}}>{item.price}تومان</Card.Title>
              </div>
-             <Link to={`/products/${products.id}`}>
+             <Link to={`/products/${item.id}`}>
                 <Button variant="secondary" className="btn-check-card">
                       جزئیات محصول
                 </Button>
@@ -63,7 +63,7 @@ const ProductsCard = () => {
         ))}
       </Row>
     </div>
-    <Modal size="lg" show={lgShow} onHide={() => setLgShow(false)}>
+    <Modal size="lg" show={lgShow} onHide={() => setLgShow(false)} style={{marginTop:"14rem"}}>
         <div className="d-flex">
           <Modal.Body>
             <div>
