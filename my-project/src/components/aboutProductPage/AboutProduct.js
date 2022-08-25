@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
 import { BsBagDash } from "react-icons/bs";
 import { FaRegHeart} from "react-icons/fa";
 import { FaCalendarAlt} from "react-icons/fa";
@@ -8,13 +9,26 @@ import { Link } from "react-router-dom"
 import Button from "react-bootstrap/Button";
 import Footer from "layout/userLayoute/footer/index";
 import NavBar from "layout/userLayoute/navbar/index";
-import pic2 from "assets/images/kerempodr-inlay.jpg";
-
 import "./aboutProduct.css"
+import axios from "axios";
 
-const AboutProduct = () => {
+const AboutProduct = ({match}) => {
     const [counter, setCounter] = useState(0);
+    const [data, setData] = useState([]);
+   
+    
 
+// fetch    
+   useEffect(()=>{
+    const fetchPosts = async () =>{
+        const res = await axios.get(`http://localhost:3002/products/?id=${match.params.id}`)
+        setData(res.data);
+        console.log(res.data);
+    }
+    fetchPosts();
+   },[])
+
+    
 // counter
    const increase = () => {
     setCounter(count => count + 1);};
@@ -30,21 +44,19 @@ const AboutProduct = () => {
   return (
     <>
     <NavBar />
-      <div className='about-main'>
+    {data.map((item)=>(
+    <div className='about-main' key={item.id}>
         <div className='d-flex'>
             <div className="about-img-contain">
-                <img src={pic2} alt="product-img" className="about-img"/>
-                
+                <img src={item.image} alt="product-img" className="about-img"/>   
             </div>
             <div className="about-contain">
-                <h1>name of product</h1>
-                <hr/>
-                <li>product information</li>
-                <li>product information</li>
-                <li>product information</li>
-                <li>product information</li>
-                <li>product information</li>
-                <h5>قیمت :320,000 تومان </h5>
+                <div>
+                    <h1>{item.name}</h1>
+                    <hr/>
+                    <p>{item.description}</p>
+                    <h5>قیمت :{item.price} تومان </h5>
+                </div>
                 
                 <div className="d-flex about-button">
                     <Link to="/cart">
@@ -76,11 +88,11 @@ const AboutProduct = () => {
                         <FaCreditCard className="i-about"/>
                         <p style={{marginRight: "1rem", color: "#666666"}}>پرداخت درب محل</p>
                     </div>
-                    
                 </div>
             </div>
         </div>
-      </div>
+    </div>
+    ))}
     <Footer />
   </>
   )
