@@ -35,7 +35,17 @@ const ProductsAdmin = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    axios
+    .get(`http://localhost:3002/products?_page=${pageNumber}&_limit=15`)
+    .then((res) => {
+      setPosts(res.data);
+    }).catch(() => {
+      alert("There was an error while retrieving the data");
+    });
+  }
+
 
   return (
     <div className="product-admin-container">
