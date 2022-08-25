@@ -44,7 +44,9 @@ const ProductsCard = () => {
         {products.map((item)=>(
          <Col>
          <Card className="main-card" key={item.id}>
-           <Card.Img variant="top" src={item.image} />
+           <div className="img-main-cards">
+              <Card.Img variant="top" src={item.image}  className="img-card"/>
+           </div>
            <Card.Body>
              <div onClick={() => setLgShow(true)}>
              <Card.Text style={{fontSize : "20px"}}>{item.name}</Card.Text>
