@@ -8,7 +8,7 @@ import Perfume from "components/productsPages/Perfume";
 import AboutProduct from "components/aboutProductPage/AboutProduct";
 import Skin from "components/productsPages/Skin";
 import Login from "pages/login/index";
-import Home from "pages/userPages/home/Home";
+import Home from "pages/userPages/Home";
 import Products from "pages/adminPages/products";
 import Prices from "pages/adminPages/prices";
 import Orders from "pages/adminPages/orders";

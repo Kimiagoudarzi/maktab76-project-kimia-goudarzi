@@ -24,11 +24,5 @@
   padding-right: 2rem;
   color: #fff;
 }
-.pagination-style a {
-  color: #7e377c;
-}
-.pagination-style li :hover {
-  background-color: #946892;
-  color: black;
-}
+
 

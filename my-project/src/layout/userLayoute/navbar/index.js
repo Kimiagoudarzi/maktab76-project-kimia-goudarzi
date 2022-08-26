@@ -2,6 +2,11 @@ import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BsBagDash } from "react-icons/bs";
+import { HiOutlineMenu } from "react-icons/hi";
+import { BiBookmarkHeart } from "react-icons/bi";
+import { AiOutlineFire } from "react-icons/ai";
+import { TbDiscount2 } from "react-icons/tb";
+import { MdLocationOn } from "react-icons/md";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
@@ -25,7 +30,9 @@ const NavBar = () => {
         <Navbar className="nav" variant="light">
           <Container className="d-flex">
             <Navbar.Brand href="#home" className="parag-nav">
-              <Link to="/"><img alt="logo" src={butterfly} className="img-nav" /></Link>
+              <Link to="/">
+                <img alt="logo" src={butterfly} className="img-nav" />
+              </Link>
               میا لند
             </Navbar.Brand>
             <Form className="d-flex">
@@ -39,13 +46,13 @@ const NavBar = () => {
                 aria-label="Search"
               />
             </Form>
-            <Link to='/loginForm'>
+            <Link to="/loginForm">
               <button type="submit" className="rainbow rainbow-5">
                 ورود
               </button>
             </Link>
             <button className="btn-bag">
-              <Link to="/cart" style={{color: '#787878'}}>
+              <Link to="/cart" style={{ color: "#787878" }}>
                 <BsBagDash style={{ fontSize: "41", marginBottom: "3" }} />
               </Link>
             </button>
@@ -91,9 +98,31 @@ const NavBar = () => {
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </Container>
+            {/* <div style={{ display: "flex", zIndex: "10" }}>
+          <HiOutlineMenu className="offcanvas-icon" />
+          <p className="offcanvas-txt">دسته بندی کالاها</p>
+          <div className="me-3">|</div>
+          <div className="d-flex">
+            <AiOutlineFire className="nav-icon" />
+            <p className="nav-txt">پرفروش ترین ها</p>
+          </div>
+          <div className="d-flex">
+            <TbDiscount2 className="nav-icon me-3" />
+            <p className="nav-txt">تخفیف ها و پیشنهاد ها</p>
+          </div>
+          <div className="d-flex">
+            <BiBookmarkHeart className="nav-icon me-3" />
+            <p className="nav-txt">شگفت انگیزها</p>
+          </div>
+          <div className="d-flex">
+            <MdLocationOn className="location-icon" />
+            <p className="location-txt">لطفا شهر خود را انتخاب کنید</p>
+          </div>
+        </div> */}
+      
           </Navbar>
         ))}
-      </div>
+        </div>
     </>
   );
 };

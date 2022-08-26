@@ -36,7 +36,7 @@
   padding-right: 2rem;
   color: #fff;
 }
-.pagination-style a {
+.paginate {
   color: #7e377c;
 }
 .pagination-style li :hover {

@@ -1,39 +1,46 @@
 import React from "react";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { useState, useEffect } from "react";
-import Pagination from "./PaginationPrice";
-import axios from "axios";
+import ReactPaginate from "react-paginate";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
 import "./tableprice.css";
 
 const Prices = () => {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(18);
+  const [pageCount, setPageCount] = useState(0);
 
+  // pagination
+
+  let limit = 15;
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3002/products")
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch(() => {
-        alert("There was an error while retrieving the data");
-      });
-  }, []);
+    const getComments = async () => {
+      const res = await fetch(
+        `http://localhost:3002/products?_page=1&_limit=${limit}`
+      );
+      const data = await res.json();
+      const total = res.headers.get("x-total-count");
+      setPageCount(Math.ceil(total / limit));
+      setPosts(data);
+    };
+    getComments();
+  }, [limit]);
+  
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+  const fetchComments = async (currentPage) => {
+    const res = await fetch(
+      `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
+    );
+    const data = await res.json();
+    return data;
+  };
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handlePageClick = async (data) => {
+    let currentPage = data.selected + 1;
+    const commentsFormServer = await fetchComments(currentPage);
+    setPosts(commentsFormServer);
+  };
 
   return (
     <>
@@ -54,7 +61,7 @@ const Prices = () => {
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-              {currentPosts.map((post) => (
+              {posts.map((post) => (
                 <tr>
                   <th scope="row">{post.id}</th>
                   <td>{post.name}</td>
@@ -65,11 +72,22 @@ const Prices = () => {
             </MDBTableBody>
           </MDBTable>
         </div>
-        <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
-        paginate={paginate}
-      />
+        <ReactPaginate
+          previousLabel={"قبلی"}
+          nextLabel={"بعدی"}
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination justify-content-center"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
+          activeClassName={"active"}
+        />
         <img src={wave} alt="wave" className="img-admin" />
       </div>
     </>

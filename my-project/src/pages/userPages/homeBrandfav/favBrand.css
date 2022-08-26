@@ -1,0 +1,56 @@
+.home-brand-main {
+  margin-right: 12rem;
+  border-radius: 10px;
+  border: 1px solid rgb(248, 248, 248);
+  width: 79vw;
+  background: url(assets/images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+.home-loreal {
+  width: 10rem;
+  margin-right: 1.2rem;
+  margin-top: 3rem;
+}
+.home-panten {
+  width: 10rem;
+  margin-right: 1.6rem;
+  margin-top: 1.5rem;
+}
+.home-netro {
+  width: 9rem;
+  margin-right: 1.8rem;
+  margin-top: 1.8rem;
+}
+.home-esens {
+  width: 9rem;
+  margin-right: 1.6rem;
+  margin-top: 1.5rem;
+}
+.home-prime {
+  width: 9rem;
+  margin-right: 2rem;
+  margin-top: 1.5rem;
+}
+.home-lafarer {
+  width: 9rem;
+  margin-right: 1rem;
+  margin-top: 1.5rem;
+}
+.star {
+  color: rgb(235, 203, 61);
+  margin-left: 5px;
+}
+.like-title {
+  margin: 80px;
+  margin-right: 600px;
+  color: #000000;
+}
+.like-table {
+  width: 1295px !important;
+  height: 8rem;
+  margin-right: 100px;
+  margin-bottom: 3rem;
+  background-color: rgb(255, 255, 255);
+}

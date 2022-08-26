@@ -1,41 +1,55 @@
 import React from "react";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
-import { useState, useEffect} from "react";
-import Pagination from "./PaginationOrders";
+import { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 import axios from "axios";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
 import Form from "react-bootstrap/Form";
 import "./tableorder.css";
 
-
 const Orders = () => {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [pageCount, setPageCount] = useState(0);
+
+  // pagination
+  let limit = 15;
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3002/orders?state=false&&state=true")
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch(() => {
-        alert("There was an error while retrieving the data");
-      });
-  }, []);
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+    const getComments = async () => {
+      const res = await fetch(
+        `http://localhost:3002/products?_page=1&_limit=${limit}`
+      );
+      const data = await res.json();
+      const total = res.headers.get("x-total-count");
+      setPageCount(Math.ceil(total / limit));
+      setPosts(data);
+    };
+    getComments();
+  }, [limit]);
+ 
 
-  const totalOrders = () =>{
+  const fetchComments = async (currentPage) => {
+    const res = await fetch(
+      `http://localhost:3002/orders?_page=${currentPage}&_limit=${limit}`
+    );
+    const data = await res.json();
+    return data;
+  };
+
+  const handlePageClick = async (data) => {
+    let currentPage = data.selected + 1;
+
+    const commentsFormServer = await fetchComments(currentPage);
+    setPosts(commentsFormServer);
+  };
+  const totalOrders = () => {
     axios
       .get("http://localhost:3002/orders?state=false&&state=true")
       .then((res) => {
         setPosts(res.data);
-      })
-  }
+      });
+  };
   const handleWaiting = () => {
     axios
       .get("http://localhost:3002/orders?state=false")
@@ -47,12 +61,6 @@ const Orders = () => {
       .then((res) => setPosts(res.data));
   };
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   return (
     <>
       <div className="order-admin-container">
@@ -60,7 +68,7 @@ const Orders = () => {
         <div className="d-flex mt-5">
           <h1 className="h1-admin-order">مدیریت سفارش ها</h1>
           <Form className="d-flex checkbox-order">
-          <div style={{ marginLeft: "40px" , marginRight: "-85px"}}>
+            <div style={{ marginLeft: "40px", marginRight: "-85px" }}>
               <input
                 type="radio"
                 id="entezar"
@@ -74,7 +82,7 @@ const Orders = () => {
                   marginRight: "10px",
                 }}
               >
-              کل سفارش ها
+                کل سفارش ها
               </label>
             </div>
             <div>
@@ -119,7 +127,7 @@ const Orders = () => {
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-              {currentPosts.map((post) => (
+              {posts.map((post) => (
                 <tr>
                   <th scope="row">{post.username}</th>
                   <td>{post.totalPrice}</td>
@@ -132,10 +140,21 @@ const Orders = () => {
             </MDBTableBody>
           </MDBTable>
         </div>
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={posts.length}
-          paginate={paginate}
+        <ReactPaginate
+          previousLabel={"قبلی"}
+          nextLabel={"بعدی"}
+          pageCount={2}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination justify-content-center"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
+          activeClassName={"active"}
         />
         <img src={wave} alt="wave" className="img-admin" />
       </div>

@@ -39,12 +39,11 @@
   cursor: pointer;
   padding: 8px 22px;
   font-weight: 700;
-  
 }
 .rainbow-5:hover {
   background: -webkit-linear-gradient(
     to right,
- 
+
     #d8363a,
     #dd3675,
     #b44593
@@ -89,4 +88,13 @@
 }
 .nav2-prog1 :hover {
   color: #fff;
+}
+.offcanvas-txt {
+  color: black;
+  margin-right: 10px;
+  font-size: 16px;
+}
+.offcanvas-icons {
+  font-size: 21px;
+  margin-right: 30px;
 }
