@@ -17,7 +17,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/orders?state=false&&state=true")
+      .get("http://localhost:3002/orders")
       .then((res) => {
         setPosts(res.data);
       });
@@ -112,8 +112,8 @@ const Orders = () => {
                   <th scope="row">{post.username}</th>
                   <td>{post.totalPrice}</td>
                   <td>{post.time}</td>
-                  <td>
-                    <button className="btn-check-order" onClick={()=>{handleShow()}}>
+                  <td style={{width: "16rem"}}>
+                    <button className="btn-check-order" onClick={(id)=>{handleShow(id)}}>
                       بررسی سفارش
                     </button>
                   </td>

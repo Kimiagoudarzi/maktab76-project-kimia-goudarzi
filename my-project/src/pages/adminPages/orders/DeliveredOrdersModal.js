@@ -12,37 +12,38 @@ const DeliveredOrdersModal = ({ show, handleClose }) => {
 
   // fetch
   useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await axios.get(`http://localhost:3002/orders/${id}`);
+    axios.get(`http://localhost:3002/orders/${id}`).then((res) => {
       setOrder(res.data);
-    };
-    fetchPosts();
+    });
   }, [id]);
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header className="orders-modal-header">نمایش سفارش</Modal.Header>
         <Modal.Body style={{ textAlign: "center" }}>
           <form>
-            <div className="orders-modal-item">
-              <p className="orders-modal-title">نام :</p>
-              <p>{order.username}</p>
-            </div>
-            <div className="orders-modal-item">
-              <p className="orders-modal-title">آدرس :</p>
-              <p>{order.address}</p>
-            </div>
-            <div className="orders-modal-item">
-              <p className="orders-modal-title">تلفن :</p>
-              <p></p>
-            </div>
-            <div className="orders-modal-item">
-              <p className="orders-modal-title">زمان تحویل :</p>
-              <p></p>
-            </div>
-            <div className="orders-modal-item">
-              <p className="orders-modal-title">زمان سفارش :</p>
-              <p></p>
+            <div key={order?.id}>
+              <div className="orders-modal-item">
+                <p className="orders-modal-title">نام :</p>
+                <p>{order?.username}</p>
+              </div>
+              <div className="orders-modal-item">
+                <p className="orders-modal-title">آدرس :</p>
+                <p>{order?.address}</p>
+              </div>
+              <div className="orders-modal-item">
+                <p className="orders-modal-title">تلفن :</p>
+                <p>{order?.phone}</p>
+              </div>
+              <div className="orders-modal-item">
+                <p className="orders-modal-title">زمان تحویل :</p>
+                <p>12</p>
+              </div>
+              <div className="orders-modal-item">
+                <p className="orders-modal-title">زمان سفارش :</p>
+                <p>12</p>
+              </div>
             </div>
             <Table striped bordered style={{ marginTop: "35px" }}>
               <thead>
