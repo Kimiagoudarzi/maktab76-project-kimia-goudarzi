@@ -33,7 +33,9 @@ const AppRoutes = () => {
         <Route>
           <Route path="/products/:id" element={<AboutProduct/>}/>
         </Route>
-
+        <Route>
+          <Route path="/:id" element={<AboutProduct/>}/>
+        </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>

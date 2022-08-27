@@ -66,7 +66,24 @@ const NavBar = () => {
             <Container fluid>
               <Navbar.Toggle className="nav-toggel" />
               <Navbar.Brand>
+                <div style={{ display: "flex"}}>
                 <p className="nav2-prog1">دسته بندی محصولات</p>
+                <div className="nav2-detail d-flex">
+                    <div className="me-2">|</div>
+                    <div className="d-flex">
+                      <AiOutlineFire className="nav2-icon me-2 ms-2" />
+                      <p className="nav-txt">پرفروش ترین ها</p>
+                    </div>
+                    <div className="d-flex">
+                      <TbDiscount2 className="nav2-icon me-2 ms-2" />
+                      <p className="nav-txt">تخفیف ها و پیشنهاد ها</p>
+                    </div>
+                    <div className="d-flex">
+                      <BiBookmarkHeart className="nav2-icon me-2 ms-2" />
+                      <p className="nav-txt">شگفت انگیزها</p>
+                    </div>
+                </div>
+              </div>
               </Navbar.Brand>
               <Navbar.Offcanvas placement="end">
                 <Offcanvas.Header closeButton>
@@ -98,31 +115,9 @@ const NavBar = () => {
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </Container>
-            {/* <div style={{ display: "flex", zIndex: "10" }}>
-          <HiOutlineMenu className="offcanvas-icon" />
-          <p className="offcanvas-txt">دسته بندی کالاها</p>
-          <div className="me-3">|</div>
-          <div className="d-flex">
-            <AiOutlineFire className="nav-icon" />
-            <p className="nav-txt">پرفروش ترین ها</p>
-          </div>
-          <div className="d-flex">
-            <TbDiscount2 className="nav-icon me-3" />
-            <p className="nav-txt">تخفیف ها و پیشنهاد ها</p>
-          </div>
-          <div className="d-flex">
-            <BiBookmarkHeart className="nav-icon me-3" />
-            <p className="nav-txt">شگفت انگیزها</p>
-          </div>
-          <div className="d-flex">
-            <MdLocationOn className="location-icon" />
-            <p className="location-txt">لطفا شهر خود را انتخاب کنید</p>
-          </div>
-        </div> */}
-      
           </Navbar>
         ))}
-        </div>
+      </div>
     </>
   );
 };

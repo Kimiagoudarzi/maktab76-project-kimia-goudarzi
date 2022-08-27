@@ -1,160 +1,172 @@
+.main-title-pishnahad{
+  margin-right: 13rem;
+}
 .suggest-title {
   margin: 70px;
   text-align: center;
+  color: #642262;
+
+}
+.line-pink{
+  color: #fa2976;
+  margin-top: 2.9rem;
+  
 }
 .suggest-table {
   width: 1295px !important;
-  margin-right: 100px;
+  margin-right: 283px;
   margin-top: -12px;
 }
-
 .home-circles2 {
-  width: 110px;
-  margin-right: 45px;
+  width: 140px;
+  margin-right: 25px;
   position: relative;
-  margin-top: 7px;
+  margin-top: 10px;
 }
-.home-phone2 {
-  width: 50px;
+.home-mask {
+  width: 100px;
   position: absolute;
-  margin-right: -80px;
+  margin-right: -7.4rem;
   margin-top: 22px;
 }
-.home-phone2-title {
+.home-mask-title {
   position: absolute;
-  margin-right: 77px;
-  margin-top: 15px;
+  margin-right: 78px;
+  margin-top: -0.2rem;
   font-size: 17px;
 }
-.home-laptop2 {
-  width: 70px;
+.home-cosniler {
+  width: 100px;
   position: absolute;
-  margin-right: -90px;
-  margin-top: 30px;
-}
-.home-laptop2-title {
-  position: absolute;
-  margin-right: 81px;
-  margin-top: 15px;
-  font-size: 17px;
-}
-.home-console {
-  width: 60px;
-  position: absolute;
-  margin-right: -87px;
-  margin-top: 22px;
-}
-.home-console-title {
-  position: absolute;
-  margin-right: 58px;
-  margin-top: 15px;
-  font-size: 17px;
-}
-.home-handsfree {
-  width: 53px;
-  position: absolute;
-  margin-right: -83px;
+  margin-right: -7.6rem;
   margin-top: 20px;
 }
-.home-handsfree-title {
-  position: absolute;
-  margin-right: 76px;
-  margin-top: 15px;
-  font-size: 17px;
-}
-.home-watch2 {
-  width: 56px;
-  position: absolute;
-  margin-right: -83px;
-  margin-top: 23px;
-}
-.home-watch2-title {
-  position: absolute;
-  margin-right: 78px;
-  margin-top: 15px;
-  font-size: 17px;
-}
-.home-cover {
-  width: 63px;
-  position: absolute;
-  margin-right: -88px;
-  margin-top: 25px;
-}
-.home-cover-title {
-  position: absolute;
-  margin-right: 48px;
-  margin-top: 15px;
-  font-size: 17px;
-}
-.home-powerbank {
-  width: 63px;
-  position: absolute;
-  margin-right: -86px;
-  margin-top: 23px;
-}
-.home-powerbank-title {
-  position: absolute;
-  margin-right: 71px;
-  margin-top: 15px;
-  font-size: 17px;
-}
-.home-real {
-  width: 69px;
-  position: absolute;
-  margin-right: -88px;
-  margin-top: 30px;
-}
-.home-real-title {
-  position: absolute;
-  margin-right: 57px;
-  margin-top: 15px;
-  font-size: 17px;
-}
-.home-camera2 {
-  width: 69px;
-  position: absolute;
-  margin-right: -88px;
-  margin-top: 25px;
-}
-.home-camera2-title {
+.home-cosniler-title {
   position: absolute;
   margin-right: 74px;
-  margin-top: 15px;
+  margin-top: -0.2rem;
   font-size: 17px;
 }
-.home-tablet2 {
-  width: 49px;
+.home-body {
+  width: 100px;
   position: absolute;
-  margin-right: -80px;
-  margin-top: 23px;
+  margin-right: -7.6rem;
+  margin-top: 20px;
 }
-.home-tablet2-title {
+.home-body-title {
   position: absolute;
-  margin-right: 82px;
-  margin-top: 15px;
+  margin-right: 58px;
+  margin-top: -0.2rem;
   font-size: 17px;
 }
-.home-hard {
-  width: 40px;
+.home-lip{
+  width: 100px;
   position: absolute;
-  margin-right: -75px;
-  margin-top: 27px;
+  margin-right: -7.4rem;
+  margin-top: 20px;
 }
-.home-hard-title {
+.home-lip-title {
   position: absolute;
-  margin-right: 53px;
-  margin-top: 15px;
+  margin-right: 50px;
+  margin-top: -0.2rem;
   font-size: 17px;
 }
-.home-band {
+.home-palet {
+  width: 100px;
+  position: absolute;
+  margin-right: -7.4rem;
+  margin-top: 18px;
+}
+.home-palet-title {
+  position: absolute;
+  margin-right: 45px;
+  margin-top: -0.2rem;
+  font-size: 17px;
+}
+.home-coco {
+  width: 100px;
+  position: absolute;
+  margin-right: -7.6rem;
+  margin-top: 20px;
+}
+.home-coco-title {
+  position: absolute;
+  margin-right: 45px;
+  margin-top: -0.2rem;
+  font-size: 17px;
+}
+.home-cerita {
+  width: 110px;
+  position: absolute;
+  margin-right: -7.8rem;
+  margin-top: 19px;
+}
+.home-cerita-title {
+  position: absolute;
+  margin-right: 25px;
+  margin-top: -0.2rem;
+  font-size: 17px;
+}
+.home-mac {
   width: 75px;
   position: absolute;
-  margin-right: -92px;
-  margin-top: 38px;
+  margin-right: -6.8rem;
+  margin-top: 30px;
 }
-.home-band-title {
+.home-mac-title {
   position: absolute;
-  margin-right: 78px;
-  margin-top: 15px;
+  margin-right: 45px;
+  margin-top: -0.2rem;
   font-size: 17px;
+}
+.home-poder {
+  width: 100px;
+  position: absolute;
+  margin-right: -7.5rem;
+  margin-top: 18px;
+}
+.home-poder-title {
+  position: absolute;
+  margin-right: 35px;
+  margin-top: -0.2rem;
+  font-size: 17px;
+}
+.home-dior {
+  width: 100px;
+  position: absolute;
+  margin-right: -7.5rem;
+  margin-top: 23px;
+}
+.home-dior-title {
+  position: absolute;
+  margin-right: 46px;
+  margin-top: -0.2rem;
+  font-size: 17px;
+}
+.home-argan {
+  width: 100px;
+  position: absolute;
+  margin-right: -7.5rem;
+  margin-top: 15px;
+}
+.home-argan-title {
+  position: absolute;
+  margin-right: 53px;
+  margin-top: -0.2rem;
+  font-size: 17px;
+}
+.home-prim {
+  width: 100px;
+  position: absolute;
+  margin-right: -7.5rem;
+  margin-top: 20px;
+}
+.home-prim-title {
+  position: absolute;
+  margin-right: 53px;
+  margin-top: -0.2rem;
+  font-size: 17px;
+}
+.link-p{
+  color: black;
 }

@@ -2,8 +2,8 @@ import NavBar from "layout/userLayoute/navbar/index";
 import HomeSlider from "./homeSlider/index";
 import Footer from "layout/userLayoute/footer/index";
 import HomeCard from "./homeCard/index";
-// import ProductStar from "./homeproductstar/index";
-// import HomePishnahad from "./homepishnahad/index"
+import ProductStar from "./homeproductstar/index";
+import HomePishNahad from "./homepishnahad/index"
 import HomeBrand from "./homeBrandfav/index";
 import { IoIosArrowDropupCircle } from "react-icons/io";
 
@@ -16,10 +16,10 @@ const Home = () => {
       <a name="top" href="#!"></a>
       <NavBar />
       <HomeSlider />
-      <HomeCard />
       <HomeBrand/>
-      {/* <HomePishnahad/> */}
-      {/* <ProductStar/> */}
+      <HomeCard />
+      <HomePishNahad/>
+      <ProductStar/>
       <div style={{ marginTop: "60px", marginBottom: "4rem" }}>
         <a
           href="#top"

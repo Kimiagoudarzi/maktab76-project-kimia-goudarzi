@@ -4,6 +4,7 @@
   padding: 12px 36px;
   box-shadow: 0 3px 20px 0 rgb(0 0 0 / 30%);
   background-color: #ffffff;
+  position: sticky;
 }
 .img-nav {
   width: 90px;
@@ -74,6 +75,7 @@
   box-shadow: 0 3px 20px 0 rgb(0 0 0 / 30%);
   background-image: linear-gradient(to bottom, #fa2976, #ff2d7c);
   z-index: 200;
+  position: sticky;
 }
 .nav-toggel {
   color: transparent;
@@ -83,7 +85,7 @@
 }
 .nav2-prog1 {
   color: #fff;
-  margin-left: 101rem;
+  /* margin-left: 70rem; */
   font-size: 19px;
 }
 .nav2-prog1 :hover {
@@ -97,4 +99,16 @@
 .offcanvas-icons {
   font-size: 21px;
   margin-right: 30px;
+}
+.nav2-detail{
+  margin-left: 76rem;
+  color: #fff;
+}
+.nav-txt{
+  font-size: 15px;
+  margin-top: 0.2rem;
+  
+}
+.nav2-icon{
+  margin-top:2px;
 }
