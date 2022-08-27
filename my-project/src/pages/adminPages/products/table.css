@@ -3,15 +3,15 @@
 }
 .edit-icon-admin {
   font-size: 30px;
-  color: #FD2C7A;
-  margin-right: 5rem;
-  margin-left: 1rem;
+  color: #fd2c7a;
+  margin-right: 2rem;
+
   margin-top: 1rem;
 }
 .trash-icon-admin {
   font-size: 28px;
-  color: #FD2C7A;
-  margin-left: -6rem;
+  color: #fd2c7a;
+
   margin-top: 1rem;
 }
 .h1-admin-product {
@@ -30,11 +30,12 @@
 .btn-add-product {
   border: none;
   background-color: #b141adcf;
-  margin-right: 67rem;
+  margin-right: 68rem;
   border-radius: 10px;
   padding-left: 2rem;
   padding-right: 2rem;
   color: #fff;
+  font-size: 19px;
 }
 .paginate {
   color: #7e377c;
@@ -43,8 +44,51 @@
   background-color: #946892;
   color: black;
 }
-.img-table{
+.img-table {
   width: 80px;
   height: 70px;
-  margin-left: -3rem;
+  margin-left: -5rem;
+  margin-right: 2rem;
+  border-radius: 10px;
+}
+.btn-icon{
+  background-color: transparent;
+  border: none;  
+}
+
+/* Modal */
+.products-input {
+  direction: ltr;
+  margin-top: 4px;
+}
+.products-select {
+  margin-top: 4px;
+}
+.products-btns {
+  display: flex;
+  justify-content: center;
+}
+.products-add {
+  margin-top: 40px;
+  background-color: #FD2C7A !important;
+  width: 75px;
+  height: 40px;
+  border: none !important;
+}
+.products-add:hover {
+  background-color: #FD2C7A !important;
+}
+.products-enseraf {
+  width: 75px;
+  height: 40px;
+  margin-top: 40px;
+  background-color: #C065BC !important;
+  border: none !important;
+  margin-right: 20px;
+}
+.products-enseraf:hover {
+  background-color: #C065BC !important;
+}
+.text-editor {
+  margin-top: 40px;
 }

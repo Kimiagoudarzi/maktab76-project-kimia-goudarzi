@@ -6,28 +6,30 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import butterfly from "assets/images/butter.png";
 import "./navbar.css";
 
-
-const navLinkStyle = ({isActive}) => {
+const navLinkStyle = ({ isActive }) => {
   return {
-   backgroundColor: isActive ? '#C065BC' : '#fd2c7a',
-   color:'#ffff',
-   textDecoration : "none",
-   marginRight: '2rem',
-   borderRadius: '10px',
-   padding: '0.5rem 2rem'
-};}
+    backgroundColor: isActive ? "#C065BC" : "#fd2c7a",
+    color: "#ffff",
+    textDecoration: "none",
+    marginRight: "2rem",
+    borderRadius: "10px",
+    padding: "0.5rem 2rem",
+  };
+};
 
 const NavBar = () => {
   return (
     <Navbar className="admin-nav" variant="light">
       <Container className="d-flex">
         <Navbar.Brand className="header-admin-nav">
-          <img alt="logo" src={butterfly} className="img-nav" />
+          <Link to="/">
+            <img alt="logo" src={butterfly} className="img-nav" />
+          </Link>
           پنل مدیریت میا لند
         </Navbar.Brand>
         <ButtonGroup className=" admin-nav-items">
           <NavLink to="/loginForm/products" style={navLinkStyle}>
-           کالا ها
+            کالا ها
           </NavLink>
           <NavLink to="/admin/prices" style={navLinkStyle}>
             موجودی و قیمت ها

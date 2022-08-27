@@ -28,3 +28,16 @@
   margin-right: 3rem;
   margin-left: -8rem;
 }
+.orders-modal-item {
+  display: flex;
+  margin-top: 13px;
+}
+.orders-modal-title {
+  font-weight: bold;
+}
+.orders-modal-header {
+  font-size: 20px;
+}
+.orders-modal-btn {
+  margin-top: 40px;
+}

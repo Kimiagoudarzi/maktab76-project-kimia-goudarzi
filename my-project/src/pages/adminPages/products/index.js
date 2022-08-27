@@ -1,16 +1,33 @@
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { FaPenSquare, FaTrash } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import AddModal from "./AddModal";
+import EditModal from "./EditModal";
+import DeleteModal from "./DeleteModal";
 import ReactPaginate from "react-paginate";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
 import "./table.css";
 
 const ProductsAdmin = () => {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
-  
+
+  const [show, setShow] = useState(false); 
+  const handleClose = () => setShow(false); 
+  const handleShow = () => setShow(true);
+
+  const [deleteShow, setDeleteShow] = useState(false);
+  const handleDeleteShow = () => setDeleteShow(true);
+  const handleDeleteClose = () => setDeleteShow(false);
+
+  const [addShow, setAddShow] = useState(false);
+  const handleAddClose = () => setAddShow(false);
+  const handleAddShow = () => setAddShow(true);
+
+  const [editShow, setEditShow] = useState(false);
+  const handleEditClose = () => setEditShow(false);
+  const handleEditShow = () => setEditShow(true);
 
   // pagination
 
@@ -28,7 +45,6 @@ const ProductsAdmin = () => {
     };
     getComments();
   }, [limit]);
-
 
   const fetchComments = async (currentPage) => {
     const res = await fetch(
@@ -51,7 +67,9 @@ const ProductsAdmin = () => {
         <NavBar />
         <div className="d-flex mt-5">
           <h1 className="h1-admin-product">مدیریت کالاها </h1>
-          <button className="btn-add-product">افزودن کالا</button>
+          <button className="btn-add-product" onClick={handleAddShow}>
+            افزودن کالا
+          </button>
         </div>
         <div className="table-main">
           <MDBTable bordered hover style={{ borderColor: "#521850" }}>
@@ -70,14 +88,20 @@ const ProductsAdmin = () => {
                     <img src={post.image} alt="pic" className="img-table" />
                   </th>
                   <td>{post.name}</td>
-                  <td>{post.Grouping}</td>
-                  <td>
-                    <Link to="/eee">
-                      <FaPenSquare className="edit-icon-admin" />
-                    </Link>
-                    <Link to="/eee">
-                      <FaTrash className="trash-icon-admin" />
-                    </Link>
+                  <td style={{ width: "15rem" }}>{post.Grouping}</td>
+                  <td style={{ width: "11rem" }}>
+                    <button className="btn-icon">
+                      <FaPenSquare
+                        className="edit-icon-admin"
+                        onClick={handleEditShow}
+                      />
+                    </button>
+                    <button className="btn-icon">
+                      <FaTrash
+                        className="trash-icon-admin"
+                        onClick={handleDeleteShow}
+                      />
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -102,6 +126,15 @@ const ProductsAdmin = () => {
         />
         <img src={wave} alt="wave" className="img-admin" />
       </div>
+
+      {/* Modal Add */}
+      <AddModal addShow={addShow} handleAddClose={handleAddClose} />
+
+      {/* Modal Edit */}
+      <EditModal editShow={editShow} handleEditClose={handleEditClose} />
+
+      {/* Modal Delete */}
+      <DeleteModal deleteShow={deleteShow} handleDeleteClose={handleDeleteClose}/>
     </>
   );
 };
