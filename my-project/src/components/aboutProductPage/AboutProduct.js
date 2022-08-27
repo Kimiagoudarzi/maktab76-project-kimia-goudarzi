@@ -15,14 +15,13 @@ import axios from "axios";
 const AboutProduct = () => {
   const [counter, setCounter] = useState(0);
   const [product, setProduct] = useState({});
-  const {id} = useParams();
+  const { id } = useParams();
 
   // fetch
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`http://localhost:3002/products/${id}`);
       setProduct(res.data);
-      console.log(res.data);
     };
     fetchPosts();
   }, [id]);
@@ -41,22 +40,21 @@ const AboutProduct = () => {
 
   return (
     <>
-  
       <NavBar />
-        <div className="about-main" key={product?.id}>
-          <div className="d-flex">
-            <div className="about-img-contain">
-              <img src={product?.image} alt="product-img" className="about-img" />
+      <div className="about-main" key={product?.id}>
+        <div className="d-flex">
+          <div className="about-img-contain">
+            <img src={product?.image} alt="product-img" className="about-img" />
+          </div>
+          <div className="about-contain">
+            <div>
+              <h1>{product.name}</h1>
+              <hr />
+              <p>{product?.description}</p>
+              <h5>قیمت :{product?.price} تومان </h5>
             </div>
-            <div className="about-contain">
-              <div>
-                <h1>{product.name}</h1>
-                <hr />
-                <p>{product?.description}</p>
-                <h5>قیمت :{product?.price} تومان </h5>
-              </div>
-
-              <div className="d-flex about-button">
+            <div className="d-flex about-button">
+              {product?.stock ? (
                 <Link to="/cart">
                   <Button variant="secondary" className="btn-add-about">
                     افزودن به سبد خرید
@@ -65,44 +63,51 @@ const AboutProduct = () => {
                     />
                   </Button>
                 </Link>
-                <div className="btn-counter-main-about">
-                  <button className="btn-counter-about" onClick={increase}>
-                    +
-                  </button>
-                  <span className="counter__output">{counter}</span>
-                  <button className="btn-counter-about" onClick={decrease}>
-                    -
-                  </button>
-                </div>
-                <div className="icon-heart-main">
-                  <FaRegHeart className="icon-heart-about" />
-                </div>
+              ) : (
+                <Button variant="secondary" className="btn-add-about" disabled>
+                  افزودن به سبد خرید
+                  <BsBagDash
+                      style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
+                    />
+                </Button>
+              )}
+              <div className="btn-counter-main-about">
+                <button className="btn-counter-about" onClick={increase}>
+                  +
+                </button>
+                <span className="counter__output">{counter}</span>
+                <button className="btn-counter-about" onClick={decrease}>
+                  -
+                </button>
               </div>
-              <hr />
-              <div className="icons-about-footer">
-                <div className="d-flex">
-                  <FaRegGem className="i-about" />
-                  <p style={{ marginRight: "1rem", color: "#666666" }}>
-                    ضمانت اصل بودن کالا
-                  </p>
-                </div>
-                <div className="d-flex">
-                  <FaCalendarAlt className="i-about" />
-                  <p style={{ marginRight: "1rem", color: "#666666" }}>
-                    هفت روز ضمانت بازگشت
-                  </p>
-                </div>
-                <div className="d-flex">
-                  <FaCreditCard className="i-about" />
-                  <p style={{ marginRight: "1rem", color: "#666666" }}>
-                    پرداخت درب محل
-                  </p>
-                </div>
+              <div className="icon-heart-main">
+                <FaRegHeart className="icon-heart-about" />
+              </div>
+            </div>
+            <hr />
+            <div className="icons-about-footer">
+              <div className="d-flex">
+                <FaRegGem className="i-about" />
+                <p style={{ marginRight: "1rem", color: "#666666" }}>
+                  ضمانت اصل بودن کالا
+                </p>
+              </div>
+              <div className="d-flex">
+                <FaCalendarAlt className="i-about" />
+                <p style={{ marginRight: "1rem", color: "#666666" }}>
+                  هفت روز ضمانت بازگشت
+                </p>
+              </div>
+              <div className="d-flex">
+                <FaCreditCard className="i-about" />
+                <p style={{ marginRight: "1rem", color: "#666666" }}>
+                  پرداخت درب محل
+                </p>
               </div>
             </div>
           </div>
         </div>
- 
+      </div>
       <Footer />
     </>
   );
