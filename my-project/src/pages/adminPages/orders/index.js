@@ -10,17 +10,19 @@ import "./tableorder.css";
 
 const Orders = () => {
   const [posts, setPosts] = useState([]);
+  const [currentId, setCurrentId] = useState(null)
 
-  const [show, setShow] = useState(false); 
-  const handleClose = () => setShow(false); 
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (id) => {
+    setCurrentId(id)
+    setShow(true);
+  };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3002/orders")
-      .then((res) => {
-        setPosts(res.data);
-      });
+    axios.get("http://localhost:3002/orders").then((res) => {
+      setPosts(res.data);
+    });
   }, []);
 
   const totalOrders = () => {
@@ -35,7 +37,7 @@ const Orders = () => {
       .get("http://localhost:3002/orders?state=false")
       .then((res) => setPosts(res.data));
   };
-  const handleDeleverd = () => {
+  const handleDelivered = () => {
     axios
       .get("http://localhost:3002/orders?state=true")
       .then((res) => setPosts(res.data));
@@ -71,7 +73,7 @@ const Orders = () => {
                 id="tahvil"
                 name="sefaresh"
                 value="HTML"
-                onClick={handleDeleverd}
+                onClick={handleDelivered}
               />
               <label for="tahvil" style={{ marginRight: "10px" }}>
                 سفارش های تحویل شده
@@ -112,8 +114,13 @@ const Orders = () => {
                   <th scope="row">{post.username}</th>
                   <td>{post.totalPrice}</td>
                   <td>{post.time}</td>
-                  <td style={{width: "16rem"}}>
-                    <button className="btn-check-order" onClick={(id)=>{handleShow(id)}}>
+                  <td style={{ width: "16rem" }}>
+                    <button
+                      className="btn-check-order"
+                      onClick={() => {
+                        handleShow(post.id);
+                      }}
+                    >
                       بررسی سفارش
                     </button>
                   </td>
@@ -126,7 +133,7 @@ const Orders = () => {
       </div>
 
       {/* DeliveredOrdersModal */}
-      <DeliveredOrdersModal show={show} handleClose={handleClose} />
+      <DeliveredOrdersModal show={show} handleClose={handleClose}  id={currentId} handleWaiting={handleWaiting}/>
     </>
   );
 };

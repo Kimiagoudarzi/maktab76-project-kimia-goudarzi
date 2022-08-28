@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
 const DeleteModal = ({ deleteShow, handleDeleteClose,id }) => {
-  // const [product, setProduct]= useState();
-  console.log(id);
+  const [product, setProduct]= useState();
+  
 
   const removeData = () => {
-    // axios.delete(`http://localhost:3002/products/${id}`).then((res) => {
-    //   const del = product.filter((product) => id !== product.id);
-    //   setProduct(del);
-    //   console.log("res", res);
-    // });
+    axios.delete(`http://localhost:3002/products/${id}`).then((res) => {
+      const del = product.filter((product) => id !== product.id);
+      setProduct(del);
+      console.log("res", res);
+    });
   };
 
   return (

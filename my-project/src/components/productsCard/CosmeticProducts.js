@@ -2,19 +2,24 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "redux/features/ProductCosmetic";
 import { Link } from "react-router-dom";
+import ModalProduct from "./ModalProduct";
 // import ReactPaginate from "react-paginate";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-
 import "./card.css";
-import ModalProduct from "./ModalProduct";
+
 
 const ProductsCard = () => {
   const [lgShow, setLgShow] = useState(false);
- 
-// pagination
+  const [currentId, setCurrentId] = useState(null);
+  const handleShow = (id)=>{
+    setCurrentId(id)
+    setLgShow(true)
+  }
+
+  // pagination
   // const [posts, setPosts] = useState([]);
   // const [pageCount, setPageCount] = useState(0);
   // let limit = 15;
@@ -54,7 +59,6 @@ const ProductsCard = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-
   return (
     <>
       <div className="card-group-main">
@@ -70,7 +74,9 @@ const ProductsCard = () => {
                   />
                 </div>
                 <Card.Body>
-                  <div onClick={() => setLgShow(true)}>
+                  <div
+                    onClick={() => handleShow(item.id)}
+                  >
                     <Card.Text style={{ fontSize: "20px" }}>
                       {item.name}
                     </Card.Text>
@@ -107,7 +113,7 @@ const ProductsCard = () => {
         breakLinkClassName={"page-link"}
         activeClassName={"active"}
       /> */}
-      <ModalProduct lgShow={lgShow} setLgShow={setLgShow}/>
+      <ModalProduct lgShow={lgShow} setLgShow={setLgShow} id={currentId} />
     </>
   );
 };

@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
@@ -6,9 +5,10 @@ import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import "./tableorder.css";
 
-const DeliveredOrdersModal = ({ show, handleClose }) => {
+const DeliveredOrdersModal = ({ show, handleClose, id, handleWaiting}) => {
   const [order, setOrder] = useState({});
-  const { id } = useParams();
+  
+  // const [product, setProduct] = useState([])
 
   // fetch
   useEffect(() => {
@@ -17,6 +17,12 @@ const DeliveredOrdersModal = ({ show, handleClose }) => {
     });
   }, [id]);
 
+  // useEffect(() => {
+  //   axios.get(`http://localhost:3002/orders/${id}`).then((res) => {
+  //     setProduct(res.data);
+  //   });
+  // }, [id]);
+ 
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -25,11 +31,11 @@ const DeliveredOrdersModal = ({ show, handleClose }) => {
           <form>
             <div key={order?.id}>
               <div className="orders-modal-item">
-                <p className="orders-modal-title">نام :</p>
+                <p className="orders-modal-title">نام : </p>
                 <p>{order?.username}</p>
               </div>
               <div className="orders-modal-item">
-                <p className="orders-modal-title">آدرس :</p>
+                <p className="orders-modal-title">آدرس : </p>
                 <p>{order?.address}</p>
               </div>
               <div className="orders-modal-item">
@@ -37,12 +43,12 @@ const DeliveredOrdersModal = ({ show, handleClose }) => {
                 <p>{order?.phone}</p>
               </div>
               <div className="orders-modal-item">
-                <p className="orders-modal-title">زمان تحویل :</p>
+                <p className="orders-modal-title">زمان تحویل : </p>
                 <p>12</p>
               </div>
               <div className="orders-modal-item">
-                <p className="orders-modal-title">زمان سفارش :</p>
-                <p>12</p>
+                <p className="orders-modal-title">زمان سفارش : </p>
+                <p>{order?.time}</p>
               </div>
             </div>
             <Table striped bordered style={{ marginTop: "35px" }}>
@@ -53,10 +59,15 @@ const DeliveredOrdersModal = ({ show, handleClose }) => {
                   <th>تعداد</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
             </Table>
           </form>
-
           <Button
             variant="primary"
             onClick={handleClose}

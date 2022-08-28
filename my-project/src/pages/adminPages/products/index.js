@@ -27,7 +27,10 @@ const ProductsAdmin = () => {
 
   const [editShow, setEditShow] = useState(false);
   const handleEditClose = () => setEditShow(false);
-  const handleEditShow = () => setEditShow(true);
+  const handleEditShow = (id) => {
+    setCurrentId(id);
+    setEditShow(true);
+  };
 
   // pagination
   let limit = 15;
@@ -92,7 +95,7 @@ const ProductsAdmin = () => {
                     <button className="btn-icon">
                       <FaPenSquare
                         className="edit-icon-admin"
-                        onClick={handleEditShow}
+                        onClick={() => handleEditShow(post.id)}
                       />
                     </button>
                     <button className="btn-icon">
@@ -130,13 +133,17 @@ const ProductsAdmin = () => {
       <AddModal addShow={addShow} handleAddClose={handleAddClose} />
 
       {/* Modal Edit */}
-      <EditModal editShow={editShow} handleEditClose={handleEditClose} />
+      <EditModal
+        editShow={editShow}
+        handleEditClose={handleEditClose}
+        id={currentId}
+      />
 
       {/* Modal Delete */}
       <DeleteModal
         deleteShow={deleteShow}
         handleDeleteClose={handleDeleteClose}
-        id = {currentId}
+        id={currentId}
       />
     </>
   );
