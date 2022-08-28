@@ -12,13 +12,13 @@ import "./table.css";
 const ProductsAdmin = () => {
   const [posts, setPosts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
-
-  const [show, setShow] = useState(false); 
-  const handleClose = () => setShow(false); 
-  const handleShow = () => setShow(true);
-
+  const [currentId, setCurrentId] = useState(null);
   const [deleteShow, setDeleteShow] = useState(false);
-  const handleDeleteShow = () => setDeleteShow(true);
+  const handleDeleteShow = (id) => {
+    setCurrentId(id);
+    setDeleteShow(true);
+  };
+
   const handleDeleteClose = () => setDeleteShow(false);
 
   const [addShow, setAddShow] = useState(false);
@@ -30,7 +30,6 @@ const ProductsAdmin = () => {
   const handleEditShow = () => setEditShow(true);
 
   // pagination
-
   let limit = 15;
 
   useEffect(() => {
@@ -99,7 +98,7 @@ const ProductsAdmin = () => {
                     <button className="btn-icon">
                       <FaTrash
                         className="trash-icon-admin"
-                        onClick={handleDeleteShow}
+                        onClick={() => handleDeleteShow(post.id)}
                       />
                     </button>
                   </td>
@@ -134,7 +133,11 @@ const ProductsAdmin = () => {
       <EditModal editShow={editShow} handleEditClose={handleEditClose} />
 
       {/* Modal Delete */}
-      <DeleteModal deleteShow={deleteShow} handleDeleteClose={handleDeleteClose}/>
+      <DeleteModal
+        deleteShow={deleteShow}
+        handleDeleteClose={handleDeleteClose}
+        id = {currentId}
+      />
     </>
   );
 };

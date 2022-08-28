@@ -1,7 +1,20 @@
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
 
-const DeleteModal = ({deleteShow, handleDeleteClose}) => {
+const DeleteModal = ({ deleteShow, handleDeleteClose,id }) => {
+  // const [product, setProduct]= useState();
+  console.log(id);
+
+  const removeData = () => {
+    // axios.delete(`http://localhost:3002/products/${id}`).then((res) => {
+    //   const del = product.filter((product) => id !== product.id);
+    //   setProduct(del);
+    //   console.log("res", res);
+    // });
+  };
+
   return (
     <>
       <Modal
@@ -19,7 +32,9 @@ const DeleteModal = ({deleteShow, handleDeleteClose}) => {
           <Button onClick={handleDeleteClose} className="products-enseraf">
             انصراف
           </Button>
-          <Button className="products-add">حذف</Button>
+          <Button className="products-add" onClick={() => removeData()}>
+            حذف
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

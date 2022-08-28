@@ -13,6 +13,7 @@ import Products from "pages/adminPages/products";
 import Prices from "pages/adminPages/prices";
 import Orders from "pages/adminPages/orders";
 import DeliveredOrdersModal from "pages/adminPages/orders/DeliveredOrdersModal";
+import DeleteModal from "pages/adminPages/products/DeleteModal";
 
 
 const AppRoutes = () => {

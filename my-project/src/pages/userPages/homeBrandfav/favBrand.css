@@ -1,12 +1,12 @@
 .home-brand-main {
-  margin-right: 12rem;
+  margin-right: 13rem;
   border-radius: 10px;
   border: 1px solid rgb(248, 248, 248);
-  width: 79vw;
-  background: url(assets/images/background.jpg);
+  width: 77vw;
+  background: url(assets/images/background.jpg); 
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 8rem;
+  margin-bottom: 5rem;
   
 }
 .home-loreal {
@@ -44,7 +44,7 @@
   margin-left: 5px;
 }
 .like-title {
-  margin: 80px;
+  margin-top: 20px;
   margin-right: 600px;
   color: #000000;
 }

@@ -11,8 +11,8 @@ import "./tableorder.css";
 const Orders = () => {
   const [posts, setPosts] = useState([]);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const [show, setShow] = useState(false); 
+  const handleClose = () => setShow(false); 
   const handleShow = () => setShow(true);
 
   useEffect(() => {
