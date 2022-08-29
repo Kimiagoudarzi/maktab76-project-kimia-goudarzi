@@ -8,26 +8,66 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
 
 const EditModal = ({ handleEditClose, editShow, id }) => {
-  //  fetchGetData
   const [product, setProduct] = useState({});
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [stock, setStock] = useState("");
+  const [Grouping, setGrouping] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
 
+  //  fetchGetData
+ 
   useEffect(() => {
     axios.get(`http://localhost:3002/products/${id}`).then((res) => {
-      setProduct(res.data);
+      setName(res.data.name);
+      setPrice(res.data.price);
+      setStock(res.data.stock);
+      setGrouping(res.data.Grouping);
     });
   }, [id]);
+
+
+  // editData
+  const handelEditItem = (e) => {
+    e.preventDefault();
+    let editInfo = {
+      name,
+      price,
+      image,
+      stock,
+      Grouping,
+      description,
+    };
+    try {
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+      axios
+        .put(`http://localhost:3002/products/${id}`, editInfo, { headers })
+        .then((editInfo) => {
+          console.log("data:", editInfo);
+        });
+    } catch (error) {
+      console.log("error!");
+    }
+
+   
+  };
+
   return (
     <>
       <Modal show={editShow} onHide={handleEditClose}>
         <Modal.Header>ویرایش کالا</Modal.Header>
         <Modal.Body>
-          <form key={product?.id}>
+          <form onSubmit={handelEditItem}>
             <div>
               <Form.Group controlId="formFileMultiple" className="mb-3">
                 <Form.Label className="products-label">تصویر کالا :</Form.Label>
                 <Form.Control type="file" multiple className="products-input" />
                 <Image
-                  src={product?.image}
+                  src={image}
                   style={{ width: "100px", marginTop: "0.5rem" }}
                   rounded
                 />
@@ -41,7 +81,9 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
                   multiple
                   className="products-input"
                   style={{ direction: "rtl" }}
-                  value={product?.name}
+                  name="name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                 />
               </Form.Group>
             </div>
@@ -53,7 +95,9 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
                   multiple
                   className="products-input"
                   style={{ direction: "rtl" }}
-                  value={product?.price}
+                  name="price"
+                  value={price}
+                  onChange={(event) => setPrice(event.target.value)}
                 />
               </Form.Group>
             </div>
@@ -65,9 +109,11 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
                 <Form.Control
                   type="number"
                   multiple
+                  name="stock"
                   className="products-input"
                   style={{ direction: "rtl" }}
-                  value={product?.stock}
+                  value={stock}
+                  onChange={(event) => setStock(event.target.value)}
                 />
               </Form.Group>
             </div>
@@ -78,7 +124,10 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
               <Form.Select
                 aria-label="Default select example"
                 className="products-select"
-                defaultValue={product?.category}
+                name="Grouping"
+                defaultValue={product?.Grouping}
+                value={Grouping}
+                onChange={(event) => setGrouping(event.target.value)}
               >
                 <option>دسته بندی را انتخاب کنید</option>
                 <option value="1">لوازم آرایشی</option>
@@ -90,7 +139,7 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
             <div className="text-editor">
               <CKEditor
                 editor={ClassicEditor}
-                data={product.description}
+                data={description}
                 onReady={(editor) => {
                   console.log("Editor is ready to use!", editor);
                 }}
@@ -103,11 +152,13 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
                 }}
                 onFocus={(event, editor) => {
                   console.log("Focus.", editor);
-                }} 
+                }}
               />
             </div>
             <div className="products-btns">
-              <Button className="products-add">افزودن</Button>
+              <Button className="products-add" type="submit">
+                افزودن
+              </Button>
               <Button onClick={handleEditClose} className="products-enseraf">
                 انصراف
               </Button>

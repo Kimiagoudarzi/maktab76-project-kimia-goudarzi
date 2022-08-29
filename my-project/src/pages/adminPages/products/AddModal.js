@@ -3,18 +3,64 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useState } from "react";
+import axios from "axios";
 
-const AddModal = ({handleAddClose, addShow}) => {
+const AddModal = ({ handleAddClose, addShow }) => {
+  const [product, setProduct] = useState([]);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [count, setCount] = useState("");
+  const [grouping, setGrouping] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
+
+  const changeHandler = (e) => {
+    setImage(e.target.files[0]);
+  };
+
  
+  // fetchPost
+  const handelAddItem = (e) => {
+    e.preventDefault();
+    try {
+      let entiresData = {
+        name: name,
+        price: price,
+        image: image,
+        stock: count,
+        grouping: grouping,
+        description: description,
+      };
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+      axios
+        .post(`http://localhost:3002/products`, entiresData, { headers })
+        .then(() => {
+          setProduct((PrevState) => [...PrevState, entiresData]);
+        });
+    } catch (error) {
+      console.log("error!");
+    }
+  };
+
   return (
     <>
       <Modal show={addShow} onHide={handleAddClose}>
         <Modal.Header>افزودن کالا</Modal.Header>
         <Modal.Body>
-          <form>
+          <form onSubmit={handelAddItem}>
             <div>
               <Form.Group controlId="formFileMultiple" className="mb-3">
-                <Form.Label className="products-label">تصویر کالا :</Form.Label>
+                <Form.Label
+                  typeof="file"
+                  className="products-label"
+                  onImageChange={changeHandler}
+                >
+                  تصویر کالا :
+                </Form.Label>
                 <Form.Control type="file" multiple className="products-input" />
               </Form.Group>
             </div>
@@ -26,6 +72,8 @@ const AddModal = ({handleAddClose, addShow}) => {
                   multiple
                   className="products-input"
                   style={{ direction: "rtl" }}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </Form.Group>
             </div>
@@ -37,6 +85,8 @@ const AddModal = ({handleAddClose, addShow}) => {
                   multiple
                   className="products-input"
                   style={{ direction: "rtl" }}
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
                 />
               </Form.Group>
             </div>
@@ -50,6 +100,8 @@ const AddModal = ({handleAddClose, addShow}) => {
                   multiple
                   className="products-input"
                   style={{ direction: "rtl" }}
+                  value={count}
+                  onChange={(e) => setCount(e.target.value)}
                 />
               </Form.Group>
             </div>
@@ -60,12 +112,15 @@ const AddModal = ({handleAddClose, addShow}) => {
               <Form.Select
                 aria-label="Default select example"
                 className="products-select"
+                value={grouping}
+                defaultValue={"default"}
+                onChange={(e) => setGrouping(e.target.value)}
               >
-                <option>دسته بندی را انتخاب کنید</option>
-                <option value="1">لوازم آرایشی</option>
-                <option value="2">مراقب پوستی</option>
-                <option value="3">مراقبت مو</option>
-                <option value="4">عطر و ادکلن</option>
+                <option value="default">دسته بندی را انتخاب کنید</option>
+                <option value="لوازم آرایشی">لوازم آرایشی</option>
+                <option value="مراقبت پوستی">مراقب پوستی</option>
+                <option value="مراقبت مو">مراقبت مو</option>
+                <option value="عطر و ادکلن">عطر و ادکلن</option>
               </Form.Select>
             </div>
             <div className="text-editor">
@@ -88,7 +143,9 @@ const AddModal = ({handleAddClose, addShow}) => {
               />
             </div>
             <div className="products-btns">
-              <Button className="products-add">افزودن</Button>
+              <Button className="products-add" type="submit">
+                افزودن
+              </Button>
               <Button onClick={handleAddClose} className="products-enseraf">
                 انصراف
               </Button>
@@ -96,7 +153,6 @@ const AddModal = ({handleAddClose, addShow}) => {
           </form>
         </Modal.Body>
       </Modal>
-     
     </>
   );
 };
