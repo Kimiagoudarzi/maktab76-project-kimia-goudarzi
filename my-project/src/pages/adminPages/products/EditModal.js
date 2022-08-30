@@ -17,7 +17,7 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
   const [image, setImage] = useState(null);
 
   //  fetchGetData
- 
+
   useEffect(() => {
     axios.get(`http://localhost:3002/products/${id}`).then((res) => {
       setName(res.data.name);
@@ -26,7 +26,6 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
       setGrouping(res.data.Grouping);
     });
   }, [id]);
-
 
   // editData
   const handelEditItem = (e) => {
@@ -52,8 +51,6 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
     } catch (error) {
       console.log("error!");
     }
-
-   
   };
 
   return (

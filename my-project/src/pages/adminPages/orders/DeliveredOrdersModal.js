@@ -5,10 +5,15 @@ import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import "./tableorder.css";
 
-const DeliveredOrdersModal = ({ show, handleClose, id, handleWaiting}) => {
+const DeliveredOrdersModal = ({
+  show,
+  handleClose,
+  id,
+  handleWaiting,
+  posts,
+}) => {
   const [order, setOrder] = useState({});
-  
-  // const [product, setProduct] = useState([])
+  const [product, setProduct] = useState([]);
 
   // fetch
   useEffect(() => {
@@ -17,12 +22,12 @@ const DeliveredOrdersModal = ({ show, handleClose, id, handleWaiting}) => {
     });
   }, [id]);
 
-  // useEffect(() => {
-  //   axios.get(`http://localhost:3002/orders/${id}`).then((res) => {
-  //     setProduct(res.data);
-  //   });
-  // }, [id]);
- 
+  useEffect(() => {
+    axios.get(`http://localhost:3002/orders/${id}/products`).then((res) => {
+      setProduct(res.data);
+    });
+  }, [id]);
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -61,21 +66,27 @@ const DeliveredOrdersModal = ({ show, handleClose, id, handleWaiting}) => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{product.username}</td>
+                  <td>{product.price}</td>
+                  <td>{product.count}</td>
                 </tr>
               </tbody>
             </Table>
           </form>
-          <Button
-            variant="primary"
-            onClick={handleClose}
-            className="orders-modal-btn"
-            disabled
-          >
-            در انتظار ارسال
-          </Button>
+          {handleWaiting ? (
+            <Button
+              variant="primary"
+              onClick={handleClose}
+              className="orders-modal-btn"
+              disabled
+            >
+              در انتظار ارسال
+            </Button>
+          ) : (
+            <div>
+              <p>زمان تحویل</p>
+            </div>
+          )}
         </Modal.Body>
       </Modal>
     </>

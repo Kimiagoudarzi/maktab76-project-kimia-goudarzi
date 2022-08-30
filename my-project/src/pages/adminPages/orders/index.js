@@ -10,12 +10,12 @@ import "./tableorder.css";
 
 const Orders = () => {
   const [posts, setPosts] = useState([]);
-  const [currentId, setCurrentId] = useState(null)
+  const [currentId, setCurrentId] = useState(null);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
-    setCurrentId(id)
+    setCurrentId(id);
     setShow(true);
   };
 
@@ -133,7 +133,14 @@ const Orders = () => {
       </div>
 
       {/* DeliveredOrdersModal */}
-      <DeliveredOrdersModal show={show} handleClose={handleClose}  id={currentId} handleWaiting={handleWaiting}/>
+      <DeliveredOrdersModal
+        show={show}
+        handleClose={handleClose}
+        id={currentId}
+        handleWaiting={handleWaiting}
+        handleDelivered={handleDelivered}
+      
+      />
     </>
   );
 };

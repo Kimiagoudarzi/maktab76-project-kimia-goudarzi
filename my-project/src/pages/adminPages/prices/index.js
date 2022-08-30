@@ -1,14 +1,50 @@
-import React from "react";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
+import axios from "axios";
 import "./tableprice.css";
 
 const Prices = () => {
   const [posts, setPosts] = useState([]);
+  const [product, setProduct] = useState([]);
   const [pageCount, setPageCount] = useState(0);
+  const [currentId, setCurrentId] = useState(null);
+  const [isInEditMode, setIsInEditMode] = useState(false);
+  const [newPrice, setNewPrice] = useState();
+  const [newStock, setNewStock] = useState();
+
+  function isEnterOrEscapeKeyEvent(event) {
+    return event.key === "Escape";
+  }
+  const changeEditMode = (id) => {
+    setCurrentId(id);
+    setIsInEditMode(true);
+  };
+  const closeEditMode = () => {
+    setIsInEditMode(false);
+  };
+  const saveEdit = (e) => {
+    e.preventDefault();
+    try {
+      let entiresData = {
+        price: newPrice,
+        stock: newStock,
+      };
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+      axios
+        .post(`http://localhost:3002/products`, entiresData, { headers })
+        .then(() => {
+          setProduct((PrevState) => [...PrevState, entiresData]);
+        });
+    } catch (error) {
+      console.log("error!");
+    }
+  };
 
   // pagination
 
@@ -26,7 +62,6 @@ const Prices = () => {
     };
     getComments();
   }, [limit]);
-  
 
   const fetchComments = async (currentPage) => {
     const res = await fetch(
@@ -48,7 +83,9 @@ const Prices = () => {
         <NavBar />
         <div className="d-flex mt-5">
           <h1 className="h1-admin-price">مدیریت موجودی و قیمت ها </h1>
-          <button className="btn-save-price">ذخیره</button>
+          <button className="btn-save-price" onClick={saveEdit}>
+            ذخیره
+          </button>
         </div>
         <div className="table-main">
           <MDBTable bordered style={{ borderColor: "#521850" }}>
@@ -65,8 +102,49 @@ const Prices = () => {
                 <tr>
                   <th scope="row">{post.id}</th>
                   <td>{post.name}</td>
-                  <td>{post.price}</td>
-                  <td>{post.stock}</td>
+
+                  {isInEditMode ? (
+                    <td>
+                      <input
+                        type="text"
+                        value={newPrice}
+                        defaultValue={post.price}
+                        onKeyDown={(event) => {
+                          if (isEnterOrEscapeKeyEvent(event)) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            closeEditMode();
+                          }
+                        }}
+                        onChange={(e) => setNewPrice(e.target.value)}
+                      />
+                    </td>
+                  ) : (
+                    <td onDoubleClick={() => changeEditMode(post.id)}>
+                      {post.price}
+                    </td>
+                  )}
+                  {isInEditMode ? (
+                    <td>
+                      <input
+                        type="text"
+                        value={newStock}
+                        defaultValue={post.stock}
+                        onKeyDown={(event) => {
+                          if (isEnterOrEscapeKeyEvent(event)) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            closeEditMode();
+                          }
+                        }}
+                        onChange={(e) => setNewStock(e.target.value)}
+                      />
+                    </td>
+                  ) : (
+                    <td onDoubleClick={() => changeEditMode(post.id)}>
+                      {post.stock}
+                    </td>
+                  )}
                 </tr>
               ))}
             </MDBTableBody>
