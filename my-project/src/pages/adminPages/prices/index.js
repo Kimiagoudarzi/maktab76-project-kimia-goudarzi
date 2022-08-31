@@ -5,26 +5,16 @@ import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
 import axios from "axios";
 import "./tableprice.css";
+import { EditText } from "react-edit-text";
 
 const Prices = () => {
   const [posts, setPosts] = useState([]);
   const [product, setProduct] = useState([]);
   const [pageCount, setPageCount] = useState(0);
-  const [currentId, setCurrentId] = useState(null);
-  const [isInEditMode, setIsInEditMode] = useState(false);
   const [newPrice, setNewPrice] = useState();
   const [newStock, setNewStock] = useState();
 
-  function isEnterOrEscapeKeyEvent(event) {
-    return event.key === "Escape";
-  }
-  const changeEditMode = (id) => {
-    setCurrentId(id);
-    setIsInEditMode(true);
-  };
-  const closeEditMode = () => {
-    setIsInEditMode(false);
-  };
+ 
   const saveEdit = (e) => {
     e.preventDefault();
     try {
@@ -102,49 +92,18 @@ const Prices = () => {
                 <tr>
                   <th scope="row">{post.id}</th>
                   <td>{post.name}</td>
-
-                  {isInEditMode ? (
-                    <td>
-                      <input
-                        type="text"
-                        value={newPrice}
-                        defaultValue={post.price}
-                        onKeyDown={(event) => {
-                          if (isEnterOrEscapeKeyEvent(event)) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                            closeEditMode();
-                          }
-                        }}
-                        onChange={(e) => setNewPrice(e.target.value)}
-                      />
-                    </td>
-                  ) : (
-                    <td onDoubleClick={() => changeEditMode(post.id)}>
-                      {post.price}
-                    </td>
-                  )}
-                  {isInEditMode ? (
-                    <td>
-                      <input
-                        type="text"
-                        value={newStock}
-                        defaultValue={post.stock}
-                        onKeyDown={(event) => {
-                          if (isEnterOrEscapeKeyEvent(event)) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                            closeEditMode();
-                          }
-                        }}
-                        onChange={(e) => setNewStock(e.target.value)}
-                      />
-                    </td>
-                  ) : (
-                    <td onDoubleClick={() => changeEditMode(post.id)}>
-                      {post.stock}
-                    </td>
-                  )}
+                  <td>
+                    <EditText
+                      defaultValue={post.price}
+                      onChange={(e) => setNewPrice(e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <EditText
+                      defaultValue={post.stock}
+                      onChange={(e) => setNewStock(e.target.value)}
+                    />
+                  </td>
                 </tr>
               ))}
             </MDBTableBody>

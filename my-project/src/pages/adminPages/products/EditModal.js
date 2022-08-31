@@ -8,13 +8,18 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
 
 const EditModal = ({ handleEditClose, editShow, id }) => {
-  const [product, setProduct] = useState({});
+  // const [product, setProduct] = useState({});
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
-  const [Grouping, setGrouping] = useState("");
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [categoryValue, setCategoryValue] = useState("");
+
+  const handleCategoryChange = (e) => {
+    console.log("e", e.target.value);
+  };
 
   //  fetchGetData
 
@@ -23,7 +28,8 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
       setName(res.data.name);
       setPrice(res.data.price);
       setStock(res.data.stock);
-      setGrouping(res.data.Grouping);
+      setCategory(res.data.category);
+      setDescription(res.data.description);
     });
   }, [id]);
 
@@ -35,16 +41,12 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
       price,
       image,
       stock,
-      Grouping,
       description,
+      categoryValue,
     };
     try {
-      const headers = {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      };
       axios
-        .put(`http://localhost:3002/products/${id}`, editInfo, { headers })
+        .put(`http://localhost:3002/products/${id}`, editInfo)
         .then((editInfo) => {
           console.log("data:", editInfo);
         });
@@ -122,9 +124,8 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
                 aria-label="Default select example"
                 className="products-select"
                 name="Grouping"
-                defaultValue={product?.Grouping}
-                value={Grouping}
-                onChange={(event) => setGrouping(event.target.value)}
+                Value={category}
+                onChange={(e) => handleCategoryChange(e)}
               >
                 <option>دسته بندی را انتخاب کنید</option>
                 <option value="1">لوازم آرایشی</option>
@@ -153,11 +154,11 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
               />
             </div>
             <div className="products-btns">
-              <Button className="products-add" type="submit">
-                افزودن
-              </Button>
               <Button onClick={handleEditClose} className="products-enseraf">
                 انصراف
+              </Button>
+              <Button className="products-add" type="submit">
+                افزودن
               </Button>
             </div>
           </form>

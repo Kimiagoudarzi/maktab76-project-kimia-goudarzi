@@ -19,7 +19,6 @@ const AddModal = ({ handleAddClose, addShow }) => {
     setImage(e.target.files[0]);
   };
 
- 
   // fetchPost
   const handelAddItem = (e) => {
     e.preventDefault();
@@ -57,9 +56,9 @@ const AddModal = ({ handleAddClose, addShow }) => {
                 <Form.Label
                   typeof="file"
                   className="products-label"
-                  onImageChange={changeHandler}
                 >
                   تصویر کالا :
+                  
                 </Form.Label>
                 <Form.Control type="file" multiple className="products-input" />
               </Form.Group>
@@ -113,7 +112,6 @@ const AddModal = ({ handleAddClose, addShow }) => {
                 aria-label="Default select example"
                 className="products-select"
                 value={grouping}
-                defaultValue={"default"}
                 onChange={(e) => setGrouping(e.target.value)}
               >
                 <option value="default">دسته بندی را انتخاب کنید</option>
@@ -143,11 +141,11 @@ const AddModal = ({ handleAddClose, addShow }) => {
               />
             </div>
             <div className="products-btns">
-              <Button className="products-add" type="submit">
-                افزودن
-              </Button>
               <Button onClick={handleAddClose} className="products-enseraf">
                 انصراف
+              </Button>
+              <Button className="products-add" type="submit">
+                افزودن
               </Button>
             </div>
           </form>

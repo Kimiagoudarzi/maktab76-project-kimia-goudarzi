@@ -10,7 +10,6 @@ const DeliveredOrdersModal = ({
   handleClose,
   id,
   handleWaiting,
-  posts,
 }) => {
   const [order, setOrder] = useState({});
   const [product, setProduct] = useState([]);
@@ -23,7 +22,7 @@ const DeliveredOrdersModal = ({
   }, [id]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3002/orders/${id}/products`).then((res) => {
+    axios.get(`http://localhost:3002/orders/${id}`).then((res) => {
       setProduct(res.data);
     });
   }, [id]);

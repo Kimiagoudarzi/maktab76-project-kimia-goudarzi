@@ -1,54 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "redux/features/user/userSlice";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
-import { Link, useNavigate } from "react-router-dom";
 import pic from "assets/images/p44.png";
 import butterfly from "assets/images/butter.png";
 import "./login.css";
 
 
-
 const Login = () => {
-  const initialValues = {userName: "", password: ""};
-  const [formValues, setFormValues] = useState(initialValues);
-  const [formErrors, setFormErrors] = useState({});
+  const [username, setUsername] = useState("");
+  const [pass, setPass] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
-  const navigate = useNavigate();
 
-  const handleChange = (e) =>{
-    const {name, value} = e.target;
-    setFormValues({...formValues,[name]: value});
-    console.log(formValues);
-  }
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.users);
+  
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
-  }
-
-  useEffect(()=>{
-    console.log(formErrors);
-    if(Object.keys(formErrors).length === 0 && isSubmit){
-      console.log(formValues)
-    }
-  }, [formErrors]);
-  const validate = (values)=>{
-    const errors = {};
-    if(!values.userName){
-      errors.userName = "نام کاربری الزامی است"
-    }else if(values.userName.length < 3){
-      errors.userName = "نام کاربری باید بیشتر از 3 کاراکتر باشد"
-
-    }
-    else if(!values.password){
-      errors.password = "رمز عبور الزامی است"
-    }else if (values.password.length <4){
-      errors.password = "رمز عبور باید بیشتر از 4 کاراکتر باشد"
-    }else if (values.password.length >10){
-      errors.password = "رمز عبور نباید بیشتر از 10 کارکتر باشد"
-    }
-    return errors;
-  }
+    setIsSubmit(true)
+    const data = new FormData(e.currentTarget);
+    setUsername(data.get("username"));
+    setPass(data.get("password"));
+    dispatch(login({ username, pass }));
+  };
+  if (isLoggedIn) return <Navigate to={"/loginForm/products"} />;
 
   return (
     <section className="login-body">
@@ -62,55 +39,55 @@ const Login = () => {
             </div>
           </MDBCol>
           <MDBCol col="6" className="mb-5">
-              <div className="d-flex flex-column ms-5">
-                <div className="text-center">
-                  <img src={butterfly} style={{ width: "185px" }} alt="logo" />
-                  <h4 className="mt-1 mb-5 pb-1">ورود به پنل مدیریت میا لند</h4>
-                </div>
-                {Object.keys(formErrors).length === 0 && isSubmit ? (navigate("/loginForm/products")): (console.log("error"))}
-                <form onSubmit={handleSubmit}>
+            <div className="d-flex flex-column ms-5">
+              <div className="text-center">
+                <img src={butterfly} style={{ width: "185px" }} alt="logo" />
+                <h4 className="mt-1 mb-5 pb-1">ورود به پنل مدیریت میا لند</h4>
+              </div>
+
+              <form onSubmit={handleSubmit}>
+                
                 <MDBInput
                   wrapperClass="mb-4"
                   placeholder="نام کاربری"
                   id="fname"
-                  name="userName"
+                  name="username"
                   type="text"
-                  value={formValues.userName}
-                  onChange = {handleChange}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
-                <p style={{color: "red", fontSize:"13px",marginTop: "5px"}}>{formErrors.userName}</p>
+
                 <MDBInput
                   wrapperClass="mb-4"
                   placeholder="رمز عبور"
                   id="pass"
                   type="password"
                   name="password"
-                  value={formValues.password}
-                  onChange = {handleChange}
+                  value={pass}
+                  onChange={(e) => setPass(e.target.value)}
                 />
-                <p style={{color: "red", fontSize:"13px",marginTop: "5px"}}>{formErrors.password}</p>
+
                 <div className="text-center pt-1 mb-5 pb-1">
-                  {/* <Link to="/loginForm/admin/products"> */}
-                    <button
-                      className="mb-4 w-100 gradient-custom-2"
-                      type="submit"
-                    >
-                      ورود
-                    </button>
-                  {/* </Link> */}
+                  <button
+                    className="mb-4 w-100 gradient-custom-2"
+                    type="submit"
+                  >
+                    ورود
+                  </button>
+
                   <a className="text-muted" href="#!">
                     فراموشی رمز عبور!
                   </a>
                 </div>
-                </form>
-                <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
-                  <Link to="/">
-                    <button outline className="btn-login-back">
-                      بازگشت به سایت
-                    </button>
-                  </Link>
-                </div>
+              </form>
+              <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
+                <Link to="/">
+                  <button outline className="btn-login-back">
+                    بازگشت به سایت
+                  </button>
+                </Link>
               </div>
+            </div>
           </MDBCol>
         </MDBRow>
       </MDBContainer>

@@ -74,6 +74,7 @@
   width: 75px;
   height: 40px;
   border: none !important;
+  margin-right: 20px;
 }
 .products-add:hover {
   background-color: #FD2C7A !important;
@@ -84,7 +85,7 @@
   margin-top: 40px;
   background-color: #C065BC !important;
   border: none !important;
-  margin-right: 20px;
+  
 }
 .products-enseraf:hover {
   background-color: #C065BC !important;

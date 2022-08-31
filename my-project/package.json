@@ -20,6 +20,7 @@
     "react-bootstrap-icons": "^1.8.4",
     "react-bootstrap-sweetalert": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-edit-text": "^5.0.2",
     "react-fontawesome": "^1.7.1",
     "react-hook-form": "^7.34.2",
     "react-icons": "^4.4.0",

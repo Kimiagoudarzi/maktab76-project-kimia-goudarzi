@@ -2,11 +2,9 @@ import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BsBagDash } from "react-icons/bs";
-import { HiOutlineMenu } from "react-icons/hi";
 import { BiBookmarkHeart } from "react-icons/bi";
 import { AiOutlineFire } from "react-icons/ai";
 import { TbDiscount2 } from "react-icons/tb";
-import { MdLocationOn } from "react-icons/md";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
@@ -66,9 +64,9 @@ const NavBar = () => {
             <Container fluid>
               <Navbar.Toggle className="nav-toggel" />
               <Navbar.Brand>
-                <div style={{ display: "flex"}}>
-                <p className="nav2-prog1">دسته بندی محصولات</p>
-                <div className="nav2-detail d-flex">
+                <div style={{ display: "flex" }}>
+                  <p className="nav2-prog1">دسته بندی محصولات</p>
+                  <div className="nav2-detail d-flex">
                     <div className="me-2">|</div>
                     <div className="d-flex">
                       <AiOutlineFire className="nav2-icon me-2 ms-2" />
@@ -82,8 +80,8 @@ const NavBar = () => {
                       <BiBookmarkHeart className="nav2-icon me-2 ms-2" />
                       <p className="nav-txt">شگفت انگیزها</p>
                     </div>
+                  </div>
                 </div>
-              </div>
               </Navbar.Brand>
               <Navbar.Offcanvas placement="end">
                 <Offcanvas.Header closeButton>

@@ -3,6 +3,7 @@ import productSlice from "../features/ProductCosmetic";
 import productSkin from "../features/ProductSkin";
 import productHair from "../features/ProductHair";
 import ProductPerfume from '../features/ProductPerfume';
+import { usersSlice } from 'redux/features/user/userSlice';
 
 
 const store = configureStore({
@@ -10,7 +11,8 @@ const store = configureStore({
     products : productSlice ,
     productSkin : productSkin,
     productHair : productHair,
-    productPerfume : ProductPerfume
+    productPerfume : ProductPerfume,
+    users : usersSlice
   }
 })
 export default store;
