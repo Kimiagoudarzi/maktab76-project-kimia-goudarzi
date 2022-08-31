@@ -8,7 +8,7 @@ const DeleteModal = ({ deleteShow, handleDeleteClose,id }) => {
    console.log(id);
    axios.delete(`http://localhost:3002/products/${id}`)
     .then((res)=>{
-     console.log("yesss",res.data);
+     return res.data
     }).catch((err) => {
       console.log("err", err);
     })

@@ -13,7 +13,7 @@ import Products from "pages/adminPages/products";
 import Prices from "pages/adminPages/prices";
 import Orders from "pages/adminPages/orders";
 import PrivateRoute from "./privetRout";
-
+ 
 
 const AppRoutes = () => {
   return (
@@ -27,7 +27,7 @@ const AppRoutes = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/loginForm" element={<Login />} />
         <Route >
-        <Route path="/loginForm/products" element={<PrivateRoute><Products /></PrivateRoute>} />
+        <Route path="/loginForm/products" element={ <PrivateRoute><Products /></PrivateRoute>} />
           <Route path="/admin/prices" element={<Prices />} />
           <Route path="/admin/orders" element={<Orders />} />
         </Route>

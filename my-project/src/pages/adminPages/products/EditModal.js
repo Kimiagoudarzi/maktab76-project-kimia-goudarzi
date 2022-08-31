@@ -12,13 +12,15 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
-  const [category, setCategory] = useState("");
+  const [Grouping, setGrouping] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
-  const [categoryValue, setCategoryValue] = useState("");
+  const [category, setCategory] = useState("");
 
   const handleCategoryChange = (e) => {
     console.log("e", e.target.value);
+    setCategory(e.target.value)
+    console.log(category);
   };
 
   //  fetchGetData
@@ -28,13 +30,13 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
       setName(res.data.name);
       setPrice(res.data.price);
       setStock(res.data.stock);
-      setCategory(res.data.category);
+      setGrouping(res.data.Grouping);
       setDescription(res.data.description);
     });
   }, [id]);
 
   // editData
-  const handelEditItem = (e) => {
+  const handleEditItem = (e) => {
     e.preventDefault();
     let editInfo = {
       name,
@@ -42,7 +44,8 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
       image,
       stock,
       description,
-      categoryValue,
+      category,
+      Grouping,
     };
     try {
       axios
@@ -60,7 +63,7 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
       <Modal show={editShow} onHide={handleEditClose}>
         <Modal.Header>ویرایش کالا</Modal.Header>
         <Modal.Body>
-          <form onSubmit={handelEditItem}>
+          <form onSubmit={handleEditItem}>
             <div>
               <Form.Group controlId="formFileMultiple" className="mb-3">
                 <Form.Label className="products-label">تصویر کالا :</Form.Label>
@@ -124,7 +127,7 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
                 aria-label="Default select example"
                 className="products-select"
                 name="Grouping"
-                Value={category}
+                Value={Grouping}
                 onChange={(e) => handleCategoryChange(e)}
               >
                 <option>دسته بندی را انتخاب کنید</option>

@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Image from "react-bootstrap/Image";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useState } from "react";
 import axios from "axios";
@@ -11,13 +12,11 @@ const AddModal = ({ handleAddClose, addShow }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [count, setCount] = useState("");
-  const [grouping, setGrouping] = useState("");
+  const [Grouping, setGrouping] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
 
-  const changeHandler = (e) => {
-    setImage(e.target.files[0]);
-  };
+ 
 
   // fetchPost
   const handelAddItem = (e) => {
@@ -28,7 +27,7 @@ const AddModal = ({ handleAddClose, addShow }) => {
         price: price,
         image: image,
         stock: count,
-        grouping: grouping,
+        Grouping: Grouping,
         description: description,
       };
       const headers = {
@@ -39,6 +38,7 @@ const AddModal = ({ handleAddClose, addShow }) => {
         .post(`http://localhost:3002/products`, entiresData, { headers })
         .then(() => {
           setProduct((PrevState) => [...PrevState, entiresData]);
+          console.log("entiresData", entiresData);
         });
     } catch (error) {
       console.log("error!");
@@ -58,7 +58,11 @@ const AddModal = ({ handleAddClose, addShow }) => {
                   className="products-label"
                 >
                   تصویر کالا :
-                  
+                  <Image
+                  src={image}
+                  style={{ width: "100px", marginTop: "0.5rem" }}
+                  rounded
+                />
                 </Form.Label>
                 <Form.Control type="file" multiple className="products-input" />
               </Form.Group>
@@ -111,7 +115,7 @@ const AddModal = ({ handleAddClose, addShow }) => {
               <Form.Select
                 aria-label="Default select example"
                 className="products-select"
-                value={grouping}
+                value={Grouping}
                 onChange={(e) => setGrouping(e.target.value)}
               >
                 <option value="default">دسته بندی را انتخاب کنید</option>
@@ -124,12 +128,13 @@ const AddModal = ({ handleAddClose, addShow }) => {
             <div className="text-editor">
               <CKEditor
                 editor={ClassicEditor}
-                data=""
+                data={description}
                 onReady={(editor) => {
                   console.log("Editor is ready to use!", editor);
                 }}
                 onChange={(event, editor) => {
                   const data = editor.getData();
+                  setDescription(event.target.value)
                   console.log({ event, editor, data });
                 }}
                 onBlur={(event, editor) => {

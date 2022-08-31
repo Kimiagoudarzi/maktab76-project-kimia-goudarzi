@@ -11,14 +11,14 @@ import "./tableorder.css";
 const Orders = () => {
   const [posts, setPosts] = useState([]);
   const [currentId, setCurrentId] = useState(null);
-  const [currentPost, setCurentPost ] = useState([]);
-
+  const [currentPost, setCurrentPost ] = useState([]);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+
   const handleShow = (id) => {
     const currentPosts = posts.filter((post)=> post.id === parseInt(id) )
-    console.log("curent",currentPosts);
-    setCurentPost(currentPost);
+    console.log("current",currentPosts);
+    setCurrentPost(currentPost);
     setCurrentId(id);
     setShow(true);
   };

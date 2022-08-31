@@ -67,8 +67,8 @@ const AboutProduct = () => {
                 <Button variant="secondary" className="btn-add-about" disabled>
                   افزودن به سبد خرید
                   <BsBagDash
-                      style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
-                    />
+                    style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
+                  />
                 </Button>
               )}
               <div className="btn-counter-main-about">

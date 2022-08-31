@@ -21,12 +21,6 @@ const DeliveredOrdersModal = ({
     });
   }, [id]);
 
-  useEffect(() => {
-    axios.get(`http://localhost:3002/orders/${id}`).then((res) => {
-      setProduct(res.data);
-    });
-  }, [id]);
-
   return (
     <>
       <Modal show={show} onHide={handleClose}>

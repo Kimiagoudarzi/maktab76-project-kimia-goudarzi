@@ -1,16 +1,17 @@
 {
   "products": [
     {
-      "id": 1,
       "name": "کرم پودر مات کننده این لی",
       "price": "150,000",
       "image": [
-        "http://localhost:3002/files/8a56bd45b08573ffe8e517e6aa44bd81"
+        "http://localhost:3002/files/92286f295afa4a3ffd0b6e7ddf8bbb94"
       ],
-      "stock": 0,
       "category": 1,
       "Grouping": "لوازم آرایشی",
-      "description": "پخش پذیری مناسب، ساختار سبک و در عین حال قدرت پوشانندگی بالای کرم پودر این لِی سبب می شود تا این محصول به عنوان محصولی منحصر به فرد شناخته شود. فرمولاسیون ویژه این کرم پودر باعث می شود تا چهره شما در تمام طول روز مات و طبیعی بماند و از ایجاد ظاهر براق بویژه بر روی بینی و پیشانی جلوگیری می کند. مقاوم بودن در برابر گرما، تعریق و رطوبت از دیگر مزایای کرم پودرهای این لِی است."
+      "stock": 0,
+      "description": "پخش پذیری مناسب، ساختار سبک و در عین حال قدرت پوشانندگی بالای کرم پودر این لِی سبب می شود تا این محصول به عنوان محصولی منحصر به فرد شناخته شود. فرمولاسیون ویژه این کرم پودر باعث می شود تا چهره شما در تمام طول روز مات و طبیعی بماند و از ایجاد ظاهر براق بویژه بر روی بینی و پیشانی جلوگیری می کند. مقاوم بودن در برابر گرما، تعریق و رطوبت از دیگر مزایای کرم پودرهای این لِی است.",
+      "categoryValue": "",
+      "id": 1
     },
     {
       "id": 2,
@@ -829,171 +830,24 @@
       "description": " Francois Demachy به منظور تاکید بر شخصیت و خصوصیات نسخه ادوتویلت J'adore یک عطر دیگر به نام J'adore Lumiere را طراحی کرد. او در این عطر نت های گلی را تقویت کرده است. رایحه این عطرحس شادی، نشاط و امید به زندگی را پشت شخصیت خود پنهان کرده است. "
     },
     {
-      "name": "shampo",
-      "price": "11",
-      "image": "",
-      "stock": "11",
-      "category": "2",
-      "Grouping": [],
+      "name": "body splash ",
+      "price": "120,000",
+      "image": null,
+      "stock": "12",
+      "Grouping": "عطر و ادکلن",
       "description": "",
-      "createdAt": 1661795107662,
-      "id": 70
-    },
-    {
-      "name": "shampo",
-      "price": "11",
-      "image": "",
-      "stock": "11",
-      "category": "2",
-      "Grouping": [],
-      "description": "",
-      "createdAt": 1661795129065,
+      "createdAt": 1661953618998,
       "id": 71
     },
     {
-      "name": "shampo",
-      "price": "11",
-      "image": "",
-      "stock": "11",
-      "category": "1",
-      "Grouping": [],
+      "name": "عطر زنانه دیور",
+      "price": "430,000",
+      "image": null,
+      "stock": "5",
+      "Grouping": "عطر و ادکلن",
       "description": "",
-      "createdAt": 1661795167483,
+      "createdAt": 1661953720656,
       "id": 72
-    },
-    {
-      "name": "shampo",
-      "price": "12",
-      "image": "",
-      "stock": "11",
-      "category": "3",
-      "Grouping": [],
-      "description": "",
-      "createdAt": 1661795415497,
-      "id": 73
-    },
-    {
-      "name": "11",
-      "price": "11",
-      "image": "",
-      "stock": "11",
-      "category": "3",
-      "Grouping": [],
-      "description": "",
-      "createdAt": 1661795438575,
-      "id": 74
-    },
-    {
-      "name": "kimi",
-      "price": "12",
-      "image": "",
-      "stock": "11",
-      "grouping": "3",
-      "description": "",
-      "createdAt": 1661795991707,
-      "id": 75
-    },
-    {
-      "name": "eeee",
-      "price": "133",
-      "image": "",
-      "stock": "11",
-      "grouping": "2",
-      "description": "",
-      "createdAt": 1661796151249,
-      "id": 76
-    },
-    {
-      "name": "kimi",
-      "price": "111",
-      "image": "",
-      "stock": "12",
-      "grouping": "عطر و ادکلن",
-      "description": "",
-      "createdAt": 1661796446815,
-      "id": 77
-    },
-    {
-      "name": "kimi",
-      "price": "11",
-      "image": "",
-      "stock": "11",
-      "grouping": "مراقبت مو",
-      "description": "",
-      "createdAt": 1661796714001,
-      "id": 78
-    },
-    {
-      "name": "hy",
-      "price": "23",
-      "image": "",
-      "stock": "21",
-      "grouping": "مراقبت مو",
-      "description": "",
-      "createdAt": 1661797246906,
-      "id": 79
-    },
-    {
-      "name": "eeee",
-      "price": "1111",
-      "image": "",
-      "stock": "11",
-      "grouping": "لوازم آرایشی",
-      "description": "",
-      "createdAt": 1661797328738,
-      "id": 80
-    },
-    {
-      "name": "rrr",
-      "price": "33",
-      "image": "",
-      "stock": "23",
-      "grouping": "لوازم آرایشی",
-      "description": "",
-      "createdAt": 1661797405562,
-      "id": 81
-    },
-    {
-      "name": "ssss",
-      "price": "1200000",
-      "image": null,
-      "stock": "45",
-      "grouping": "مراقبت مو",
-      "description": "",
-      "createdAt": 1661801722139,
-      "id": 82
-    },
-    {
-      "name": "ssss",
-      "price": "1200000",
-      "image": null,
-      "stock": "45",
-      "grouping": "مراقبت مو",
-      "description": "",
-      "createdAt": 1661801727298,
-      "id": 83
-    },
-    {
-      "price": "160,000",
-      "stock": 15,
-      "createdAt": 1661865264040,
-      "id": 84
-    },
-    {
-      "price": "160,000",
-      "stock": 15,
-      "createdAt": 1661865264721,
-      "id": 85
-    },
-    {
-      "name": "1111",
-      "price": "111",
-      "image": null,
-      "stock": "12",
-      "grouping": "مراقبت پوستی",
-      "description": "",
-      "createdAt": 1661878602063,
-      "id": 86
     }
   ],
   "category": [
@@ -1475,6 +1329,8 @@
   ],
   "protection": {
     "products.get": false,
+    "products.put": false,
+    "products.delete": false,
     "orders.post": false,
     "products.post": false,
     "orders.get": false,

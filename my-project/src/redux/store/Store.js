@@ -3,7 +3,7 @@ import productSlice from "../features/ProductCosmetic";
 import productSkin from "../features/ProductSkin";
 import productHair from "../features/ProductHair";
 import ProductPerfume from '../features/ProductPerfume';
-import { usersSlice } from 'redux/features/user/userSlice';
+import  usersSlice  from 'redux/features/user/userSlice';
 
 
 const store = configureStore({

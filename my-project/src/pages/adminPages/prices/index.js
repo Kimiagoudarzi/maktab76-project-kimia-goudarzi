@@ -10,24 +10,25 @@ import { EditText } from "react-edit-text";
 const Prices = () => {
   const [posts, setPosts] = useState([]);
   const [product, setProduct] = useState([]);
+  const [currentId, setCurrentId] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [newPrice, setNewPrice] = useState();
   const [newStock, setNewStock] = useState();
 
- 
-  const saveEdit = (e) => {
+  const handleChange = (e,id) => {
+    setCurrentId(id);
+    setNewStock(e.target.value);
+    setNewPrice(e.target.value);
+  };
+  const saveEdit = (e, id) => {
     e.preventDefault();
     try {
       let entiresData = {
         price: newPrice,
         stock: newStock,
       };
-      const headers = {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      };
       axios
-        .post(`http://localhost:3002/products`, entiresData, { headers })
+        .patch(`http://localhost:3002/products/${id}`, entiresData)
         .then(() => {
           setProduct((PrevState) => [...PrevState, entiresData]);
         });
@@ -95,13 +96,19 @@ const Prices = () => {
                   <td>
                     <EditText
                       defaultValue={post.price}
-                      onChange={(e) => setNewPrice(e.target.value)}
+                      onChange={() => {
+                        
+                        handleChange(post.id);
+                      }}
                     />
                   </td>
                   <td>
                     <EditText
                       defaultValue={post.stock}
-                      onChange={(e) => setNewStock(e.target.value)}
+                      onChange={() => {
+                        
+                        handleChange(post.id);
+                      }}
                     />
                   </td>
                 </tr>

@@ -18,7 +18,6 @@ const ProductsAdmin = () => {
     setCurrentId(id);
     setDeleteShow(true);
   };
-
   const handleDeleteClose = () => setDeleteShow(false);
 
   const [addShow, setAddShow] = useState(false);

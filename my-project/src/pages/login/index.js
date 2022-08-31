@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "redux/features/user/userSlice";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
@@ -7,25 +7,58 @@ import pic from "assets/images/p44.png";
 import butterfly from "assets/images/butter.png";
 import "./login.css";
 
-
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [pass, setPass] = useState("");
+  const initialValues = { username: "", password: "" };
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-
+  const navigate = useNavigate();
+  // authentication
+  
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => state.users);
   
+  
+  if (isLoggedIn) return <Navigate to={"/loginForm/products"} />;
+
+
+  // validation
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    setFormValues({ ...formValues, [name]: value });
+    console.log(formValues);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmit(true)
-    const data = new FormData(e.currentTarget);
-    setUsername(data.get("username"));
-    setPass(data.get("password"));
-    dispatch(login({ username, pass }));
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
+    dispatch(login(formValues));
   };
-  if (isLoggedIn) return <Navigate to={"/loginForm/products"} />;
+
+  // useEffect(() => {
+  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
+  //     console.log(formValues);
+  //   }
+  // }, [formErrors, formValues, isSubmit]);
+
+  const validate = (values) => {
+    const errors = {};
+    if (!values.username) {
+      errors.username = "نام کاربری الزامی است";
+    } else if (values.username.length < 3) {
+      errors.username = "نام کاربری باید بیشتر از 3 کاراکتر باشد";
+    } else if (!values.password) {
+      errors.password = "رمز عبور الزامی است";
+    } else if (values.password.length < 4) {
+      errors.password = "رمز عبور باید بیشتر از 4 کاراکتر باشد";
+    } else if (values.password.length > 10) {
+      errors.password = "رمز عبور نباید بیشتر از 10 کارکتر باشد";
+    }
+    return errors;
+  };
 
   return (
     <section className="login-body">
@@ -44,27 +77,33 @@ const Login = () => {
                 <img src={butterfly} style={{ width: "185px" }} alt="logo" />
                 <h4 className="mt-1 mb-5 pb-1">ورود به پنل مدیریت میا لند</h4>
               </div>
-
+              {Object.keys(formErrors).length === 0 && isSubmit
+                ? navigate("/loginForm/products")
+                : console.log("error")}
               <form onSubmit={handleSubmit}>
-                
+                <p style={{ color: "red", fontSize: "13px", marginTop: "5px" }}>
+                  {formErrors.username}
+                </p>
                 <MDBInput
                   wrapperClass="mb-4"
                   placeholder="نام کاربری"
                   id="fname"
                   name="username"
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={formValues.username}
+                  onChange={handleChange}
                 />
-
+                <p style={{ color: "red", fontSize: "13px", marginTop: "5px" }}>
+                  {formErrors.password}
+                </p>
                 <MDBInput
                   wrapperClass="mb-4"
                   placeholder="رمز عبور"
                   id="pass"
                   type="password"
                   name="password"
-                  value={pass}
-                  onChange={(e) => setPass(e.target.value)}
+                  value={formValues.password}
+                  onChange={handleChange}
                 />
 
                 <div className="text-center pt-1 mb-5 pb-1">
