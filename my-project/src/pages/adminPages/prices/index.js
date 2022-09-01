@@ -15,10 +15,10 @@ const Prices = () => {
   const [newPrice, setNewPrice] = useState();
   const [newStock, setNewStock] = useState();
 
-  const handleChange = (e,id) => {
-    setCurrentId(id);
-    setNewStock(e.target.value);
-    setNewPrice(e.target.value);
+  const handleChange = (e, setFn,id) => {
+    console.log(id);
+    setCurrentId(id)
+    setFn(e.target.value);
   };
   const saveEdit = (e, id) => {
     e.preventDefault();
@@ -74,7 +74,7 @@ const Prices = () => {
         <NavBar />
         <div className="d-flex mt-5">
           <h1 className="h1-admin-price">مدیریت موجودی و قیمت ها </h1>
-          <button className="btn-save-price" onClick={saveEdit}>
+          <button className="btn-save-price" onClick={(e)=>saveEdit(e,currentId)}>
             ذخیره
           </button>
         </div>
@@ -89,30 +89,28 @@ const Prices = () => {
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-              {posts.map((post) => (
+              
+              {posts.map((post) => {
+                const {id} = post;
+                return(
                 <tr>
-                  <th scope="row">{post.id}</th>
+                  <th scope="row">{id}</th>
                   <td>{post.name}</td>
                   <td>
                     <EditText
                       defaultValue={post.price}
-                      onChange={() => {
-                        
-                        handleChange(post.id);
-                      }}
+                      onChange={(e) => handleChange(e, setNewPrice,id)}
                     />
                   </td>
                   <td>
                     <EditText
                       defaultValue={post.stock}
-                      onChange={() => {
-                        
-                        handleChange(post.id);
-                      }}
+                      onChange={(e) => handleChange(e, setNewStock,id)}
                     />
                   </td>
                 </tr>
-              ))}
+                )
+                })}
             </MDBTableBody>
           </MDBTable>
         </div>

@@ -1,6 +1,6 @@
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { FaPenSquare, FaTrash } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import AddModal from "./AddModal";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
@@ -14,6 +14,8 @@ const ProductsAdmin = () => {
   const [pageCount, setPageCount] = useState(0);
   const [currentId, setCurrentId] = useState(null);
   const [deleteShow, setDeleteShow] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
   const handleDeleteShow = (id) => {
     setCurrentId(id);
     setDeleteShow(true);
@@ -33,33 +35,27 @@ const ProductsAdmin = () => {
 
   // pagination
   let limit = 15;
-
-  useEffect(() => {
-    const getComments = async () => {
-      const res = await fetch(
-        `http://localhost:3002/products?_page=1&_limit=${limit}`
-      );
-      const data = await res.json();
-      const total = res.headers.get("x-total-count");
-      setPageCount(Math.ceil(total / limit));
-      setPosts(data);
-    };
-    getComments();
-  }, [limit]);
-
-  const fetchComments = async (currentPage) => {
+  
+  const fetchComments = useCallback(async (currentPage) => {
     const res = await fetch(
       `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
     );
     const data = await res.json();
-    return data;
-  };
+    const total = res.headers.get("x-total-count");
+    setPageCount(Math.ceil(total / limit));
+    
+    setPosts(data);
+    setCurrentPage(currentPage);
+  }, [limit]);
+
+  useEffect(() => {
+    fetchComments(1);
+  }, [fetchComments]);
+  console.log(posts);
 
   const handlePageClick = async (data) => {
     let currentPage = data.selected + 1;
-
-    const commentsFormServer = await fetchComments(currentPage);
-    setPosts(commentsFormServer);
+    fetchComments(currentPage);
   };
 
   return (
@@ -86,10 +82,18 @@ const ProductsAdmin = () => {
               {posts.map((post) => (
                 <tr key={post.id}>
                   <th scope="row">
-                    <img src={post.image} alt="pic" className="img-table" />
+                    <img
+                      src={
+                        post.image
+                          ? `http://localhost:3002/files/${post?.image[0]}`
+                          : "-"
+                      }
+                      alt="pic"
+                      className="img-table"
+                    />
                   </th>
                   <td>{post.name}</td>
-                  <td style={{ width: "15rem" }}>{post.Grouping}</td>
+                  <td style={{ width: "15rem" }}>{post?.Grouping ?? "-"}</td>
                   <td style={{ width: "11rem" }}>
                     <button className="btn-icon">
                       <FaPenSquare
@@ -129,13 +133,19 @@ const ProductsAdmin = () => {
       </div>
 
       {/* Modal Add */}
-      <AddModal addShow={addShow} handleAddClose={handleAddClose} />
+      <AddModal
+        addShow={addShow}
+        handleAddClose={handleAddClose}
+        fetchComments={fetchComments}
+        currentPage={currentPage}
+      />
 
       {/* Modal Edit */}
       <EditModal
         editShow={editShow}
         handleEditClose={handleEditClose}
         id={currentId}
+        posts={posts}
       />
 
       {/* Modal Delete */}

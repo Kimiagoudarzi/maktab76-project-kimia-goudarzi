@@ -21,9 +21,7 @@ const Login = () => {
   
   if (isLoggedIn) return <Navigate to={"/loginForm/products"} />;
 
-
   // validation
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name, value);

@@ -7,7 +7,7 @@ import Image from "react-bootstrap/Image";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
 
-const EditModal = ({ handleEditClose, editShow, id }) => {
+const EditModal = ({ handleEditClose, editShow, id, posts }) => {
   // const [product, setProduct] = useState({});
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -18,9 +18,9 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
   const [category, setCategory] = useState("");
 
   const handleCategoryChange = (e) => {
-    console.log("e", e.target.value);
-    setCategory(e.target.value)
-    console.log(category);
+    // console.log("e", e.target.value);
+    // setGrouping(e.target.value);
+    // console.log(Grouping);
   };
 
   //  fetchGetData
@@ -146,7 +146,7 @@ const EditModal = ({ handleEditClose, editShow, id }) => {
                 }}
                 onChange={(event, editor) => {
                   const data = editor.getData();
-                  console.log({ event, editor, data });
+                  setDescription(data);
                 }}
                 onBlur={(event, editor) => {
                   console.log("Blur.", editor);

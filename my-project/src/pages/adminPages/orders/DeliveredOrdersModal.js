@@ -10,9 +10,10 @@ const DeliveredOrdersModal = ({
   handleClose,
   id,
   handleWaiting,
+  currentPost
 }) => {
   const [order, setOrder] = useState({});
-  const [product, setProduct] = useState([]);
+ 
 
   // fetch
   useEffect(() => {
@@ -59,9 +60,9 @@ const DeliveredOrdersModal = ({
               </thead>
               <tbody>
                 <tr>
-                  <td>{product.username}</td>
-                  <td>{product.price}</td>
-                  <td>{product.count}</td>
+                  <td>{currentPost}</td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </tbody>
             </Table>

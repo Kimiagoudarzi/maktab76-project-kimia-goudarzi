@@ -11,14 +11,20 @@ import "./tableorder.css";
 const Orders = () => {
   const [posts, setPosts] = useState([]);
   const [currentId, setCurrentId] = useState(null);
-  const [currentPost, setCurrentPost ] = useState([]);
+  const [currentPost, setCurrentPost] = useState([]);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
   const handleShow = (id) => {
-    const currentPosts = posts.filter((post)=> post.id === parseInt(id) )
-    console.log("current",currentPosts);
-    setCurrentPost(currentPost);
+    const currentPosts = posts
+      .filter((post) => post.id === parseInt(id))
+      .map((item) => {
+        const {name, price, count} = item.products;
+        return name;
+      });
+    console.log("current", currentPosts);
+    setCurrentPost(currentPosts);
     setCurrentId(id);
     setShow(true);
   };
@@ -143,7 +149,7 @@ const Orders = () => {
         id={currentId}
         handleWaiting={handleWaiting}
         handleDelivered={handleDelivered}
-      
+        currentPost={currentPost}
       />
     </>
   );

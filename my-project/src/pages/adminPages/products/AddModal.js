@@ -7,16 +7,37 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useState } from "react";
 import axios from "axios";
 
-const AddModal = ({ handleAddClose, addShow }) => {
-  const [product, setProduct] = useState([]);
+const AddModal = ({ handleAddClose, addShow, fetchComments ,currentPage}) => {
+  // const [product, setProduct] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [count, setCount] = useState("");
   const [Grouping, setGrouping] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [files, setFiles] = useState(null)
 
  
+  const handleFile = (e) => {
+    setFiles( e.target.files[0])  
+  };
+
+  // postImage
+  const handleImage = () => {
+    const formData = new FormData();
+    
+    formData.append('image',files, files.name)
+    console.log(formData);
+    axios
+      .post(`http://localhost:3002/upload`, formData )
+      .then((res) => {
+        setImage([res.data.filename]);
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log("error!");
+      });
+  };
 
   // fetchPost
   const handelAddItem = (e) => {
@@ -30,16 +51,12 @@ const AddModal = ({ handleAddClose, addShow }) => {
         Grouping: Grouping,
         description: description,
       };
-      const headers = {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      };
-      axios
-        .post(`http://localhost:3002/products`, entiresData, { headers })
-        .then(() => {
-          setProduct((PrevState) => [...PrevState, entiresData]);
-          console.log("entiresData", entiresData);
-        });
+      axios.post(`http://localhost:3002/products`, entiresData).then(() => {
+        // (PrevState) => [...PrevState, entiresData]
+        console.log("entiresData", entiresData);
+        fetchComments(currentPage);
+        handleAddClose();
+      });
     } catch (error) {
       console.log("error!");
     }
@@ -53,18 +70,33 @@ const AddModal = ({ handleAddClose, addShow }) => {
           <form onSubmit={handelAddItem}>
             <div>
               <Form.Group controlId="formFileMultiple" className="mb-3">
-                <Form.Label
-                  typeof="file"
-                  className="products-label"
-                >
+                <Form.Label typeof="file" className="products-label">
                   تصویر کالا :
-                  <Image
+                </Form.Label>
+                <Form.Control
+                  type="file"
+                  multiple
+                  className="products-input"
+                  name="file_upload"
+                  onChange={handleFile}
+                />
+                {/* <Image
                   src={image}
                   style={{ width: "100px", marginTop: "0.5rem" }}
                   rounded
-                />
-                </Form.Label>
-                <Form.Control type="file" multiple className="products-input" />
+                /> */}
+                <div>
+                  <Button
+                    onClick={handleImage}
+                    style={{
+                      marginTop: "1rem",
+                      backgroundColor: "#C065BC",
+                      border: "none",
+                    }}
+                  >
+                    Upload
+                  </Button>
+                </div>
               </Form.Group>
             </div>
             <div>
@@ -134,8 +166,7 @@ const AddModal = ({ handleAddClose, addShow }) => {
                 }}
                 onChange={(event, editor) => {
                   const data = editor.getData();
-                  setDescription(event.target.value)
-                  console.log({ event, editor, data });
+                  setDescription(data);
                 }}
                 onBlur={(event, editor) => {
                   console.log("Blur.", editor);
