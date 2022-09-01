@@ -3,14 +3,16 @@ import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { useState } from "react";
 
-const DeleteModal = ({ deleteShow, handleDeleteClose,id }) => {
+const DeleteModal = ({ deleteShow, handleDeleteClose,id,fetchComments ,currentPage }) => {
   const [deleteState, setDeleteState] = useState();
 
   const removeData = (e) => {
-   e.preventDefault();
+  //  e.preventDefault();
    axios.delete(`http://localhost:3002/products/${id}`)
     .then((res)=>{
        setDeleteState(res.data)
+       fetchComments(currentPage);
+       handleDeleteClose()
     }).catch((err) => {
       console.log("err", err);
     })

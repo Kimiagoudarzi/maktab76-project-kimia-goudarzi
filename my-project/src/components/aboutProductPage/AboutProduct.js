@@ -44,11 +44,15 @@ const AboutProduct = () => {
       <div className="about-main" key={product?.id}>
         <div className="d-flex">
           <div className="about-img-contain">
-            <img src={product?.image} alt="product-img" className="about-img" />
+            <img
+              src={`http://localhost:3002/files/${product?.image}`}
+              alt="product-img"
+              className="about-img"
+            />
           </div>
           <div className="about-contain">
             <div>
-              <h1>{product.name}</h1>
+              <h1>{product?.name}</h1>
               <hr />
               <p>{product?.description}</p>
               <h5>قیمت :{product?.price} تومان </h5>

@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import "./tableorder.css";
 
-const DeliveredOrdersModal = ({
-  show,
-  handleClose,
-  id,
-  handleWaiting,
-  currentPost
-}) => {
-  const [order, setOrder] = useState({});
- 
-
-  // fetch
-  useEffect(() => {
-    axios.get(`http://localhost:3002/orders/${id}`).then((res) => {
-      setOrder(res.data);
-    });
-  }, [id]);
+const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
+  const [order, setOrder] = useState(currentPost[0]);
 
   return (
     <>
@@ -28,18 +13,18 @@ const DeliveredOrdersModal = ({
         <Modal.Header className="orders-modal-header">نمایش سفارش</Modal.Header>
         <Modal.Body style={{ textAlign: "center" }}>
           <form>
-            <div key={order?.id}>
+            <div key={currentPost[0]?.id}>
               <div className="orders-modal-item">
                 <p className="orders-modal-title">نام : </p>
-                <p>{order?.username}</p>
+                <p>{currentPost[0]?.username}</p>
               </div>
               <div className="orders-modal-item">
                 <p className="orders-modal-title">آدرس : </p>
-                <p>{order?.address}</p>
+                <p>{currentPost[0]?.address}</p>
               </div>
               <div className="orders-modal-item">
                 <p className="orders-modal-title">تلفن :</p>
-                <p>{order?.phone}</p>
+                <p>{currentPost[0]?.phone}</p>
               </div>
               <div className="orders-modal-item">
                 <p className="orders-modal-title">زمان تحویل : </p>
@@ -47,7 +32,7 @@ const DeliveredOrdersModal = ({
               </div>
               <div className="orders-modal-item">
                 <p className="orders-modal-title">زمان سفارش : </p>
-                <p>{order?.time}</p>
+                <p>{currentPost[0]?.time}</p>
               </div>
             </div>
             <Table striped bordered style={{ marginTop: "35px" }}>
@@ -59,28 +44,25 @@ const DeliveredOrdersModal = ({
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{currentPost}</td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                
+                  {/* <tr>
+                    <td>{product.name}</td>
+                    <td>{product.price}</td>
+                    <td>{product.stock}</td>
+                  </tr>; */}
+             
               </tbody>
             </Table>
           </form>
-          {handleWaiting ? (
-            <Button
-              variant="primary"
-              onClick={handleClose}
-              className="orders-modal-btn"
-              disabled
-            >
-              در انتظار ارسال
-            </Button>
-          ) : (
-            <div>
-              <p>زمان تحویل</p>
-            </div>
-          )}
+
+          <Button
+            variant="primary"
+            onClick={handleClose}
+            className="orders-modal-btn"
+            disabled
+          >
+            در انتظار ارسال
+          </Button>
         </Modal.Body>
       </Modal>
     </>

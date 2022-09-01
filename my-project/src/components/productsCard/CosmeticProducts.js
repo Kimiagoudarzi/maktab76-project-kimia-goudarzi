@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+// import {useCallback} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "redux/features/ProductCosmetic";
 import { Link } from "react-router-dom";
-import ModalProduct from "./ModalProduct";
 // import ReactPaginate from "react-paginate";
+import ModalProduct from "./ModalProduct";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -14,42 +15,40 @@ import "./card.css";
 const ProductsCard = () => {
   const [lgShow, setLgShow] = useState(false);
   const [currentId, setCurrentId] = useState(null);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [posts, setPosts] = useState([]);
+  // const [pageCount, setPageCount] = useState(0);
+
   const handleShow = (id)=>{
     setCurrentId(id)
     setLgShow(true)
   }
 
-  // pagination
-  // const [posts, setPosts] = useState([]);
-  // const [pageCount, setPageCount] = useState(0);
-  // let limit = 15;
-  // useEffect(() => {
-  //   const getComments = async () => {
-  //     const res = await fetch(
-  //       `http://localhost:3002/products?_page=1&_limit=${limit}`
-  //     );
-  //     const data = await res.json();
-  //     const total = res.headers.get("x-total-count");
-  //     setPageCount(Math.ceil(total / limit));
-  //     setPosts(data);
-  //   };
-  //   getComments();
-  // }, [limit]);
+    // pagination
+    // let limit = 15;
+  
+    // const fetchComments = useCallback(async (currentPage) => {
+    //   const res = await fetch(
+    //     `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
+    //   );
+    //   const data = await res.json();
+    //   const total = res.headers.get("x-total-count");
+    //   setPageCount(Math.ceil(total / limit));
+      
+    //   setPosts(data);
+    //   setCurrentPage(currentPage);
+    // }, [limit]);
+  
+    // useEffect(() => {
+    //   fetchComments(1);
+    // }, [fetchComments]);
+  
+  
+    // const handlePageClick = async (data) => {
+    //   let currentPage = data.selected + 1;
+    //   fetchComments(currentPage);
+    // };
 
-  // const fetchComments = async (currentPage) => {
-  //   const res = await fetch(
-  //     `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
-  //   );
-  //   const data = await res.json();
-  //   return data;
-  // };
-
-  // const handlePageClick = async (data) => {
-  //   let currentPage = data.selected + 1;
-
-  //   const commentsFormServer = await fetchComments(currentPage);
-  //   setPosts(commentsFormServer);
-  // };
 
   // fetch
   const dispatch = useDispatch();
@@ -69,7 +68,9 @@ const ProductsCard = () => {
                 <div className="img-main-cards">
                   <Card.Img
                     variant="top"
-                    src={item.image}
+                    src={item.image
+                      ? `http://localhost:3002/files/${item?.image[0]}`
+                      : "-"}
                     className="img-card"
                   />
                 </div>
@@ -98,21 +99,21 @@ const ProductsCard = () => {
         </Row>
       </div>
       {/* <ReactPaginate
-        previousLabel={"قبلی"}
-        nextLabel={"بعدی"}
-        pageCount={pageCount}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination justify-content-center"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        breakClassName={"page-item"}
-        breakLinkClassName={"page-link"}
-        activeClassName={"active"}
-      /> */}
+          previousLabel={"قبلی"}
+          nextLabel={"بعدی"}
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination justify-content-center"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
+          activeClassName={"active"}
+        /> */}
       <ModalProduct lgShow={lgShow} setLgShow={setLgShow} id={currentId} />
     </>
   );

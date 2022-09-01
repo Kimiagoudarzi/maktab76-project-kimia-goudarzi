@@ -1,5 +1,5 @@
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ReactPaginate from "react-paginate";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
@@ -14,58 +14,56 @@ const Prices = () => {
   const [pageCount, setPageCount] = useState(0);
   const [newPrice, setNewPrice] = useState();
   const [newStock, setNewStock] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const handleChange = (e, setFn,id) => {
+  const handleChange = (e, setFn, id) => {
     console.log(id);
-    setCurrentId(id)
+    setCurrentId(id);
     setFn(e.target.value);
   };
   const saveEdit = (e, id) => {
     e.preventDefault();
-    try {
-      let entiresData = {
-        price: newPrice,
-        stock: newStock,
-      };
-      axios
-        .patch(`http://localhost:3002/products/${id}`, entiresData)
-        .then(() => {
-          setProduct((PrevState) => [...PrevState, entiresData]);
-        });
-    } catch (error) {
-      console.log("error!");
-    }
+    // try {
+    //   let entiresData = {
+    //     price: newPrice,
+    //     stock: newStock,
+    //   };
+    //   axios
+    //     .patch(`http://localhost:3002/products/${id}`, entiresData)
+    //     .then(() => {
+    //       setProduct((PrevState) => [...PrevState, entiresData]);
+    //       fetchComments(currentPage);
+    //     });
+    // } catch (error) {
+    //   console.log("error!");
+    // }
   };
 
   // pagination
-
   let limit = 15;
 
-  useEffect(() => {
-    const getComments = async () => {
+  const fetchComments = useCallback(
+    async (currentPage) => {
       const res = await fetch(
-        `http://localhost:3002/products?_page=1&_limit=${limit}`
+        `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
       );
       const data = await res.json();
       const total = res.headers.get("x-total-count");
       setPageCount(Math.ceil(total / limit));
-      setPosts(data);
-    };
-    getComments();
-  }, [limit]);
 
-  const fetchComments = async (currentPage) => {
-    const res = await fetch(
-      `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
-    );
-    const data = await res.json();
-    return data;
-  };
+      setPosts(data);
+      setCurrentPage(currentPage);
+    },
+    [limit]
+  );
+
+  useEffect(() => {
+    fetchComments(1);
+  }, [fetchComments]);
 
   const handlePageClick = async (data) => {
     let currentPage = data.selected + 1;
-    const commentsFormServer = await fetchComments(currentPage);
-    setPosts(commentsFormServer);
+    fetchComments(currentPage);
   };
 
   return (
@@ -74,7 +72,10 @@ const Prices = () => {
         <NavBar />
         <div className="d-flex mt-5">
           <h1 className="h1-admin-price">مدیریت موجودی و قیمت ها </h1>
-          <button className="btn-save-price" onClick={(e)=>saveEdit(e,currentId)}>
+          <button
+            className="btn-save-price"
+            onClick={(e) => saveEdit(e, currentId)}
+          >
             ذخیره
           </button>
         </div>
@@ -89,28 +90,27 @@ const Prices = () => {
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-              
               {posts.map((post) => {
-                const {id} = post;
-                return(
-                <tr>
-                  <th scope="row">{id}</th>
-                  <td>{post.name}</td>
-                  <td>
-                    <EditText
-                      defaultValue={post.price}
-                      onChange={(e) => handleChange(e, setNewPrice,id)}
-                    />
-                  </td>
-                  <td>
-                    <EditText
-                      defaultValue={post.stock}
-                      onChange={(e) => handleChange(e, setNewStock,id)}
-                    />
-                  </td>
-                </tr>
-                )
-                })}
+                const { id } = post;
+                return (
+                  <tr>
+                    <th scope="row">{id}</th>
+                    <td>{post.name}</td>
+                    <td>
+                      <EditText
+                        defaultValue={post.price}
+                        onChange={(e) => handleChange(e, setNewPrice, id)}
+                      />
+                    </td>
+                    <td>
+                      <EditText
+                        defaultValue={post.stock}
+                        onChange={(e) => handleChange(e, setNewStock, id)}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
             </MDBTableBody>
           </MDBTable>
         </div>

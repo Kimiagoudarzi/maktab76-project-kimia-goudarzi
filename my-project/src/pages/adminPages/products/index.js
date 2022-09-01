@@ -35,23 +35,24 @@ const ProductsAdmin = () => {
 
   // pagination
   let limit = 15;
-  
-  const fetchComments = useCallback(async (currentPage) => {
-    const res = await fetch(
-      `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
-    );
-    const data = await res.json();
-    const total = res.headers.get("x-total-count");
-    setPageCount(Math.ceil(total / limit));
-    
-    setPosts(data);
-    setCurrentPage(currentPage);
-  }, [limit]);
+
+  const fetchComments = useCallback(
+    async (currentPage) => {
+      const res = await fetch(
+        `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
+      );
+      const data = await res.json();
+      const total = res.headers.get("x-total-count");
+      setPageCount(Math.ceil(total / limit));
+      setPosts(data);
+      setCurrentPage(currentPage);
+    },
+    [limit]
+  );
 
   useEffect(() => {
     fetchComments(1);
   }, [fetchComments]);
-  console.log(posts);
 
   const handlePageClick = async (data) => {
     let currentPage = data.selected + 1;
@@ -146,6 +147,8 @@ const ProductsAdmin = () => {
         handleEditClose={handleEditClose}
         id={currentId}
         posts={posts}
+        fetchComments={fetchComments}
+        currentPage={currentPage}
       />
 
       {/* Modal Delete */}
@@ -153,6 +156,8 @@ const ProductsAdmin = () => {
         deleteShow={deleteShow}
         handleDeleteClose={handleDeleteClose}
         id={currentId}
+        fetchComments={fetchComments}
+        currentPage={currentPage}
       />
     </>
   );

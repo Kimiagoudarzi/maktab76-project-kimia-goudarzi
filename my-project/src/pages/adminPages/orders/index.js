@@ -1,7 +1,7 @@
-import React from "react";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import DeliveredOrdersModal from "./DeliveredOrdersModal";
+import ReactPaginate from "react-paginate";
 import axios from "axios";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
@@ -12,26 +12,53 @@ const Orders = () => {
   const [posts, setPosts] = useState([]);
   const [currentId, setCurrentId] = useState(null);
   const [currentPost, setCurrentPost] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
   const handleShow = (id) => {
-    const currentPosts = posts
-      .filter((post) => post.id === parseInt(id))
-      .map((item) => {
-        const {name, price, count} = item.products;
-        return name;
-      });
+    const currentPosts = posts.filter((post) => post.id === parseInt(id));
+
     console.log("current", currentPosts);
     setCurrentPost(currentPosts);
     setCurrentId(id);
     setShow(true);
   };
 
+   // pagination
+  //  let limit = 10;
+
+  //  const fetchComments = useCallback(
+  //    async (currentPage) => {
+  //      const res = await fetch(
+  //        `http://localhost:3002/orders?_page=${currentPage}&_limit=${limit}`
+  //      );
+  //      const data = await res.json();
+  //      const total = res.headers.get("x-total-count");
+  //      setPageCount(Math.ceil(total / limit));
+ 
+  //      setPosts(data);
+  //      setCurrentPage(currentPage);
+  //    },
+  //    [limit]
+  //  );
+ 
+  //  useEffect(() => {
+  //    fetchComments(1);
+  //  }, [fetchComments]);
+ 
+  //  const handlePageClick = async (data) => {
+  //    let currentPage = data.selected + 1;
+  //    fetchComments(currentPage);
+  //  };
+ 
+
   useEffect(() => {
     axios.get("http://localhost:3002/orders").then((res) => {
       setPosts(res.data);
+      
     });
   }, []);
 
@@ -40,19 +67,23 @@ const Orders = () => {
       .get("http://localhost:3002/orders?state=false&&state=true")
       .then((res) => {
         setPosts(res.data);
+      
       });
   };
   const handleWaiting = () => {
-    axios
-      .get("http://localhost:3002/orders?state=false")
-      .then((res) => setPosts(res.data));
+    axios.get("http://localhost:3002/orders?state=false").then((res) => {
+      setPosts(res.data);
+      
+    });
   };
   const handleDelivered = () => {
-    axios
-      .get("http://localhost:3002/orders?state=true")
-      .then((res) => setPosts(res.data));
+    axios.get("http://localhost:3002/orders?state=true").then((res) => {
+      setPosts(res.data);
+      
+    });
   };
 
+ 
   return (
     <>
       <div className="order-admin-container">
@@ -139,6 +170,22 @@ const Orders = () => {
             </MDBTableBody>
           </MDBTable>
         </div>
+        {/* <ReactPaginate
+          previousLabel={"قبلی"}
+          nextLabel={"بعدی"}
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination justify-content-center"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
+          activeClassName={"active"}
+        /> */}
         <img src={wave} alt="wave" className="img-admin" />
       </div>
 
@@ -146,9 +193,6 @@ const Orders = () => {
       <DeliveredOrdersModal
         show={show}
         handleClose={handleClose}
-        id={currentId}
-        handleWaiting={handleWaiting}
-        handleDelivered={handleDelivered}
         currentPost={currentPost}
       />
     </>

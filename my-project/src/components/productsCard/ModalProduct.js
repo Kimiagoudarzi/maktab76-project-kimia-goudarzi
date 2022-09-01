@@ -10,7 +10,6 @@ const ModalProduct = ({ setLgShow, lgShow, id }) => {
   const [counter, setCounter] = useState(0);
   const [product, setProduct] = useState();
 
-
   useEffect(() => {
     axios.get(`http://localhost:3002/products/${id}`).then((res) => {
       setProduct(res.data);
@@ -52,7 +51,7 @@ const ModalProduct = ({ setLgShow, lgShow, id }) => {
             <div>
               <Modal.Body id="example-modal-sizes-title-lg">
                 <img
-                  src={product?.image}
+                  src={`http://localhost:3002/files/${product?.image[0]}`}
                   alt="product-img"
                   className="img-modal"
                 />
