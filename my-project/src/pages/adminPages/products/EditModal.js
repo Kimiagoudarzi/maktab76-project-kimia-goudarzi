@@ -3,9 +3,10 @@ import Form from "react-bootstrap/Form";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Image from "react-bootstrap/Image";
+import { FaCamera } from "react-icons/fa";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
+import "./table.css";
 
 const EditModal = ({
   handleEditClose,
@@ -112,16 +113,12 @@ const EditModal = ({
                   rounded
                 /> */}
                  <div>
-                  <Button
+                 <button
                     onClick={handleImage}
-                    style={{
-                      marginTop: "1rem",
-                      backgroundColor: "#C065BC",
-                      border: "none",
-                    }}
+                    className="btn-camera"
                   >
-                    آپلود
-                  </Button>
+                    <FaCamera/>
+                  </button>
                 </div>
               </Form.Group>
             </div>

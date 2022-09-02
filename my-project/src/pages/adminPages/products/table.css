@@ -93,3 +93,13 @@
 .text-editor {
   margin-top: 40px;
 }
+.btn-camera{
+  margin-top: 1rem;
+  background-color: #C065BC;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  margin-right : 0.2rem;
+  padding: 7px 20px 7px 20px; 
+
+}
