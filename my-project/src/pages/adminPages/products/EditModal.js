@@ -178,10 +178,10 @@ const EditModal = ({
                 onChange={(e) => handleCategoryChange(e)}
               >
                 <option>دسته بندی را انتخاب کنید</option>
-                <option value="1">لوازم آرایشی</option>
-                <option value="2">مراقب پوستی</option>
-                <option value="3">مراقبت مو</option>
-                <option value="4">عطر و ادکلن</option>
+                <option value="لوازم آرایشی">لوازم آرایشی</option>
+                <option value="مراقبت پوستی">مراقب پوستی</option>
+                <option value="مراقبت مو">مراقبت مو</option>
+                <option value="عطر و ادکلن">عطر و ادکلن</option>
               </Form.Select>
             </div>
             <div className="text-editor">

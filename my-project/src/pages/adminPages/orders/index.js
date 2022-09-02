@@ -26,34 +26,6 @@ const Orders = () => {
     setShow(true);
   };
 
-   // pagination
-  //  let limit = 10;
-
-  //  const fetchComments = useCallback(
-  //    async (currentPage) => {
-  //      const res = await fetch(
-  //        `http://localhost:3002/orders?_page=${currentPage}&_limit=${limit}`
-  //      );
-  //      const data = await res.json();
-  //      const total = res.headers.get("x-total-count");
-  //      setPageCount(Math.ceil(total / limit));
- 
-  //      setPosts(data);
-  //      setCurrentPage(currentPage);
-  //    },
-  //    [limit]
-  //  );
- 
-  //  useEffect(() => {
-  //    fetchComments(1);
-  //  }, [fetchComments]);
- 
-  //  const handlePageClick = async (data) => {
-  //    let currentPage = data.selected + 1;
-  //    fetchComments(currentPage);
-  //  };
- 
-
   useEffect(() => {
     axios.get("http://localhost:3002/orders").then((res) => {
       setPosts(res.data);

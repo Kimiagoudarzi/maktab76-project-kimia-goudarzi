@@ -8,7 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./table.css";
 
-const AddModal = ({ handleAddClose, addShow, fetchComments ,currentPage}) => {
+const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
   // const [product, setProduct] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -16,21 +16,20 @@ const AddModal = ({ handleAddClose, addShow, fetchComments ,currentPage}) => {
   const [Grouping, setGrouping] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
-  const [files, setFiles] = useState(null)
+  const [files, setFiles] = useState(null);
 
- 
   const handleFile = (e) => {
-    setFiles( e.target.files[0])  
+    setFiles(e.target.files[0]);
   };
 
   // postImage
   const handleImage = () => {
     const formData = new FormData();
-    
-    formData.append('image',files, files.name)
+
+    formData.append("image", files, files.name);
     console.log(formData);
     axios
-      .post(`http://localhost:3002/upload`, formData )
+      .post(`http://localhost:3002/upload`, formData)
       .then((res) => {
         setImage([res.data.filename]);
         console.log(res);
@@ -60,6 +59,12 @@ const AddModal = ({ handleAddClose, addShow, fetchComments ,currentPage}) => {
     } catch (error) {
       console.log("error!");
     }
+    setName("");
+    setPrice("");
+    setImage("");
+    setCount("");
+    setGrouping("");
+    setDescription("");
   };
 
   return (
@@ -87,10 +92,11 @@ const AddModal = ({ handleAddClose, addShow, fetchComments ,currentPage}) => {
                 /> */}
                 <div>
                   <button
+                    type="button"
                     onClick={handleImage}
                     className="btn-camera"
                   >
-                    <FaCamera/>
+                    <FaCamera />
                   </button>
                 </div>
               </Form.Group>

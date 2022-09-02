@@ -9,7 +9,6 @@ import { EditText } from "react-edit-text";
 
 const Prices = () => {
   const [posts, setPosts] = useState([]);
-  const [product, setProduct] = useState([]);
   const [currentId, setCurrentId] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [newPrice, setNewPrice] = useState([]);
