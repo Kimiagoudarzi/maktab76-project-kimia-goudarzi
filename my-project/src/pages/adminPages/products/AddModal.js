@@ -52,7 +52,6 @@ const AddModal = ({ handleAddClose, addShow, fetchComments ,currentPage}) => {
         description: description,
       };
       axios.post(`http://localhost:3002/products`, entiresData).then(() => {
-        // (PrevState) => [...PrevState, entiresData]
         console.log("entiresData", entiresData);
         fetchComments(currentPage);
         handleAddClose();
@@ -94,7 +93,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments ,currentPage}) => {
                       border: "none",
                     }}
                   >
-                    Upload
+                    آپلود
                   </Button>
                 </div>
               </Form.Group>

@@ -6,6 +6,7 @@ import "./tableorder.css";
 
 const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
   const [order, setOrder] = useState(currentPost[0]);
+  // console.log("*",currentPost[0].products)
 
   return (
     <>
@@ -44,13 +45,13 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
                 </tr>
               </thead>
               <tbody>
-                
-                  {/* <tr>
-                    <td>{product.name}</td>
-                    <td>{product.price}</td>
-                    <td>{product.stock}</td>
-                  </tr>; */}
-             
+                {currentPost.length > 0 ?
+                  <tr>
+                    <td>{currentPost[0].products.name}</td>
+                    <td>{currentPost[0].products.price}</td>
+                    <td>{currentPost[0].products.count}</td>
+                  </tr>
+            : null }
               </tbody>
             </Table>
           </form>

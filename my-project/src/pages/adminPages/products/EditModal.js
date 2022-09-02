@@ -120,7 +120,7 @@ const EditModal = ({
                       border: "none",
                     }}
                   >
-                    Upload
+                    آپلود
                   </Button>
                 </div>
               </Form.Group>

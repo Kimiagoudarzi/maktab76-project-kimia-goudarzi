@@ -20,7 +20,6 @@ const Orders = () => {
 
   const handleShow = (id) => {
     const currentPosts = posts.filter((post) => post.id === parseInt(id));
-
     console.log("current", currentPosts);
     setCurrentPost(currentPosts);
     setCurrentId(id);

@@ -12,31 +12,71 @@ const Prices = () => {
   const [product, setProduct] = useState([]);
   const [currentId, setCurrentId] = useState(null);
   const [pageCount, setPageCount] = useState(0);
-  const [newPrice, setNewPrice] = useState();
-  const [newStock, setNewStock] = useState();
+  const [newPrice, setNewPrice] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleChange = (e, setFn, id) => {
-    console.log(id);
-    setCurrentId(id);
-    setFn(e.target.value);
+  // price
+  const handleChange = (e, id) => {
+    const idx = posts.findIndex((item) => item.id === id);
+    const newPost = [...posts];
+    newPost[idx].price = e.target.value;
+    setPosts(newPost);
+    const newPriceList = [...newPrice];
+    const newIdx = newPrice.findIndex((item) => item.id === id);
+    if (newIdx === -1) {
+      const newObject = {
+        id: id,
+        newValPrice: e.target.value,
+        newValStock: newPost[idx].stock,
+      };
+      newPriceList.push(newObject);
+    } else {
+      newPriceList[newIdx].newValPrice = e.target.value;
+    }
+
+    setNewPrice(newPriceList);
   };
-  const saveEdit = (e, id) => {
+  // Stock
+  const handleChangeStock = (e, id) => {
+    const idx = posts.findIndex((item) => item.id === id);
+    const newPost = [...posts];
+    newPost[idx].stock = e.target.value;
+    setPosts(newPost);
+    const newStockList = [...newPrice];
+    const newIdx = newPrice.findIndex((item) => item.id === id);
+    if (newIdx === -1) {
+      const newObject = {
+        id: id,
+        newValPrice: newPost[idx].price,
+        newValStock: e.target.value,
+      };
+      newStockList.push(newObject);
+    } else {
+      newStockList[newIdx].newValStock = e.target.value;
+    }
+
+    setNewPrice(newStockList);
+  };
+
+  const saveEdit = (e) => {
     e.preventDefault();
-    // try {
-    //   let entiresData = {
-    //     price: newPrice,
-    //     stock: newStock,
-    //   };
-    //   axios
-    //     .patch(`http://localhost:3002/products/${id}`, entiresData)
-    //     .then(() => {
-    //       setProduct((PrevState) => [...PrevState, entiresData]);
-    //       fetchComments(currentPage);
-    //     });
-    // } catch (error) {
-    //   console.log("error!");
-    // }
+    console.log(newPrice);
+    newPrice.forEach( element => {
+      try {
+      let entiresData = {
+        price: element.newValPrice,
+        stock: element.newValStock,
+      };
+      axios
+        .patch(`http://localhost:3002/products/${element.id}`, entiresData)
+        .then(() => {
+          fetchComments(currentPage);
+        });
+    } catch (error) {
+      console.log("error!");
+    }
+    });
+    
   };
 
   // pagination
@@ -98,14 +138,14 @@ const Prices = () => {
                     <td>{post.name}</td>
                     <td>
                       <EditText
-                        defaultValue={post.price}
-                        onChange={(e) => handleChange(e, setNewPrice, id)}
+                        value={post.price}
+                        onChange={(e) => handleChange(e, id)}
                       />
                     </td>
                     <td>
                       <EditText
-                        defaultValue={post.stock}
-                        onChange={(e) => handleChange(e, setNewStock, id)}
+                        value={post.stock}
+                        onChange={(e) => handleChangeStock(e, id)}
                       />
                     </td>
                   </tr>
