@@ -6,7 +6,7 @@ import "./tableorder.css";
 
 const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
   const [order, setOrder] = useState(currentPost[0]);
-  // console.log("*",currentPost[0].products)
+  console.log("*",currentPost.products)
 
   return (
     <>

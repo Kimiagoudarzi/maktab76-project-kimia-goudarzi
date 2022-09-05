@@ -11,7 +11,7 @@ const DeleteModal = ({ deleteShow, handleDeleteClose,id,fetchComments ,currentPa
    axios.delete(`http://localhost:3002/products/${id}`)
     .then((res)=>{
        setDeleteState(res.data)
-       fetchComments(currentPage);
+       fetchComments();
        handleDeleteClose()
     }).catch((err) => {
       console.log("err", err);

@@ -27,9 +27,9 @@ const EditModal = ({
   const [files, setFiles] = useState(null)
 
   const handleCategoryChange = (e) => {
-    // console.log("e", e.target.value);
-    // setGrouping(e.target.value);
-    // console.log(Grouping);
+    console.log("e", e.target.value);
+    setGrouping(e.target.value);
+    console.log(Grouping);
   };
 
   const handleFile = (e) => {
@@ -107,11 +107,6 @@ const EditModal = ({
                   name="file_upload"
                   onChange={handleFile}
                 />
-                {/* <Image
-                  src={image}
-                  style={{ width: "100px", marginTop: "0.5rem" }}
-                  rounded
-                /> */}
                  <div>
                  <button
                     onClick={handleImage}
@@ -174,7 +169,7 @@ const EditModal = ({
                 aria-label="Default select example"
                 className="products-select"
                 name="Grouping"
-                Value={Grouping}
+                value={Grouping}
                 onChange={(e) => handleCategoryChange(e)}
               >
                 <option>دسته بندی را انتخاب کنید</option>
