@@ -130,7 +130,11 @@ const ProductsAdmin = () => {
           breakLinkClassName={"page-link"}
           activeClassName={"active"}
         />
-        <img src={wave} alt="wave" className="img-admin" />
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
       </div>
 
       {/* Modal Add */}

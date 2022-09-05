@@ -59,34 +59,48 @@ const AboutProduct = () => {
             </div>
             <div className="d-flex about-button">
               {product?.stock ? (
-                <Link to="/cart">
-                  <Button variant="secondary" className="btn-add-about">
+                <>
+                  <Link to="/cart">
+                    <Button variant="secondary" className="btn-add-about">
+                      افزودن به سبد خرید
+                      <BsBagDash
+                        style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
+                      />
+                    </Button>
+                  </Link>
+                  <div className="btn-counter-main-about">
+                    <button className="btn-counter-about" onClick={increase}>
+                      +
+                    </button>
+                    <span className="counter__output">{counter}</span>
+                    <button className="btn-counter-about" onClick={decrease}>
+                      -
+                    </button>
+                  </div>
+                  <div className="icon-heart-main">
+                    <FaRegHeart className="icon-heart-about" />
+                  </div>
+                </>
+              ) : (
+                <div className="d-flex">
+                  <Button
+                    variant="secondary"
+                    className="btn-add-about"
+                    disabled
+                  >
                     افزودن به سبد خرید
                     <BsBagDash
                       style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
                     />
                   </Button>
-                </Link>
-              ) : (
-                <Button variant="secondary" className="btn-add-about" disabled>
-                  افزودن به سبد خرید
-                  <BsBagDash
-                    style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
-                  />
-                </Button>
+                  <div style={{ marginTop: "0.5rem",marginLeft: "12rem", color: "red" }}>
+                    <p>این کالا در حال حاضر در انبار موجود نیست</p>
+                  </div>
+                  <div className="icon-heart-main">
+                    <FaRegHeart className="icon-heart-about" />
+                  </div>
+                </div>
               )}
-              <div className="btn-counter-main-about">
-                <button className="btn-counter-about" onClick={increase}>
-                  +
-                </button>
-                <span className="counter__output">{counter}</span>
-                <button className="btn-counter-about" onClick={decrease}>
-                  -
-                </button>
-              </div>
-              <div className="icon-heart-main">
-                <FaRegHeart className="icon-heart-about" />
-              </div>
             </div>
             <hr />
             <div className="icons-about-footer">

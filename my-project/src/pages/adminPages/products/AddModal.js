@@ -1,10 +1,12 @@
 import Form from "react-bootstrap/Form";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FaCamera } from "react-icons/fa";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { useState } from "react";
+// import ToastContainer from 'react-bootstrap/ToastContainer';
+// import Toast from "react-bootstrap/Toast";
 import axios from "axios";
 import "./table.css";
 
@@ -17,6 +19,9 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [files, setFiles] = useState(null);
+  const [showA, setShowA] = useState(false);
+  const toggleShowA = () => setShowA(!showA);
+  
 
   const handleFile = (e) => {
     setFiles(e.target.files[0]);
@@ -85,11 +90,6 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
                   name="file_upload"
                   onChange={handleFile}
                 />
-                {/* <Image
-                  src={image}
-                  style={{ width: "100px", marginTop: "0.5rem" }}
-                  rounded
-                /> */}
                 <div>
                   <button
                     type="button"
@@ -181,14 +181,23 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
             <div className="products-btns">
               <Button onClick={handleAddClose} className="products-enseraf">
                 انصراف
-              </Button>
-              <Button className="products-add" type="submit">
+              </Button> 
+              <Button className="products-add" type="submit" onClick={toggleShowA}>
                 افزودن
               </Button>
             </div>
           </form>
         </Modal.Body>
       </Modal>
+
+      {/* Toast */}
+      {/* <ToastContainer position="bottom-start" style={{marginLeft: "1rem"}}>
+      <Toast className="bg-success" onClose={toggleShowA} show={showA} animation={false}>
+        <Toast.Header>
+        </Toast.Header>
+        <Toast.Body style={{fontSize: "1.1rem"}}>کالا با موفقیت اضافه شد</Toast.Body>
+      </Toast>
+      </ToastContainer> */}
     </>
   );
 };
