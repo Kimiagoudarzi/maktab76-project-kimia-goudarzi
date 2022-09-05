@@ -5,7 +5,6 @@ import esens from "assets/images/essenceee.webp";
 import prime from "assets/images/primelogo.webp";
 import lafarer from "assets/images/lafarrerrlogo.webp";
 import Table from "react-bootstrap/Table";
-import backGround from "assets/images/cool-background.png"
 import { BsStars } from "react-icons/bs";
 import "./favBrand.css";
 
