@@ -29,7 +29,7 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
               </div>
               <div className="orders-modal-item">
                 <p className="orders-modal-title">زمان تحویل : </p>
-                <p>12</p>
+                <p>{currentPost[0]?.deliveryTime}</p>
               </div>
               <div className="orders-modal-item">
                 <p className="orders-modal-title">زمان سفارش : </p>
