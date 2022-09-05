@@ -55,7 +55,6 @@ const EditModal = ({
 
 
   //  fetchGetData
-
   useEffect(() => {
     axios.get(`http://localhost:3002/products/${id}`).then((res) => {
       setName(res.data.name);
