@@ -1,0 +1,26 @@
+.delete-cart-icon {
+  font-size: 24px;
+  color: #E85A6A;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+.nahyii-cart{
+    border: none;
+    background-color: #E85A6A;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: -10rem;
+}
+.text-price-cart{
+    font-size: 26px;
+    margin-right: -9rem;
+
+}
+.table-main-cart{
+    margin: 3rem 18rem;
+}
