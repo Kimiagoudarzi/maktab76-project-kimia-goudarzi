@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { BsBagDash } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
-// import SweetAlert from 'react-bootstrap-sweetalert';
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
@@ -23,11 +22,6 @@ const ModalProduct = ({ setLgShow, lgShow, id }) => {
       setCounter((count) => count + 1);
     } else {
       setCounter(counter);
-      // return (
-      //   <SweetAlert success title="Woot!" onConfirm={this.hideAlert}>
-      //     I did it!
-      //   </SweetAlert>
-      // );
     }
   };
 

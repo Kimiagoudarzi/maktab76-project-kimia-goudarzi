@@ -11,7 +11,6 @@ import axios from "axios";
 import "./table.css";
 
 const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
-  // const [product, setProduct] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [count, setCount] = useState("");

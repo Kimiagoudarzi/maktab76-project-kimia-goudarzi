@@ -6,7 +6,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import ModalProduct from "./ModalProduct";
+import ModalProduct from "./ModalProduct"; 
+
 import "./card.css";
 
 const ProductsCard = () => {
@@ -26,6 +27,7 @@ const ProductsCard = () => {
   }, [dispatch]);
 
   return (
+   
     <>
       <div className="card-group-main">
         <Row xs={1} md={3} className="g-4">
@@ -62,6 +64,7 @@ const ProductsCard = () => {
           ))}
         </Row>
       </div>
+      <Card/>
       <ModalProduct lgShow={lgShow} setLgShow={setLgShow} id={currentId} />
     </>
   );

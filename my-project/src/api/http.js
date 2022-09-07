@@ -8,7 +8,7 @@ let store;
 export const injectStore = (_store) => {
   store = _store;
 };
-const instance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: URL,
   headers: {
     "content-type": "application/json",
@@ -17,7 +17,7 @@ const instance = axios.create({
 
 axios.defaults.baseURL = BASE_URL;
 
-axios.interceptors.request.use((req) => {
+axiosInstance.interceptors.request.use((req) => {
   if (req.url === REFRESH_TOKEN_URL) {
     const token = localStorage.getItem(REFRESH_TOKEN);
     req.headers.refreshToken = token;
@@ -28,7 +28,7 @@ axios.interceptors.request.use((req) => {
   return req;
 });
 
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response.status !== 401) {

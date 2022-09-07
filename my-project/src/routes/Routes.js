@@ -14,6 +14,7 @@ import Prices from "pages/adminPages/prices";
 import Orders from "pages/adminPages/orders";
 import PrivateRoute from "./privetRout";
 import Finalize from "pages/cart/finalize/index";
+import Payment from "pages/payment/index";
  
 
 const AppRoutes = () => {
@@ -27,6 +28,7 @@ const AppRoutes = () => {
         <Route path="/skin" element={<Skin />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/cart/finalize" element={<Finalize/>}/>
+        <Route path="/payment" element={<Payment/>}/>
         <Route path="/loginForm" element={<Login />} />
         <Route >
         <Route path="/loginForm/products" element={ <PrivateRoute><Products /></PrivateRoute>} />

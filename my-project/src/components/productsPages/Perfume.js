@@ -1,6 +1,6 @@
 import Footer from 'layout/userLayoute/footer/index';
 import NavBar from 'layout/userLayoute/navbar/index';
-import Card from '../productsCard/PerfumeProducts';
+import Card from '../productsCard/Card';
 
 
 const Perfume = () => {
@@ -10,7 +10,7 @@ const Perfume = () => {
         <br />
         <br />
         <br />
-        <Card/>
+        <Card categoryId={"1"}/>
       <Footer />
     </>
   )

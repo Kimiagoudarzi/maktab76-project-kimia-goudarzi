@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "redux/features/ProductCosmetic";
-import { Link } from "react-router-dom";
 import ModalProduct from "./ModalProduct";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -12,14 +12,14 @@ import "./card.css";
 const ProductsCard = () => {
   const [lgShow, setLgShow] = useState(false);
   const [currentId, setCurrentId] = useState(null);
+  const dispatch = useDispatch();
 
   const handleShow = (id) => {
     setCurrentId(id);
     setLgShow(true);
   };
 
-  // fetch
-  const dispatch = useDispatch();
+  // fetchCosmetic
   const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
