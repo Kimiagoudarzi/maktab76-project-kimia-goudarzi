@@ -8,7 +8,7 @@ import "./style.css";
 
 const HomePishNahad = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
+  const productsHome = useSelector((state) => state.productsHome.productsHome);
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -24,7 +24,7 @@ const HomePishNahad = () => {
             </p>
           </Link>
         </div>
-        {products.map((item) => (
+        {productsHome.map((item) => (
           <Link to={`/${item.id}`}>
             <div className="off1">
               <img src={item.image

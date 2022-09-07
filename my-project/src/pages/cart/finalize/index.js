@@ -5,7 +5,7 @@ const finalize = () => {
   return (
     <>
       <div className="payment-div">
-        <Link to="/payment">
+        <Link to="/wrongResult">
           <button className="payment-btn">پرداخت</button>
         </Link>
       </div>

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  products: [],
+  productsHome: [],
   loading: false,
   error: "error",
 };
@@ -20,8 +20,8 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-export const HomeProducts = createSlice({
-  name: "products",
+export const ProductsHome = createSlice({
+  name: "productsHome",
   initialState,
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state, action) => {
@@ -29,7 +29,7 @@ export const HomeProducts = createSlice({
     });
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.loading = false;
-      state.products = action.payload;
+      state.productsHome = action.payload;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.loading = false;
@@ -37,4 +37,4 @@ export const HomeProducts = createSlice({
     });
   },
 });
-export default HomeProducts.reducer;
+export default ProductsHome.reducer;

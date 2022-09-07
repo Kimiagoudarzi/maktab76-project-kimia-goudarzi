@@ -7,11 +7,11 @@ const initialState = {
   error: "error",
 };
 export const fetchProductsCard = createAsyncThunk(
-  "products/fetchProductsCard",
+  "productSlice/fetchProductsCard",
   async () => {
     try {
-      const response = await axios.get("http://localhost:3002/products");
-      return response.data;
+      const res = await axios.get("http://localhost:3002/products");
+      return res.data;
     } catch (error) {
       return Promise.reject(error);
     }
@@ -31,8 +31,8 @@ const ProductsSlice = createSlice({
       state.products = action.payload;
     },
     [fetchProductsCard.rejected]: (state, action) => {
-      state.loading = true;
-      state.error = action.payload;
+      state.loading = false;
+      state.error = "something went wrong..";
     },
   },
 });

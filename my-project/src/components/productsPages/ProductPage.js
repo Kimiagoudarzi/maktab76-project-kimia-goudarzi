@@ -25,7 +25,7 @@ const ProductPage = () => {
         `http://localhost:3002/products?category=${id}`
       );
       setProduct(res.data);
-      console.log("data", res.data);
+  
     };
     fetchProducts();
   }, [id]);

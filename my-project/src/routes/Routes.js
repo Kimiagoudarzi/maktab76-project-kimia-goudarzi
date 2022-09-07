@@ -10,8 +10,9 @@ import Prices from "pages/adminPages/prices";
 import Orders from "pages/adminPages/orders";
 import PrivateRoute from "./privetRout";
 import Finalize from "pages/cart/finalize/index";
-import Payment from "pages/payment/index";
 import { ProductPage } from "components/productsPages/ProductPage";
+import Result from "pages/result/Result";
+import WrongResult from "pages/result/WrongResult";
 
 const AppRoutes = () => {
   return (
@@ -21,7 +22,8 @@ const AppRoutes = () => {
         <Route path="/category/:id" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/cart/finalize" element={<Finalize />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/result" element={<Result/>}/>
+        <Route path="/wrongResult" element={<WrongResult/>}/>
         <Route path="/loginForm" element={<Login />} />
         <Route>
           <Route

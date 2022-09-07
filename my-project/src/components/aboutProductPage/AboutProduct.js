@@ -11,11 +11,23 @@ import Footer from "layout/userLayoute/footer/index";
 import NavBar from "layout/userLayoute/navbar/index";
 import "./aboutProduct.css";
 import axios from "axios";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "redux/features/cart/CartSlice";
+import { useNavigate } from "react-router-dom";
 
-const AboutProduct = () => {
+const AboutProduct = ({productSlice}) => {
   const [counter, setCounter] = useState(0);
   const [product, setProduct] = useState({});
   const { id } = useParams();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToCart = useCallback((productSlice) => {
+    dispatch(addToCart(productSlice));
+    navigate("/cart");
+  }, []);
 
   // fetch
   useEffect(() => {
@@ -60,14 +72,14 @@ const AboutProduct = () => {
             <div className="d-flex about-button">
               {product?.stock ? (
                 <>
-                  <Link to="/cart">
-                    <Button variant="secondary" className="btn-add-about">
+                 
+                    <Button variant="secondary" className="btn-add-about" onClick={() => handleAddToCart(productSlice)}>
                       افزودن به سبد خرید
                       <BsBagDash
                         style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
                       />
                     </Button>
-                  </Link>
+                
                   <div className="btn-counter-main-about">
                     <button className="btn-counter-about" onClick={increase}>
                       +
