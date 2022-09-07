@@ -50,7 +50,7 @@ const ModalProduct = ({ setLgShow, lgShow, id }) => {
                   className="img-modal"
                 />
               </Modal.Body>
-              <Modal.Body>{product?.price}</Modal.Body>
+              <Modal.Body>{product?.price} تومان</Modal.Body>
             </div>
           </Modal.Body>
 

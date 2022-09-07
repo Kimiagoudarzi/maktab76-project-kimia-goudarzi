@@ -1,5 +1,5 @@
 .btn-check-card{
-    margin-right: 18rem;
+    margin-right: 15rem;
     margin-top: 1rem;
     background-color: #fd2c7a;
     border: none;
@@ -9,8 +9,9 @@
     margin-right: 7rem;
 }
 .main-card{
-    width: 22rem;
-    height: 38.9rem;
+    width: 26rem;
+    height: 35.9rem;
+    display: flex;
 }
 /* modal */
 .img-modal{

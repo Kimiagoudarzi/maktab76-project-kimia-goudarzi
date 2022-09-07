@@ -90,22 +90,22 @@ const NavBar = () => {
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
                     <Nav.Link>
-                      <NavLink to="/cosmetic" style={navLinkStyle}>
+                      <NavLink to="/category/1" style={navLinkStyle}>
                         لوازم آرایشی
                       </NavLink>
                     </Nav.Link>
                     <Nav.Link>
-                      <NavLink to="/skin" style={navLinkStyle}>
+                      <NavLink to="/category/2" style={navLinkStyle}>
                         پوست
                       </NavLink>
                     </Nav.Link>
                     <Nav.Link>
-                      <NavLink to="/hair" style={navLinkStyle}>
+                      <NavLink to="/category/3" style={navLinkStyle}>
                         مو
                       </NavLink>
                     </Nav.Link>
                     <Nav.Link>
-                      <NavLink to="/perfume" style={navLinkStyle}>
+                      <NavLink to="/category/4" style={navLinkStyle}>
                         عطر و ادکلن
                       </NavLink>
                     </Nav.Link>
