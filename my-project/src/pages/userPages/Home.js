@@ -18,9 +18,9 @@ const Home = () => {
       <NavBar />
       <HomeSlider />
       <HomeBrand/>
-      <TableProduct/>
-      <HomeCard />
       <HomePishNahad/>
+      <HomeCard />
+      <TableProduct/>
       <ProductStar/>
       <div style={{ marginTop: "60px", marginBottom: "4rem" }}>
         <a

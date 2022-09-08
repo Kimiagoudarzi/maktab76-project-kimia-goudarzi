@@ -20,11 +20,11 @@ import argan from "assets/images/home image card/argan.png";
 
 const tableProducts = () => {
   return (
-    <div style={{ marginBottom: "8rem" }}>
+    <div style={{ marginBottom: "4rem" }}>
       <div
         style={{
           width: "1295px",
-          backgroundColor: "#941B80",
+          backgroundColor: "#F9AEB3",
           marginRight: "310px",
           marginTop: "80px",
           borderRadius: "10px",
@@ -65,7 +65,7 @@ const tableProducts = () => {
           src={pic1}
           style={{
             position: "absolute",
-            width: "170px",
+            width: "180px",
             marginTop: "120px",
             marginRight: "90px",
           }}
@@ -75,9 +75,9 @@ const tableProducts = () => {
           src={pic2}
           style={{
             position: "absolute",
-            width: "220px",
+            width: "240px",
             marginTop: "250px",
-            marginRight: "50px",
+            marginRight: "45px",
           }}
           alt="picture1"
         />
@@ -98,19 +98,19 @@ const tableProducts = () => {
               style={{
                 color: "#941B80",
                 marginRight: "30px",
-                fontSize: "25px",
+                fontSize: "28px",
               }}
             />
             <span
               style={{
                 marginRight: "10px",
-                fontSize: "17px",
+                fontSize: "19px",
               }}
             >
               هدیه نقدی
             </span>
             <Link to="/perfume" style={{textDecoration: "none"}}>
-              <p style={{ marginRight: "200px", color: "#941B80" }}>
+              <p style={{ marginRight: "190px", color: "#941B80", fontSize: "17px" }}>
                 مشاهده همه
                 <IoIosArrowBack />
               </p>
@@ -121,7 +121,7 @@ const tableProducts = () => {
               <img
                 src={miss}
                 style={{
-                  width: "95px",
+                  width: "105px",
                   marginRight: "40px",
                   marginTop: "10px",
                 }}
@@ -132,8 +132,8 @@ const tableProducts = () => {
               <img
                 src={consiler}
                 style={{
-                  width: "105px",
-                  marginRight: "50px",
+                  width: "115px",
+                  marginRight: "30px",
                   marginTop: "12px",
                 }}
                 alt="picture1"
@@ -143,8 +143,8 @@ const tableProducts = () => {
               <img
                 src={bodySplash}
                 style={{
-                  width: "105px",
-                  marginRight: "40px",
+                  width: "115px",
+                  marginRight: "25px",
                   marginTop: "12px",
                 }}
                 alt="picture1"
@@ -156,9 +156,9 @@ const tableProducts = () => {
               <img
                 src={sweet}
                 style={{
-                  width: "105px",
-                  marginRight: "35px",
-                  marginTop: "40px",
+                  width: "115px",
+                  marginRight: "30px",
+                  marginTop: "20px",
                 }}
                 alt="picture1"
               />
@@ -167,9 +167,9 @@ const tableProducts = () => {
               <img
                 src={palet}
                 style={{
-                  width: "90px",
-                  marginRight: "40px",
-                  marginTop: "45px",
+                  width: "100px",
+                  marginRight: "30px",
+                  marginTop: "40px",
                 }}
                 alt="picture1"
               />
@@ -178,9 +178,9 @@ const tableProducts = () => {
               <img
                 src={coco}
                 style={{
-                  width: "105px",
-                  marginRight: "40px",
-                  marginTop: "40px",
+                  width: "115px",
+                  marginRight: "30px",
+                  marginTop: "30px",
                 }}
                 alt="picture1"
               />
@@ -204,19 +204,19 @@ const tableProducts = () => {
               style={{
                 color: "#941B80",
                 marginRight: "30px",
-                fontSize: "25px",
+                fontSize: "28px",
               }}
             />
             <span
               style={{
                 marginRight: "5px",
-                fontSize: "17px",
+                fontSize: "19px",
               }}
             >
               ارسال فوری
             </span>
             <Link to="/cosmetic" style={{textDecoration: "none"}}>
-            <p style={{ marginRight: "200px", color: "#941B80" }}>
+            <p style={{ marginRight: "190px", color: "#941B80", fontSize: "17px" }}>
               مشاهده همه <IoIosArrowBack />
             </p>
             </Link>
@@ -226,8 +226,8 @@ const tableProducts = () => {
               <img
                 src={mac}
                 style={{
-                  width: "90px",
-                  marginRight: "40px",
+                  width: "100px",
+                  marginRight: "30px",
                   marginTop: "12px",
                 }}
                 alt="picture1"
@@ -237,9 +237,9 @@ const tableProducts = () => {
               <img
                 src={toner}
                 style={{
-                  width: "105px",
-                  marginRight: "40px",
-                  marginTop: "12px",
+                  width: "115px",
+                  marginRight: "30px",
+                  marginTop: "9px",
                 }}
                 alt="picture1"
               />
@@ -248,8 +248,8 @@ const tableProducts = () => {
               <img
                 src={dior}
                 style={{
-                  width: "105px",
-                  marginRight: "30px",
+                  width: "115px",
+                  marginRight: "20px",
                   marginTop: "5px",
                 }}
                 alt="picture1"
@@ -261,9 +261,9 @@ const tableProducts = () => {
               <img
                 src={argan}
                 style={{
-                  width: "105px",
-                  marginRight: "40px",
-                  marginTop: "30px",
+                  width: "120px",
+                  marginRight: "30px",
+                  marginTop: "15px",
                 }}
                 alt="picture1"
               />
@@ -272,9 +272,9 @@ const tableProducts = () => {
               <img
                 src={prim}
                 style={{
-                  width: "95px",
-                  marginRight: "30px",
-                  marginTop: "30px",
+                  width: "105px",
+                  marginRight: "20px",
+                  marginTop: "20px",
                 }}
                 alt="picture1"
               />
@@ -283,8 +283,8 @@ const tableProducts = () => {
               <img
                 src={poder}
                 style={{
-                  width: "100px",
-                  marginRight: "30px",
+                  width: "110px",
+                  marginRight: "20px",
                   marginTop: "30px",
                 }}
                 alt="picture1"

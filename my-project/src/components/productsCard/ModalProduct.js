@@ -12,7 +12,6 @@ const ModalProduct = ({ setLgShow, lgShow, id }) => {
   useEffect(() => {
     axios.get(`http://localhost:3002/products/${id}`).then((res) => {
       setProduct(res.data);
-
     });
   }, [id]);
 

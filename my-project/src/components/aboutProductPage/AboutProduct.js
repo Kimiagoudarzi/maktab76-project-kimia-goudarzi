@@ -1,22 +1,19 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState,  useCallback  } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { BsBagDash } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaCreditCard } from "react-icons/fa";
 import { FaRegGem } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "redux/features/cart/CartSlice";
 import Button from "react-bootstrap/Button";
 import Footer from "layout/userLayoute/footer/index";
 import NavBar from "layout/userLayoute/navbar/index";
 import "./aboutProduct.css";
 import axios from "axios";
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "redux/features/cart/CartSlice";
-import { useNavigate } from "react-router-dom";
 
-const AboutProduct = ({productSlice}) => {
+const AboutProduct = ({ productSlice }) => {
   const [counter, setCounter] = useState(0);
   const [product, setProduct] = useState({});
   const { id } = useParams();
@@ -24,10 +21,13 @@ const AboutProduct = ({productSlice}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleAddToCart = useCallback((productSlice) => {
-    dispatch(addToCart(productSlice));
-    navigate("/cart");
-  }, []);
+  const handleAddToCart = useCallback(
+    (data) => {
+      dispatch(addToCart(data));
+      navigate("/cart");
+    },
+    [dispatch, navigate]
+  );
 
   // fetch
   useEffect(() => {
@@ -72,14 +72,17 @@ const AboutProduct = ({productSlice}) => {
             <div className="d-flex about-button">
               {product?.stock ? (
                 <>
-                 
-                    <Button variant="secondary" className="btn-add-about" onClick={() => handleAddToCart(productSlice)}>
-                      افزودن به سبد خرید
-                      <BsBagDash
-                        style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
-                      />
-                    </Button>
-                
+                  <Button
+                    variant="secondary"
+                    className="btn-add-about"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    افزودن به سبد خرید
+                    <BsBagDash
+                      style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
+                    />
+                  </Button>
+
                   <div className="btn-counter-main-about">
                     <button className="btn-counter-about" onClick={increase}>
                       +
@@ -105,7 +108,13 @@ const AboutProduct = ({productSlice}) => {
                       style={{ fontSize: "1.3rem", marginRight: "0.5rem" }}
                     />
                   </Button>
-                  <div style={{ marginTop: "0.5rem",marginLeft: "12rem", color: "red" }}>
+                  <div
+                    style={{
+                      marginTop: "0.5rem",
+                      marginLeft: "12rem",
+                      color: "red",
+                    }}
+                  >
                     <p>این کالا در حال حاضر در انبار موجود نیست</p>
                   </div>
                   <div className="icon-heart-main">

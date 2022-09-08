@@ -9,6 +9,7 @@
   border-radius: 10px;
   height: 390px;
   display: flex;
+  margin-bottom: 10rem;
 }
 .offer-img {
   width: 160px;
@@ -48,6 +49,7 @@
   color: black;
   margin-right: 98px;
   font-size: 19px;
+  
 }
 .off1-span {
   position: absolute;

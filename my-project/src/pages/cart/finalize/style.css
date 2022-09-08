@@ -1,17 +1,124 @@
-.payment-btn {
-  border: none;
-  background-color: #e85a6a;
-  border-radius: 8px;
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 4rem;
+.finalize {
+  height: 100vh;
+  position: relative;
 }
-.payment-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.img-inputs{
+  width: 40rem;
+  height: 40rem;
+  margin-right: 66rem;
+  margin-top: 10rem;
+}
+.title-final {
+  position: absolute;
+  margin-top: 40px;
+  margin-right: 170px;
+  color: #b32939;
+  font-size: 28px;
+ 
+}
+.main-finalize {
+  position: absolute;
+  width: 520px;
+  height: 850px;
+  margin-right: 400px;
+  margin-top: 46px;
+  background-color: #ffecec;
+ 
+  border-radius: 20px;
+}
+.firstname-final {
+  position: absolute;
+  margin-top: 110px;
+  margin-right: 88px;
+}
+.firstname-final-label {
+  color: #E85A6A;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.firstname-final-input {
+  border: 2px solid #E85A6A;
+  width: 350px;
+  height: 45px;
+  border-radius: 10px;
+}
+.lastname-final {
+  position: absolute;
+  margin-top: 230px;
+  margin-right: 88px;
+}
+.lastname-final-label {
+  color: #E85A6A;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.lastname-final-input {
+  border: 2px solid #E85A6A;
+  width: 350px;
+  height: 45px;
+  border-radius: 10px;
+}
+.address-final {
+  position: absolute;
+  margin-top: 350px;
+  margin-right: 88px;
+}
+.address-final-label {
+  color: #E85A6A;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.address-final-input {
+  border: 2px solid #E85A6A;
+  width: 350px;
+  height: 45px;
+
+  border-radius: 10px;
+}
+.phone-final {
+  position: absolute;
+  margin-top: 470px;
+  margin-right: 88px;
+}
+.phone-final-label {
+  color: #E85A6A;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.phone-final-input {
+  border: 2px solid #E85A6A;
+  width: 350px;
+  height: 45px;
+  border-radius: 10px;
+}
+.date-final {
+  position: absolute;
+  margin-top: 595px;
+  margin-right: 88px;
+}
+.date-final-label {
+  color: #E85A6A;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.date-final-input {
+  border: 2px solid #E85A6A;
+  width: 350px;
+  height: 45px;
+  border-radius: 10px;
+}
+.btn-final {
+  width: 350px;
+  height: 45px;
+  border-radius: 10px;
+  margin-right: 88px;
+  background-color: #e85a6a;
+  border: none;
+  color: white;
+  margin-top: 760px;
+}
+.errors-finalize {
+  color: rgb(197, 0, 0);
+  font-size: 14px;
+  margin-top: 10px;
 }
