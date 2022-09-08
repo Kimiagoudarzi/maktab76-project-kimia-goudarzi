@@ -21,14 +21,20 @@ const AboutProduct = ({ productSlice }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleAddToCart = useCallback(
-    (data) => {
-      dispatch(addToCart(data));
-      console.log(data);
-      // navigate("/cart");
-    },
-    [dispatch, navigate]
-  );
+  // const handleAddToCart = useCallback(
+  //   (data) => {
+  //     dispatch(addToCart(data));
+  //     console.log(data);
+  //     // navigate("/cart");
+  //   },
+  //   [dispatch, navigate]
+  // );
+  const handleAddToCart = (data) => {
+    console.log("counter", counter);
+    data["entity"] = counter;
+    dispatch(addToCart(data));
+  };
+
 
   // fetch
   useEffect(() => {

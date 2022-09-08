@@ -2,7 +2,7 @@ import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTotals } from "redux/features/cart/CartSlice";
+import { getTotals, removeFromCart } from "redux/features/cart/CartSlice";
 import { clearCart } from "redux/features/cart/CartSlice";
 import { useEffect, useCallback } from "react";
 import NavBar from "layout/userLayoute/navbar/index";
@@ -11,20 +11,28 @@ import "./cartStyle.css";
 
 const Cart = ({ productSlice }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
+  console.log("state is", state);
   useEffect(() => {
     dispatch(getTotals());
   }, [dispatch]);
 
   console.log(cartItems);
 
-  const handleDeleteCart = useCallback(
-    (productSlice) => {
-      dispatch(clearCart(productSlice));
-    },
-    [dispatch]
-  );
+  // const handleDeleteCart = useCallback(
+  //   (productSlice) => {
+  //     dispatch(clearCart(productSlice));
+  //   },
+  //   [dispatch]
+  // );
+  const handleDeleteCart = (item) => {
+    dispatch(removeFromCart(item));
+    // console.log(
+    //   "state is",
+    //   state.cart.cartItems.remove((item) => item.id == id)
+    // );
+  };
 
   return (
     <>
@@ -56,12 +64,12 @@ const Cart = ({ productSlice }) => {
                         .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
                     : null}
                 </td>
-                <td>{item.cartQuantity}</td>
+                <td>{item.entity}</td>
                 <td style={{ width: "11rem" }}>
                   <button className="btn-icon">
                     <FaTrash
                       className="delete-cart-icon"
-                      onClick={() => handleDeleteCart(productSlice)}
+                      onClick={() => handleDeleteCart(item)}
                     />
                   </button>
                 </td>

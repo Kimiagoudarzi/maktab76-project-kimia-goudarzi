@@ -17,30 +17,40 @@ const CartSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
     removeFromCart(state, action) {
-      state.cartItems.map((cartItem) => {
-        if (cartItem.id === action.payload.id) {
-          const nextCartItems = state.cartItems.filter(
-            (item) => item.id !== cartItem.id
-          );
-          state.cartItems = nextCartItems;
-        }
-        localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-        return state;
-      });
+      // state.cartItems.map((cartItem) => {
+      //   if (cartItem.id === action.payload.id) {
+      //     const nextCartItems = state.cartItems.filter(
+      //       (item) => item.id !== cartItem.id
+      //     );
+      //     state.cartItems = nextCartItems;
+      //   }
+      //   localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      //   return state;
+      // });
+      let remainingArr = state.cartItems.filter(
+        (item) => item.id != action.payload.id
+      );
+      state.cartItems = remainingArr;
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      // console.log("remainingArr", remainingArr);
+      // console.log("action payload delete is", action.payload);
     },
     addToCart(state, action) {
-      const existingIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
-      );
-      if (existingIndex >= 0) {
-        state.cartItems[existingIndex] = {
-          ...state.cartItems[existingIndex],
-          cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
-        };
-      } else {
-        let tempProductItem = { ...action.payload, cartQuantity: 1 };
-        state.cartItems.push(tempProductItem);
-      }
+      // console.log("state is", state);
+      // console.log("state.cartItems is", state.cartItems);
+      // const existingIndex = state.cartItems.findIndex(
+      //   (item) => item.id === action.payload.id
+      // );
+      state.cartItems = [...state.cartItems, action.payload];
+      // if (action.payload.entity >= 0) {
+      //   state.cartItems[existingIndex] = {
+      //     ...state.cartItems[existingIndex],
+      //     cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
+      //   };
+      // } else {
+      //   let tempProductItem = { ...action.payload, cartQuantity: 1 };
+      //   state.cartItems.push(tempProductItem);
+      // }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
     getTotals(state, action) {
