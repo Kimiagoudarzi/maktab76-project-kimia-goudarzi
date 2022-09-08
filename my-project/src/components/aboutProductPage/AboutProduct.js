@@ -24,6 +24,7 @@ const AboutProduct = ({ productSlice }) => {
   const handleAddToCart = useCallback(
     (data) => {
       dispatch(addToCart(data));
+      console.log(data);
       // navigate("/cart");
     },
     [dispatch, navigate]

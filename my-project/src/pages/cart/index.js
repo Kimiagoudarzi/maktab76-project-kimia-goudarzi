@@ -13,14 +13,14 @@ const Cart = ({ productSlice }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     dispatch(getTotals());
   }, [dispatch]);
 
   console.log(cartItems);
 
-  const handleDeleteCart = useCallback((productSlice) => {
+  const handleDeleteCart = useCallback(
+    (productSlice) => {
       dispatch(clearCart(productSlice));
     },
     [dispatch]
@@ -45,28 +45,28 @@ const Cart = ({ productSlice }) => {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-                {cartItems.map((item) => (
-                  <tr key={item.id}>
-                    <th>{item.name}</th>
-                    <td>
-                      {item.price
-                        ? item?.price
-                            .toString()
-                            .replace(/\./g, "")
-                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
-                        : null}
-                    </td>
-                    <td></td>
-                    <td style={{ width: "11rem" }}>
-                      <button className="btn-icon">
-                        <FaTrash
-                          className="delete-cart-icon"
-                          onClick={() => handleDeleteCart(productSlice)}
-                        />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+            {cartItems.map((item) => (
+              <tr key={item.id}>
+                <th>{item.name}</th>
+                <td>
+                  {item.price
+                    ? item?.price
+                        .toString()
+                        .replace(/\./g, "")
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                    : null}
+                </td>
+                <td>{item.cartQuantity}</td>
+                <td style={{ width: "11rem" }}>
+                  <button className="btn-icon">
+                    <FaTrash
+                      className="delete-cart-icon"
+                      onClick={() => handleDeleteCart(productSlice)}
+                    />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </MDBTableBody>
         </MDBTable>
       </div>
