@@ -3,35 +3,26 @@ import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTotals, removeFromCart } from "redux/features/cart/CartSlice";
-import { clearCart } from "redux/features/cart/CartSlice";
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import NavBar from "layout/userLayoute/navbar/index";
 import butter from "assets/images/imagecart/buterr2.png";
 import "./cartStyle.css";
 
 const Cart = ({ productSlice }) => {
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cart = useSelector((state) => state.cart);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   console.log("state is", state);
+  console.log(cart);
+  console.log(cart.cartTotalAmount);
   useEffect(() => {
     dispatch(getTotals());
-  }, [dispatch]);
+  }, [cart]);
+ 
 
-  console.log(cartItems);
-
-  // const handleDeleteCart = useCallback(
-  //   (productSlice) => {
-  //     dispatch(clearCart(productSlice));
-  //   },
-  //   [dispatch]
-  // );
+  
   const handleDeleteCart = (item) => {
     dispatch(removeFromCart(item));
-    // console.log(
-    //   "state is",
-    //   state.cart.cartItems.remove((item) => item.id == id)
-    // );
   };
 
   return (
@@ -53,7 +44,7 @@ const Cart = ({ productSlice }) => {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-            {cartItems.map((item) => (
+            {cart.cartItems.map((item) => (
               <tr key={item.id}>
                 <th>{item.name}</th>
                 <td>
@@ -80,7 +71,7 @@ const Cart = ({ productSlice }) => {
       </div>
       <div className="d-flex justify-content-around">
         <div>
-          <p className="text-price-cart">جمع : تومان</p>
+          <p className="text-price-cart">جمع : {cart.cartTotalAmount}تومان</p>
         </div>
         <div>
           <Link to="/cart/finalize">

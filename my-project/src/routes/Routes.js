@@ -22,8 +22,8 @@ const AppRoutes = () => {
         <Route path="/category/:id" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/cart/finalize" element={<Finalize />} />
-        <Route path="/result" element={<Result/>}/>
-        <Route path="/wrongResult" element={<WrongResult/>}/>
+        <Route path="/result/:result" element={<Result/>}/>
+        <Route path="/wrongResult/:result" element={<WrongResult/>}/>
         <Route path="/loginForm" element={<Login />} />
     
         <Route>

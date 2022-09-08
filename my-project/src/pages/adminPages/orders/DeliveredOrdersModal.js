@@ -4,9 +4,8 @@ import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import "./tableorder.css";
 
-const DeliveredOrdersModal = ({ show, handleClose, currentPost , mode }) => {
+const DeliveredOrdersModal = ({ show, handleClose, currentPost, mode }) => {
   const [order, setOrder] = useState(currentPost[0]);
-  console.log("*", currentPost.products);
 
   return (
     <>
@@ -62,7 +61,7 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost , mode }) => {
             className="orders-modal-btn"
             disabled
           >
-            {mode === "false" ? "در انتظار ارسال" : "تحویل داده شده"}
+            {currentPost[0]?.state ? "تحویل داده شده" : "در انتظار ارسال"}
           </Button>
         </Modal.Body>
       </Modal>

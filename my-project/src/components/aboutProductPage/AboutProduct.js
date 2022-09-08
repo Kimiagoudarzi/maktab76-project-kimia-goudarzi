@@ -1,4 +1,4 @@
-import { useEffect, useState,  useCallback  } from "react";
+import { useEffect, useState} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BsBagDash } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
@@ -13,28 +13,22 @@ import NavBar from "layout/userLayoute/navbar/index";
 import "./aboutProduct.css";
 import axios from "axios";
 
+
 const AboutProduct = ({ productSlice }) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
   const [product, setProduct] = useState({});
   const { id } = useParams();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const handleAddToCart = useCallback(
-  //   (data) => {
-  //     dispatch(addToCart(data));
-  //     console.log(data);
-  //     // navigate("/cart");
-  //   },
-  //   [dispatch, navigate]
-  // );
+ 
   const handleAddToCart = (data) => {
     console.log("counter", counter);
     data["entity"] = counter;
     dispatch(addToCart(data));
+    navigate("/cart");
   };
-
 
   // fetch
   useEffect(() => {
@@ -52,8 +46,8 @@ const AboutProduct = ({ productSlice }) => {
 
   const decrease = () => {
     setCounter((count) => count - 1);
-    if (counter < 1) {
-      setCounter(0);
+    if (counter <= 1) {
+      setCounter(1);
     }
   };
 
@@ -91,13 +85,42 @@ const AboutProduct = ({ productSlice }) => {
                   </Button>
 
                   <div className="btn-counter-main-about">
-                    <button className="btn-counter-about" onClick={increase}>
-                      +
-                    </button>
-                    <span className="counter__output">{counter}</span>
-                    <button className="btn-counter-about" onClick={decrease}>
-                      -
-                    </button>
+                    {counter < product?.stock ? (
+                      <>
+                        <button
+                          className="btn-counter-about"
+                          onClick={increase}
+                        >
+                          +
+                        </button>
+
+                        <span className="counter__output">{counter}</span>
+                        <button
+                          className="btn-counter-about"
+                          onClick={decrease}
+                        >
+                          -
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          className="btn-counter-about"
+                          onClick={increase}
+                          disabled
+                        >
+                          +
+                        </button>
+                        <span className="counter__output">{counter}</span>
+                        <button
+                          className="btn-counter-about"
+                          onClick={decrease}
+                      
+                        >
+                          -
+                        </button>
+                      </>
+                    )}
                   </div>
                   <div className="icon-heart-main">
                     <FaRegHeart className="icon-heart-about" />

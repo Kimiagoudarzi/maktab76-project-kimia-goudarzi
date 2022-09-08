@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import inputImg from "assets/images/inputsimg.jpg";
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 import "./style.css";
 
 const Finalize = () => {
@@ -9,7 +12,6 @@ const Finalize = () => {
     lastname: "",
     address: "",
     phone: "",
-    date: "",
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -19,17 +21,25 @@ const Finalize = () => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
+  const handleClick = () => {
+    {
+      window.location.href = "http://localhost:3001";
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (Object.keys(formErrors).length !== 0) {
+      console.log("error");
+    }
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   };
 
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      
-    }
+    // if (Object.keys(formErrors).length !== 0 && isSubmit(false)) {
+    //   console.log("error")
+    // }
   }, [formErrors]);
 
   const validate = (values) => {
@@ -47,9 +57,6 @@ const Finalize = () => {
       errors.phone = "تلفن همراه الزامی است";
     } else if (values.phone.length < 11) {
       errors.phone = " شماره همراه باید بیشتر از 11 کاراکتر باشد";
-    }
-    if (!values.date) {
-      errors.date = "تاریخ تحویل الزامی است";
     }
     return errors;
   };
@@ -113,28 +120,26 @@ const Finalize = () => {
             </div>
 
             <div className="date-final">
-              <label className="date-final-label"> تاریخ تحویل:</label>
-              <br />
-              <input
-                className="date-final-input"
-                name="date"
-                type="text"
-                value={formValues.date}
-                onChange={handleChange}
+              <label className="phone-final-label">زمان سفارش :</label>
+
+              <DatePicker
+                calendar={persian}
+                locale={persian_fa}
+                calendarPosition="bottom-right"
+                style={{
+                  width: "350px",
+                  height: "45px",
+                  borderRadius: "10px",
+                  border: "2px solid #E85A6A",
+                }}
               />
-              <p className="errors-finalize">{formErrors.date}</p>
             </div>
 
             <div>
-              {Object.keys(formErrors).length === 0 && isSubmit
-                ? navigate("/")
-                : console.log("error")}
               <button
                 type="submit"
                 className="btn-final"
-                onClick={() => {
-                  window.location.href = "http://localhost:3001";
-                }}
+                onClick={() => handleClick()}
               >
                 پرداخت
               </button>
