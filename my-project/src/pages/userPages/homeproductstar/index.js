@@ -33,7 +33,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/skin" className="link-p">
+              <Link to="/category/2" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={mask} className="home-mask" alt="pic" />
               <p className="home-mask-title">ماسک</p>
@@ -47,7 +47,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/cosmetic" className="link-p">
+              <Link to="/category/1" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={consiler} className="home-cosniler" alt="pic" />
               <p className="home-cosniler-title">کانسیلر</p>
@@ -61,7 +61,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/perfume" className="link-p">
+              <Link to="/category/4" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={bodySplash} className="home-body" alt="pic" />
               <p className="home-body-title">بادی اسپلش</p>
@@ -75,7 +75,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/cosmetic" className="link-p">
+              <Link to="/category/1" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={lip} className="home-lip" alt="pic" />
               <p className="home-lip-title">رژ لب این لی</p>
@@ -89,7 +89,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/cosmetic" className="link-p">
+              <Link to="/category/1" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={palet} className="home-palet" alt="pic" />
               <p className="home-palet-title">پلت سایه هدی بیوتی</p>
@@ -103,7 +103,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/perfume" className="link-p">
+              <Link to="/category/4" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={coco} className="home-coco" alt="pic" />
               <p className="home-coco-title">عطر زنانه شنل</p>
@@ -120,7 +120,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/hair" className="link-p">
+              <Link to="/category/3" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={cerita} className="home-cerita" alt="pic" />
               <p className="home-cerita-title">سرم موی دو فاز سریتا</p>
@@ -134,7 +134,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/cosmetic" className="link-p">
+              <Link to="/category/1" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={mac} className="home-mac" alt="pic" />
               <p className="home-mac-title">ست براش مک</p>
@@ -148,7 +148,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/cosmetic" className="link-p">
+              <Link to="/category/1" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={poder} className="home-poder" alt="pic" />
               <p className="home-poder-title">پودر فیکس فلور مار</p>
@@ -162,7 +162,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/perfume" className="link-p">
+              <Link to="/category/4" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={dior} className="home-dior" alt="pic" />
               <p className="home-dior-title">عطر زنانه دیور</p>
@@ -176,7 +176,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/hair" className="link-p">
+              <Link to="/category/3" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={argan} className="home-argan" alt="pic" />
               <p className="home-argan-title">روغن آرگان</p>
@@ -190,7 +190,7 @@ const productStar = () => {
                 height: "170px",
               }}
             >
-              <Link to="/skin" className="link-p">
+              <Link to="/category/2" className="link-p">
               <img src={circle} className="home-circles2" alt="pic" />
               <img src={prim} className="home-prim" alt="pic" />
               <p className="home-prim-title">کرم ضد آفتاب</p>

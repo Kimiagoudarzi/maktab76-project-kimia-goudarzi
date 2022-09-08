@@ -2,7 +2,7 @@ import { RiRocketLine } from "react-icons/ri";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import pic1 from "assets/images/home image card/pic1-table.png";
 import pic2 from "assets/images/home image card/pic2-table.png";
 import miss from "assets/images/home image card/missdior.jpg";
@@ -38,29 +38,32 @@ const tableProducts = () => {
           style={{
             position: "absolute",
             marginTop: "30px",
-            marginRight: "40px",
+            marginRight: "30px",
             color: "white",
-            fontSize: "20px",
+            fontSize: "24px",
           }}
         >
           خدمات ویژه برای اعضای میا لند
         </p>
-        <button
-          style={{
-            position: "absolute",
-            marginTop: "90px",
-            marginRight: "40px",
-            color: "white",
-            backgroundColor: "transparent",
-            border: "1px solid white",
-            borderRadius: "5px",
-            width: "95px",
-            height: "37px",
-          }}
-        >
-          <span style={{ marginLeft: "4px" }}>عضویت</span>
-          <AiOutlineArrowLeft />
-        </button>
+        <Link to="/loginForm">
+          <button
+            style={{
+              position: "absolute",
+              marginTop: "90px",
+              marginRight: "40px",
+              color: "white",
+              backgroundColor: "transparent",
+              border: "1px solid white",
+              borderRadius: "5px",
+              width: "95px",
+              height: "37px",
+            }}
+          >
+            <span style={{ marginLeft: "4px" }}>عضویت</span>
+            <AiOutlineArrowLeft />
+          </button>
+        </Link>
+
         <img
           src={pic1}
           style={{
@@ -109,8 +112,14 @@ const tableProducts = () => {
             >
               هدیه نقدی
             </span>
-            <Link to="/perfume" style={{textDecoration: "none"}}>
-              <p style={{ marginRight: "190px", color: "#941B80", fontSize: "17px" }}>
+            <Link to="/category/4" style={{ textDecoration: "none" }}>
+              <p
+                style={{
+                  marginRight: "190px",
+                  color: "#941B80",
+                  fontSize: "17px",
+                }}
+              >
                 مشاهده همه
                 <IoIosArrowBack />
               </p>
@@ -215,10 +224,16 @@ const tableProducts = () => {
             >
               ارسال فوری
             </span>
-            <Link to="/cosmetic" style={{textDecoration: "none"}}>
-            <p style={{ marginRight: "190px", color: "#941B80", fontSize: "17px" }}>
-              مشاهده همه <IoIosArrowBack />
-            </p>
+            <Link to="/category/1" style={{ textDecoration: "none" }}>
+              <p
+                style={{
+                  marginRight: "190px",
+                  color: "#941B80",
+                  fontSize: "17px",
+                }}
+              >
+                مشاهده همه <IoIosArrowBack />
+              </p>
             </Link>
           </p>
           <div className="d-flex">

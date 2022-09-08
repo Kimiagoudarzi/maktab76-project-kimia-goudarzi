@@ -28,6 +28,7 @@ const Finalize = () => {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
+      
     }
   }, [formErrors]);
 
@@ -55,9 +56,6 @@ const Finalize = () => {
 
   return (
     <div className="finalize">
-      {Object.keys(formErrors).length === 0 && isSubmit
-        ? navigate("/")
-        : console.log("error")}
       <div className="d-flex">
         <form onSubmit={handleSubmit}>
           <div className="main-finalize">
@@ -128,7 +126,16 @@ const Finalize = () => {
             </div>
 
             <div>
-              <button type="submit" className="btn-final">
+              {Object.keys(formErrors).length === 0 && isSubmit
+                ? navigate("/")
+                : console.log("error")}
+              <button
+                type="submit"
+                className="btn-final"
+                onClick={() => {
+                  window.location.href = "http://localhost:3001";
+                }}
+              >
                 پرداخت
               </button>
             </div>

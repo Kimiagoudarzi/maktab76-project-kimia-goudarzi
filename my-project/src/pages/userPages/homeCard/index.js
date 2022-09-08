@@ -10,7 +10,7 @@ const HomeCard = () => {
       <div className="card-wrapper">
         <div className="row d-flex justify-content-center">
           <div className="col-4 ">
-            <Link to="/Cosmetic">
+            <Link to="/category/1">
               <div className="card">
                 <div className="image">
                   <img src={cosmetic} alt="pic" />
@@ -19,7 +19,7 @@ const HomeCard = () => {
             </Link>
           </div>
           <div className="col-4">
-            <Link to="/perfume">
+            <Link to="/category/4">
               <div className="card">
                 <div className="image">
                   <img src={cream} alt="pic" />
@@ -31,7 +31,7 @@ const HomeCard = () => {
 
         <div className="row d-flex justify-content-center">
           <div className="col-4">
-            <Link to='/hair'>
+            <Link to='/category/3'>
             <div className="card">
               <div className="image">
                 <img src={Hair} alt="pic" />
@@ -40,7 +40,7 @@ const HomeCard = () => {
             </Link>
           </div>
           <div className="col-4">
-            <Link to='/skin'>
+            <Link to='/category/2'>
             <div className="card">
               <div className="image">
                 <img src={body} alt="pic" />

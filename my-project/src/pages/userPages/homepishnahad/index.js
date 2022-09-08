@@ -18,7 +18,7 @@ const HomePishNahad = () => {
       <div className="offer">
         <div>
           <img src={offer} className="offer-img" alt="pic" />
-          <Link to="/cosmetic" className="see-all-link">
+          <Link to="/category/1" className="see-all-link">
             <p className="see-all">
               مشاهده همه <IoIosArrowBack />
             </p>

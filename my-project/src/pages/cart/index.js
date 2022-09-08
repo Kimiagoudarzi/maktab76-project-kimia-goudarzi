@@ -10,8 +10,9 @@ import butter from "assets/images/imagecart/buterr2.png";
 import "./cartStyle.css";
 
 const Cart = ({ productSlice }) => {
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(getTotals());
@@ -19,8 +20,7 @@ const Cart = ({ productSlice }) => {
 
   console.log(cartItems);
 
-  const handleDeleteCart = useCallback(
-    (productSlice) => {
+  const handleDeleteCart = useCallback((productSlice) => {
       dispatch(clearCart(productSlice));
     },
     [dispatch]
@@ -45,27 +45,34 @@ const Cart = ({ productSlice }) => {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-            {cartItems.length && cartItems.map((item) => (
-              <tr key={item.id}>
-                <td>{item.name}</td>
-                <td>{item.price}</td>
-                <td>{item.stock}</td>
-                <td style={{ width: "11rem" }}>
-                  <button className="btn-icon">
-                    <FaTrash
-                      className="delete-cart-icon"
-                      onClick={() => handleDeleteCart(productSlice)}
-                    />
-                  </button>
-                </td>
-              </tr>
-            ))}
+                {cartItems.map((item) => (
+                  <tr key={item.id}>
+                    <th>{item.name}</th>
+                    <td>
+                      {item.price
+                        ? item?.price
+                            .toString()
+                            .replace(/\./g, "")
+                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                        : null}
+                    </td>
+                    <td></td>
+                    <td style={{ width: "11rem" }}>
+                      <button className="btn-icon">
+                        <FaTrash
+                          className="delete-cart-icon"
+                          onClick={() => handleDeleteCart(productSlice)}
+                        />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
           </MDBTableBody>
         </MDBTable>
       </div>
       <div className="d-flex justify-content-around">
         <div>
-          <p className="text-price-cart">جمع : 120,000 تومان</p>
+          <p className="text-price-cart">جمع : تومان</p>
         </div>
         <div>
           <Link to="/cart/finalize">
