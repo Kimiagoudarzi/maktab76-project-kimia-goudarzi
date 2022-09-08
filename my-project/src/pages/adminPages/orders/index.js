@@ -14,6 +14,7 @@ const Orders = () => {
   const [currentPost, setCurrentPost] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
+  const [mode, setMode] = useState("false");
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -29,7 +30,6 @@ const Orders = () => {
   useEffect(() => {
     axios.get("http://localhost:3002/orders").then((res) => {
       setPosts(res.data);
-      
     });
   }, []);
 
@@ -38,23 +38,21 @@ const Orders = () => {
       .get("http://localhost:3002/orders?state=false&&state=true")
       .then((res) => {
         setPosts(res.data);
-      
       });
   };
   const handleWaiting = () => {
     axios.get("http://localhost:3002/orders?state=false").then((res) => {
       setPosts(res.data);
-      
+      setMode("false");
     });
   };
   const handleDelivered = () => {
     axios.get("http://localhost:3002/orders?state=true").then((res) => {
       setPosts(res.data);
-      
+      setMode("true");
     });
   };
 
- 
   return (
     <>
       <div className="order-admin-container">
