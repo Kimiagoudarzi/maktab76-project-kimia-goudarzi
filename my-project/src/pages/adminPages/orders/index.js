@@ -12,8 +12,8 @@ const Orders = () => {
   const [posts, setPosts] = useState([]);
   const [currentId, setCurrentId] = useState(null);
   const [currentPost, setCurrentPost] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageCount, setPageCount] = useState(0);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [pageCount, setPageCount] = useState(0);
   const [mode, setMode] = useState("false");
 
   const [show, setShow] = useState(false);
@@ -122,7 +122,14 @@ const Orders = () => {
               {posts.map((post) => (
                 <tr>
                   <th scope="row">{post.username}</th>
-                  <td>{post.totalPrice}</td>
+                  <td>
+                    {post.totalPrice
+                      ? post.totalPrice
+                          .toString()
+                          .replace(/\./g, "")
+                          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                      : null}
+                  </td>
                   <td>{post.time}</td>
                   <td style={{ width: "16rem" }}>
                     <button

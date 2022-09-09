@@ -28,7 +28,13 @@ const ProductsCard = (props) => {
               <Card.Title
                 style={{ marginRight: "14.9rem", marginTop: "-1rem" }}
               >
-                {props.price} تومان
+                {props?.price
+                  ? props?.price
+                      .toString()
+                      .replace(/\./g, "")
+                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                  : null}
+                تومان
               </Card.Title>
             </div>
             <Link to={`/products/${props.itemId}`}>

@@ -16,30 +16,29 @@ const Finalize = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
   const handleClick = () => {
-    {
-      window.location.href = "http://localhost:3001";
-    }
+    window.location.href = "http://localhost:3001";
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Object.keys(formErrors).length !== 0) {
       console.log("error");
+      setIsSubmit(true)
+    }else{
+      setIsSubmit(false)
     }
     setFormErrors(validate(formValues));
-    setIsSubmit(true);
+    // setIsSubmit(true);
   };
 
   useEffect(() => {
-    // if (Object.keys(formErrors).length !== 0 && isSubmit(false)) {
-    //   console.log("error")
-    // }
+   
   }, [formErrors]);
 
   const validate = (values) => {
@@ -136,10 +135,12 @@ const Finalize = () => {
             </div>
 
             <div>
+              
               <button
                 type="submit"
                 className="btn-final"
                 onClick={() => handleClick()}
+                disabled={isSubmit}
               >
                 پرداخت
               </button>

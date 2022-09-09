@@ -1,26 +1,44 @@
 .delete-cart-icon {
   font-size: 24px;
-  color: #E85A6A;
+  color: #e85a6a;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
 }
-.nahyii-cart{
-    border: none;
-    background-color: #E85A6A;
-    border-radius: 8px;
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: -10rem;
+.nahyii-cart {
+  border: none;
+  background-color: #e85a6a;
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: -10rem;
 }
-.text-price-cart{
-    font-size: 26px;
-    margin-right: -9rem;
-
+.text-price-cart {
+  font-size: 26px;
+  margin-right: -9rem;
 }
-.table-main-cart{
-    margin: 3rem 18rem;
+.table-main-cart {
+  margin: 3rem 18rem;
+}
+.empty {
+  border: 1px solid rgb(199, 199, 199);
+  width: 800px;
+  height: 600px;
+  
+  margin-right: 530px;
+  border-radius: 10px;
+  margin-bottom: 100px;
+}
+.empty-sabad {
+  margin-right: 150px;
+  width: 460px;
+  margin-top: 30px;
+}
+.empty-title {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-right: 275px;
 }

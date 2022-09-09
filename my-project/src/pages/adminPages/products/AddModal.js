@@ -14,13 +14,13 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [count, setCount] = useState("");
+  const [category, setCategory] = useState(null);
   const [Grouping, setGrouping] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [files, setFiles] = useState(null);
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
-  
 
   const handleFile = (e) => {
     setFiles(e.target.files[0]);
@@ -45,6 +45,20 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
 
   // fetchPost
   const handelAddItem = (e) => {
+    switch (Grouping) {
+      case "لوازم آراایشی":
+        setCategory(1);
+        break;
+      case "مراقبت پوستی":
+        setCategory(2);
+        break;
+      case "مراقبت مو":
+        setCategory(3);
+        break;
+      case "عطر و ادکلن":
+        setCategory(4);
+        break;
+    }
     e.preventDefault();
     try {
       let entiresData = {
@@ -54,6 +68,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
         stock: count,
         Grouping: Grouping,
         description: description,
+        category: category,
       };
       axios.post(`http://localhost:3002/products`, entiresData).then(() => {
         console.log("entiresData", entiresData);
@@ -69,6 +84,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
     setCount("");
     setGrouping("");
     setDescription("");
+    setCategory("");
   };
 
   return (
@@ -121,7 +137,14 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
                   multiple
                   className="products-input"
                   style={{ direction: "rtl" }}
-                  value={price}
+                  value={
+                    price
+                      ? price
+                          .toString()
+                          .replace(/\./g, "")
+                          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                      : null
+                  }
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </Form.Group>
@@ -149,7 +172,10 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
                 aria-label="Default select example"
                 className="products-select"
                 value={Grouping}
-                onChange={(e) => setGrouping(e.target.value)}
+                onChange={(e) => {
+                  setGrouping(e.target.value);
+                  console.log(Grouping);
+                }}
               >
                 <option value="default">دسته بندی را انتخاب کنید</option>
                 <option value="لوازم آرایشی">لوازم آرایشی</option>
@@ -180,8 +206,12 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
             <div className="products-btns">
               <Button onClick={handleAddClose} className="products-enseraf">
                 انصراف
-              </Button> 
-              <Button className="products-add" type="submit" onClick={toggleShowA}>
+              </Button>
+              <Button
+                className="products-add"
+                type="submit"
+                onClick={toggleShowA}
+              >
                 افزودن
               </Button>
             </div>

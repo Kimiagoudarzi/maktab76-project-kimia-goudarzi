@@ -49,7 +49,15 @@ const ModalProduct = ({ setLgShow, lgShow, id }) => {
                   className="img-modal"
                 />
               </Modal.Body>
-              <Modal.Body>{product?.price} تومان</Modal.Body>
+              <Modal.Body>
+                {product?.price
+                  ? product?.price
+                      .toString()
+                      .replace(/\./g, "")
+                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                  : null}
+                تومان
+              </Modal.Body>
             </div>
           </Modal.Body>
 

@@ -6,7 +6,7 @@ import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
 import ReactPaginate from "react-paginate";
 import NavBar from "layout/adminLayout/navbar";
-import wave from "assets/images/wave.png";
+
 import "./table.css";
 
 const ProductsAdmin = () => {

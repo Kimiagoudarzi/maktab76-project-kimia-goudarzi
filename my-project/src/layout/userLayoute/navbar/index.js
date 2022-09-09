@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BsBagDash } from "react-icons/bs";
 import { BiBookmarkHeart } from "react-icons/bi";
+import { useSelector } from "react-redux"; 
+import Badge from "react-bootstrap/Badge";
 import { AiOutlineFire } from "react-icons/ai";
 import { TbDiscount2 } from "react-icons/tb";
 import Container from "react-bootstrap/Container";
@@ -15,6 +17,7 @@ import butterfly from "assets/images/butter.png";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const navLinkStyle = ({ isActive }) => ({
     fontWeight: "bold",
     textDecoration: "none",
@@ -52,6 +55,7 @@ const NavBar = () => {
             <button className="btn-bag">
               <Link to="/cart" style={{ color: "#787878" }}>
                 <BsBagDash style={{ fontSize: "41", marginBottom: "3" }} />
+                <span className="badge-cart">{cartItems.length}</span>
               </Link>
             </button>
           </Container>

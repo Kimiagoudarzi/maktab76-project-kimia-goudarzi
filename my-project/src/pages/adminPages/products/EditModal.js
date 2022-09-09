@@ -22,9 +22,9 @@ const EditModal = ({
   const [stock, setStock] = useState("");
   const [Grouping, setGrouping] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState();
   const [category, setCategory] = useState("");
-  const [files, setFiles] = useState(null)
+  const [files, setFiles] = useState(null);
 
   const handleCategoryChange = (e) => {
     console.log("e", e.target.value);
@@ -33,17 +33,17 @@ const EditModal = ({
   };
 
   const handleFile = (e) => {
-    setFiles( e.target.files[0])  
+    setFiles(e.target.files[0]);
   };
 
   // postImage
   const handleImage = () => {
     const formData = new FormData();
-    
-    formData.append('image',files, files.name)
+
+    formData.append("image", files, files.name);
     console.log(formData);
     axios
-      .post(`http://localhost:3002/upload`, formData )
+      .post(`http://localhost:3002/upload`, formData)
       .then((res) => {
         setImage([res.data.filename]);
         console.log(res);
@@ -53,7 +53,6 @@ const EditModal = ({
       });
   };
 
-
   //  fetchGetData
   useEffect(() => {
     axios.get(`http://localhost:3002/products/${id}`).then((res) => {
@@ -62,6 +61,7 @@ const EditModal = ({
       setStock(res.data.stock);
       setGrouping(res.data.Grouping);
       setDescription(res.data.description);
+      setImage(res.data.image);
     });
   }, [id]);
 
@@ -106,12 +106,16 @@ const EditModal = ({
                   name="file_upload"
                   onChange={handleFile}
                 />
-                 <div>
-                 <button
-                    onClick={handleImage}
-                    className="btn-camera"
-                  >
-                    <FaCamera/>
+                {/* {image.map((item) => (
+                  <img
+                    src={`http://localhost:3002/files/${item}`}
+                    alt="picuture"
+                    style={{width: "5rem"}}
+                  />
+                ))} */}
+                <div>
+                  <button onClick={handleImage} className="btn-camera">
+                    <FaCamera />
                   </button>
                 </div>
               </Form.Group>
@@ -139,7 +143,14 @@ const EditModal = ({
                   className="products-input"
                   style={{ direction: "rtl" }}
                   name="price"
-                  value={price}
+                  value={
+                    price
+                      ? price
+                          .toString()
+                          .replace(/\./g, "")
+                          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                      : null
+                  }
                   onChange={(event) => setPrice(event.target.value)}
                 />
               </Form.Group>

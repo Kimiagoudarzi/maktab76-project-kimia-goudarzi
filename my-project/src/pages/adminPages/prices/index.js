@@ -60,22 +60,21 @@ const Prices = () => {
   const saveEdit = (e) => {
     e.preventDefault();
     console.log(newPrice);
-    newPrice.forEach( element => {
+    newPrice.forEach((element) => {
       try {
-      let entiresData = {
-        price: element.newValPrice,
-        stock: element.newValStock,
-      };
-      axios
-        .patch(`http://localhost:3002/products/${element.id}`, entiresData)
-        .then(() => {
-          fetchComments(currentPage);
-        });
-    } catch (error) {
-      console.log("error!");
-    }
+        let entiresData = {
+          price: element.newValPrice,
+          stock: element.newValStock,
+        };
+        axios
+          .patch(`http://localhost:3002/products/${element.id}`, entiresData)
+          .then(() => {
+            fetchComments(currentPage);
+          });
+      } catch (error) {
+        console.log("error!");
+      }
     });
-    
   };
 
   // pagination
@@ -137,7 +136,14 @@ const Prices = () => {
                     <td>{post.name}</td>
                     <td>
                       <EditText
-                        value={post.price}
+                        value={
+                          post?.price
+                            ? post?.price
+                                .toString()
+                                .replace(/\./g, "")
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                            : null
+                        }
                         onChange={(e) => handleChange(e, id)}
                       />
                     </td>

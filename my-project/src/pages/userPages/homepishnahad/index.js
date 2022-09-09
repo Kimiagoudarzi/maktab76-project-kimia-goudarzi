@@ -27,11 +27,23 @@ const HomePishNahad = () => {
         {productsHome.map((item) => (
           <Link to={`/${item.id}`}>
             <div className="off1">
-              <img src={item.image
-                          ? `http://localhost:3002/files/${item?.image[0]}`
-                          : "-"} className="off1-img" alt="pic" />
+              <img
+                src={
+                  item.image
+                    ? `http://localhost:3002/files/${item?.image[0]}`
+                    : "-"
+                }
+                className="off1-img"
+                alt="pic"
+              />
               <p className="off1-txt1">
-                {item.price} <span style={{ fontSize: "10px" }}>تومان</span>
+                {item?.price
+                  ? item?.price
+                      .toString()
+                      .replace(/\./g, "")
+                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                  : null}{" "}
+                <span style={{ fontSize: "10px" }}>تومان</span>
                 <span className="off1-span">2%</span>
               </p>
               <p className="off1-txt2 ">

@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BsBagDash } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
@@ -13,7 +13,6 @@ import NavBar from "layout/userLayoute/navbar/index";
 import "./aboutProduct.css";
 import axios from "axios";
 
-
 const AboutProduct = ({ productSlice }) => {
   const [counter, setCounter] = useState(1);
   const [product, setProduct] = useState({});
@@ -22,7 +21,6 @@ const AboutProduct = ({ productSlice }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
- 
   const handleAddToCart = (data) => {
     console.log("counter", counter);
     data["entity"] = counter;
@@ -68,7 +66,16 @@ const AboutProduct = ({ productSlice }) => {
               <h1>{product?.name}</h1>
               <hr />
               <p>{product?.description}</p>
-              <h5>قیمت :{product?.price} تومان </h5>
+              <h5>
+                قیمت :
+                {product?.price
+                  ? product?.price
+                      .toString()
+                      .replace(/\./g, "")
+                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                  : null}
+                تومان
+              </h5>
             </div>
             <div className="d-flex about-button">
               {product?.stock ? (
@@ -115,7 +122,6 @@ const AboutProduct = ({ productSlice }) => {
                         <button
                           className="btn-counter-about"
                           onClick={decrease}
-                      
                         >
                           -
                         </button>

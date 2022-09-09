@@ -100,15 +100,26 @@
   font-size: 21px;
   margin-right: 30px;
 }
-.nav2-detail{
+.nav2-detail {
   margin-left: 76rem;
   color: #fff;
 }
-.nav-txt{
+.nav-txt {
   font-size: 15px;
   margin-top: 0.2rem;
-  
 }
-.nav2-icon{
-  margin-top:2px;
+.nav2-icon {
+  margin-top: 2px;
+}
+.badge-cart {
+  position: absolute;
+  background-color: #E85A6A;
+  color: white;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  text-align: center;
+  margin-right: -47px;
+  margin-top: 24px;
 }

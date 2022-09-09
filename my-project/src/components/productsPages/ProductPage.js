@@ -6,26 +6,20 @@ import Footer from "layout/userLayoute/footer/index";
 import NavBar from "layout/userLayoute/navbar/index";
 import Row from "react-bootstrap/Row";
 import "../productsCard/card.css";
-// import { useDispatch, useSelector } from "react-redux";
-// import fetchProducts from "redux/features/productsCard/ProductsCard";
+
 
 const ProductPage = () => {
   const { id } = useParams();
   const [products, setProduct] = useState(null);
-  //   const dispatch = useDispatch();
-  //   const products = useSelector((state)=> state.products.products)
-
-  //   useEffect(()=>{
-  //     dispatch(fetchProducts())
-  //   },[])
+ 
 
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await axios.get(
         `http://localhost:3002/products?category=${id}`
       );
-      setProduct(res.data);
-  
+      setProduct(res.data);  
+      console.log(res.data);
     };
     fetchProducts();
   }, [id]);

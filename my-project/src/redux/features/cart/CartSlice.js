@@ -5,7 +5,7 @@ const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [],
-  cartTotalQuantity: 0,
+  entity: 0,
 };
 
 const CartSlice = createSlice({
@@ -56,21 +56,18 @@ const CartSlice = createSlice({
     getTotals(state, action) {
       let { total, quantity } = state.cartItems.reduce(
         (cartTotal, cartItems) => {
-          const { price, cartQuantity } = cartItems;
-          const itemTotal = price * cartQuantity;
+          const { price, entity } = cartItems;
+          const itemTotal = price * entity;
           cartTotal.total += itemTotal;
-          cartTotal.quantity += cartQuantity;
-          console.log(price);
-          console.log(typeof(itemTotal));
-          console.log(cartTotal);
+          cartTotal.quantity += entity;
           return cartTotal;
-          
         },
         {
           total: 0,
           quantity: 0,
         }
       );
+      console.log("total", total);
       total = parseFloat(total.toFixed(2));
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;

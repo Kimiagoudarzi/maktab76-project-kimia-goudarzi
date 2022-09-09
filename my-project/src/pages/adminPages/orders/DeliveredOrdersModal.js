@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import "./tableorder.css";
 
-const DeliveredOrdersModal = ({ show, handleClose, currentPost, mode }) => {
+const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
   const [order, setOrder] = useState(currentPost[0]);
 
   return (
@@ -47,7 +47,14 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost, mode }) => {
                 {currentPost.length > 0 ? (
                   <tr>
                     <td>{currentPost[0].products.name}</td>
-                    <td>{currentPost[0].products.price}</td>
+                    <td>
+                      {currentPost[0].products.price
+                        ? currentPost[0].products.price
+                            .toString()
+                            .replace(/\./g, "")
+                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                        : null}
+                    </td>
                     <td>{currentPost[0].products.count}</td>
                   </tr>
                 ) : null}
@@ -59,7 +66,6 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost, mode }) => {
             variant="primary"
             onClick={handleClose}
             className="orders-modal-btn"
-            disabled
           >
             {currentPost[0]?.state ? "تحویل داده شده" : "در انتظار ارسال"}
           </Button>
