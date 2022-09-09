@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTotals, removeFromCart } from "redux/features/cart/CartSlice";
 import { useEffect } from "react";
 import NavBar from "layout/userLayoute/navbar/index";
+import Footer from "layout/userLayoute/footer/index";
 import butter from "assets/images/imagecart/buterr2.png";
 import emptyImage from "assets/images/emptyImage.jpg"
 import "./cartStyle.css";
@@ -87,6 +88,8 @@ const Cart = () => {
             </div>
           </div>
           <img src={butter} alt="pic3" style={{ marginRight: "1.2rem" }} />
+
+          <Footer />
         </>
       )}
 

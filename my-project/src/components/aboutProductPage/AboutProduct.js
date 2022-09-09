@@ -25,7 +25,7 @@ const AboutProduct = ({ productSlice }) => {
     console.log("counter", counter);
     data["entity"] = counter;
     dispatch(addToCart(data));
-    navigate("/cart");
+    //navigate("/cart");
   };
 
   // fetch
