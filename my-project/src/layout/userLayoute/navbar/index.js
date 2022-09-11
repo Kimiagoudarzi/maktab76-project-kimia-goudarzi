@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BsBagDash } from "react-icons/bs";
 import { BiBookmarkHeart } from "react-icons/bi";
-import { useSelector } from "react-redux"; 
-import Badge from "react-bootstrap/Badge";
+import { useSelector } from "react-redux";
 import { AiOutlineFire } from "react-icons/ai";
+import { useParams } from "react";
 import { TbDiscount2 } from "react-icons/tb";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
@@ -17,6 +17,7 @@ import butterfly from "assets/images/butter.png";
 import "./NavBar.css";
 
 const NavBar = () => {
+  // const { handleClick } = useParams;
   const cartItems = useSelector((state) => state.cart.cartItems);
   const navLinkStyle = ({ isActive }) => ({
     fontWeight: "bold",

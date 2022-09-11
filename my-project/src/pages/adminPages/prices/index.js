@@ -147,12 +147,21 @@ const Prices = () => {
                         onChange={(e) => handleChange(e, id)}
                       />
                     </td>
-                    <td>
-                      <EditText
-                        value={post.stock}
-                        onChange={(e) => handleChangeStock(e, id)}
-                      />
-                    </td>
+                    {post.stock !== 0 ? (
+                      <td>
+                        <EditText
+                          value={post.stock}
+                          onChange={(e) => handleChangeStock(e, id)}
+                        />
+                      </td>
+                    ) : (
+                      <td>
+                        <EditText
+                          value="0"
+                          onChange={(e) => handleChangeStock(e, id)}
+                        />
+                      </td>
+                    )}
                   </tr>
                 );
               })}

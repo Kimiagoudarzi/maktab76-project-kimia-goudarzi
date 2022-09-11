@@ -4,8 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import "./tableorder.css";
 
-const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
+const DeliveredOrdersModal = ({ show, handleClose, currentPost, mode }) => {
   const [order, setOrder] = useState(currentPost[0]);
+
+ 
 
   return (
     <>

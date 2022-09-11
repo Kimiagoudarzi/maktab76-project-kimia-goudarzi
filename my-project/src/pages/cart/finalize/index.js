@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import inputImg from "assets/images/inputsimg.jpg";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
@@ -7,6 +7,7 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import "./style.css";
 
 const Finalize = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const initialValues = {
     firstname: "",
     lastname: "",
@@ -15,8 +16,8 @@ const Finalize = () => {
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
-  // const navigate = useNavigate();
+  // const [isSubmit, setIsSubmit] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -27,19 +28,8 @@ const Finalize = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (Object.keys(formErrors).length !== 0) {
-      console.log("error");
-      setIsSubmit(true)
-    }else{
-      setIsSubmit(false)
-    }
     setFormErrors(validate(formValues));
-    // setIsSubmit(true);
   };
-
-  useEffect(() => {
-   
-  }, [formErrors]);
 
   const validate = (values) => {
     const errors = {};
@@ -133,17 +123,20 @@ const Finalize = () => {
                 }}
               />
             </div>
-
             <div>
-              
-              <button
-                type="submit"
-                className="btn-final"
-                onClick={() => handleClick()}
-                disabled={isSubmit}
-              >
-                پرداخت
-              </button>
+              {Object.keys(formErrors).length !== 0 ? (
+                <button type="submit" className="btn-final" disabled>
+                  پرداخت
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="btn-final"
+                  onClick={() => handleClick()}
+                >
+                  پرداخت
+                </button>
+              )}
             </div>
           </div>
           <img src={inputImg} alt="pic4" className="img-inputs" />

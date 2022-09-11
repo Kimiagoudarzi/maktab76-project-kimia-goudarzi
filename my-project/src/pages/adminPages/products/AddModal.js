@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FaCamera } from "react-icons/fa";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-// import ToastContainer from 'react-bootstrap/ToastContainer';
 // import Toast from "react-bootstrap/Toast";
 import axios from "axios";
 import "./table.css";
@@ -45,20 +44,20 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
 
   // fetchPost
   const handelAddItem = (e) => {
-    switch (Grouping) {
-      case "لوازم آراایشی":
-        setCategory(1);
-        break;
-      case "مراقبت پوستی":
-        setCategory(2);
-        break;
-      case "مراقبت مو":
-        setCategory(3);
-        break;
-      case "عطر و ادکلن":
-        setCategory(4);
-        break;
-    }
+    // switch (Grouping) {
+    //   case "لوازم آراایشی":
+    //     setCategory(1);
+    //     break;
+    //   case "مراقبت پوستی":
+    //     setCategory(2);
+    //     break;
+    //   case "مراقبت مو":
+    //     setCategory(3);
+    //     break;
+    //   case "عطر و ادکلن":
+    //     setCategory(4);
+    //     break;
+    // }
     e.preventDefault();
     try {
       let entiresData = {
@@ -126,6 +125,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
                   style={{ direction: "rtl" }}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </Form.Group>
             </div>
@@ -146,6 +146,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
                       : null
                   }
                   onChange={(e) => setPrice(e.target.value)}
+                  required
                 />
               </Form.Group>
             </div>
@@ -161,6 +162,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
                   style={{ direction: "rtl" }}
                   value={count}
                   onChange={(e) => setCount(e.target.value)}
+                  required
                 />
               </Form.Group>
             </div>
@@ -210,7 +212,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
               <Button
                 className="products-add"
                 type="submit"
-                onClick={toggleShowA}
+                onClick={() => toggleShowA()}
               >
                 افزودن
               </Button>
@@ -219,14 +221,23 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
         </Modal.Body>
       </Modal>
 
-      {/* Toast */}
-      {/* <ToastContainer position="bottom-start" style={{marginLeft: "1rem"}}>
-      <Toast className="bg-success" onClose={toggleShowA} show={showA} animation={false}>
-        <Toast.Header>
-        </Toast.Header>
-        <Toast.Body style={{fontSize: "1.1rem"}}>کالا با موفقیت اضافه شد</Toast.Body>
-      </Toast>
-      </ToastContainer> */}
+      {/* tost */}
+      {/* <div
+        style={{ direction: "ltr", marginBottom: "22rem", marginLeft: "2rem" }}
+      >
+        <Toast
+          show={showA}
+          onClose={toggleShowA}
+          style={{ backgroundColor: "#C065BC", color: "#ffff" }}
+        >
+          <Toast.Header>
+            <strong className="me-auto"></strong>
+          </Toast.Header>
+          <Toast.Body style={{ direction: "rtl", fontSize: "17px" }}>
+            کالا با موفقیت اضافه شد
+          </Toast.Body>
+        </Toast>
+      </div> */}
     </>
   );
 };

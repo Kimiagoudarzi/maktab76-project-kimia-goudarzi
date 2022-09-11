@@ -12,8 +12,8 @@ const Orders = () => {
   const [posts, setPosts] = useState([]);
   const [currentId, setCurrentId] = useState(null);
   const [currentPost, setCurrentPost] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
   const [mode, setMode] = useState("false");
 
   const [show, setShow] = useState(false);
@@ -27,19 +27,36 @@ const Orders = () => {
     setShow(true);
   };
 
-  useEffect(() => {
-    axios.get("http://localhost:3002/orders").then((res) => {
-      setPosts(res.data);
-    });
-  }, []);
+  
 
-  const totalOrders = () => {
-    axios
-      .get("http://localhost:3002/orders?state=false&&state=true")
-      .then((res) => {
-        setPosts(res.data);
-      });
+  // pagination
+  let limit = 16;
+
+  const fetchComments = useCallback(
+    async (currentPage) => {
+      const res = await fetch(
+        `http://localhost:3002/orders?_page=${currentPage}&_limit=${limit}`
+      );
+      const data = await res.json();
+      const total = res.headers.get("x-total-count");
+      setPageCount(Math.ceil(total / limit));
+
+      setPosts(data);
+      
+      setCurrentPage(currentPage);
+    },
+    [limit]
+  );
+
+  useEffect(() => {
+    fetchComments(1);
+  }, [fetchComments]);
+
+  const handlePageClick = async (data) => {
+    let currentPage = data.selected + 1;
+    fetchComments(currentPage);
   };
+
   const handleWaiting = () => {
     axios.get("http://localhost:3002/orders?state=false").then((res) => {
       setPosts(res.data);
@@ -66,7 +83,7 @@ const Orders = () => {
                 id="entezar"
                 name="sefaresh"
                 value="entezar"
-                onClick={totalOrders}
+                onClick={fetchComments}
               />
               <label
                 for="entezar"
@@ -146,7 +163,7 @@ const Orders = () => {
             </MDBTableBody>
           </MDBTable>
         </div>
-        {/* <ReactPaginate
+        <ReactPaginate
           previousLabel={"قبلی"}
           nextLabel={"بعدی"}
           pageCount={pageCount}
@@ -161,7 +178,7 @@ const Orders = () => {
           breakClassName={"page-item"}
           breakLinkClassName={"page-link"}
           activeClassName={"active"}
-        /> */}
+        />
         <img src={wave} alt="wave" className="img-admin" />
       </div>
 
@@ -170,6 +187,7 @@ const Orders = () => {
         show={show}
         handleClose={handleClose}
         currentPost={currentPost}
+        mode={mode}
       />
     </>
   );

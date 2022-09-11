@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BsBagDash } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { addToCart } from "redux/features/cart/CartSlice";
 import Button from "react-bootstrap/Button";
 import Footer from "layout/userLayoute/footer/index";
 import NavBar from "layout/userLayoute/navbar/index";
+import Toast from "react-bootstrap/Toast";
 import "./aboutProduct.css";
 import axios from "axios";
 
@@ -17,15 +18,15 @@ const AboutProduct = ({ productSlice }) => {
   const [counter, setCounter] = useState(1);
   const [product, setProduct] = useState({});
   const { id } = useParams();
+  const [showA, setShowA] = useState(false);
+  const toggleShowA = () => setShowA(!showA);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleAddToCart = (data) => {
     console.log("counter", counter);
     data["entity"] = counter;
     dispatch(addToCart(data));
-    //navigate("/cart");
   };
 
   // fetch
@@ -83,7 +84,10 @@ const AboutProduct = ({ productSlice }) => {
                   <Button
                     variant="secondary"
                     className="btn-add-about"
-                    onClick={() => handleAddToCart(product)}
+                    onClick={() => {
+                      handleAddToCart(product);
+                      toggleShowA();
+                    }}
                   >
                     افزودن به سبد خرید
                     <BsBagDash
@@ -183,6 +187,16 @@ const AboutProduct = ({ productSlice }) => {
           </div>
         </div>
       </div>
+      {/* tost */}
+      <div style={{direction: "ltr", marginBottom: "6rem", marginLeft: "2rem"}}>
+        <Toast show={showA} onClose={toggleShowA} style={{backgroundColor: "#E85A6A", color: "#ffff"}}>
+          <Toast.Header>
+            <strong className="me-auto"></strong>
+          </Toast.Header>
+          <Toast.Body style={{direction: "rtl", fontSize: "17px"}}>کالا به سبد خرید اضافه شد </Toast.Body>
+        </Toast>
+      </div>
+
       <Footer />
     </>
   );
