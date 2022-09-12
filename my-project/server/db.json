@@ -912,6 +912,19 @@
       "category": "",
       "Grouping": "عطر و ادکلن",
       "id": 90
+    },
+    {
+      "name": "mask",
+      "price": "120,000",
+      "image": [
+        "8f554be91b56df0ce065072536fc4e76"
+      ],
+      "stock": "12",
+      "Grouping": "مراقبت پوستی",
+      "description": "<p>ssss</p>",
+      "category": null,
+      "createdAt": 1662995933817,
+      "id": 91
     }
   ],
   "category": [
