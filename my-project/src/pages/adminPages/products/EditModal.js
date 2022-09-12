@@ -25,6 +25,7 @@ const EditModal = ({
   const [image, setImage] = useState();
   const [category, setCategory] = useState("");
   const [files, setFiles] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleCategoryChange = (e) => {
     console.log("e", e.target.value);
@@ -77,6 +78,7 @@ const EditModal = ({
       category,
       Grouping,
     };
+    setLoading(true);
     try {
       axios
         .put(`http://localhost:3002/products/${id}`, editInfo)
@@ -84,6 +86,7 @@ const EditModal = ({
           console.log("data:", editInfo);
           fetchComments(currentPage);
           handleEditClose();
+          setLoading(false);
         });
     } catch (error) {
       console.log("error!");
@@ -212,9 +215,24 @@ const EditModal = ({
               <Button onClick={handleEditClose} className="products-enseraf">
                 انصراف
               </Button>
-              <Button className="products-add" type="submit">
-                افزودن
-              </Button>
+              <button
+                className="products-add"
+                type="submit"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <span
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    درحال پردازش
+                  </>
+                ) : (
+                  <>افزودن</>
+                )}
+              </button>
             </div>
           </form>
         </Modal.Body>

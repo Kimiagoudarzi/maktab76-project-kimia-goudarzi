@@ -7,26 +7,24 @@ import NavBar from "layout/userLayoute/navbar/index";
 import Row from "react-bootstrap/Row";
 import "../productsCard/card.css";
 
-
 const ProductPage = () => {
   const { id } = useParams();
   const [products, setProduct] = useState(null);
- 
 
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await axios.get(
         `http://localhost:3002/products?category=${id}`
       );
-      setProduct(res.data);  
-      console.log(res.data);
+      setProduct(res.data);
+
+      // console.log(res.data);
     };
     fetchProducts();
   }, [id]);
   return (
     <>
       <NavBar />
-
       <div className="card-group-main">
         <Row xs={1} md={3} className="g-4">
           {products?.map((el) => (
@@ -39,7 +37,6 @@ const ProductPage = () => {
           ))}
         </Row>
       </div>
-
       <Footer />
     </>
   );

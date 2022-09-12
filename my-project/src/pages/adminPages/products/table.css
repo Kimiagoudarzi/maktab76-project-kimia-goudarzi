@@ -75,6 +75,8 @@
   height: 40px;
   border: none !important;
   margin-right: 20px;
+  color: #fff;
+  border-radius: 8px;
 }
 .products-add:hover {
   background-color: #FD2C7A !important;

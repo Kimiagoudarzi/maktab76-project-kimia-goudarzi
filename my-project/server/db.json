@@ -907,23 +907,11 @@
       "image": [
         "fee4d75ae16d3db431dc1aba7e61c2c8"
       ],
-      "stock": "3",
-      "Grouping": "عطر و ادکلن",
+      "stock": "4",
       "description": "<p><strong>khoshbo</strong></p>",
-      "createdAt": 1662378858396,
-      "id": 90
-    },
-    {
-      "name": "test",
-      "price": "60,000",
-      "image": [
-        "81a4ca5efb2a48088b3f1547afd1b369"
-      ],
-      "stock": "1",
-      "description": "",
       "category": "",
-      "Grouping": "مراقبت پوستی",
-      "id": 96
+      "Grouping": "عطر و ادکلن",
+      "id": 90
     }
   ],
   "category": [

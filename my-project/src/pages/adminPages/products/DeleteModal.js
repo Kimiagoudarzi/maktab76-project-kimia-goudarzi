@@ -3,19 +3,30 @@ import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { useState } from "react";
 
-const DeleteModal = ({ deleteShow, handleDeleteClose,id,fetchComments ,currentPage }) => {
+const DeleteModal = ({
+  deleteShow,
+  handleDeleteClose,
+  id,
+  fetchComments,
+  currentPage,
+}) => {
   const [deleteState, setDeleteState] = useState();
+  const [loading, setLoading] = useState(false);
 
   const removeData = (e) => {
-  //  e.preventDefault();
-   axios.delete(`http://localhost:3002/products/${id}`)
-    .then((res)=>{
-       setDeleteState(res.data)
-       fetchComments(currentPage);
-       handleDeleteClose()
-    }).catch((err) => {
-      console.log("err", err);
-    })
+    //  e.preventDefault();
+    setLoading(true);
+    axios
+      .delete(`http://localhost:3002/products/${id}`)
+      .then((res) => {
+        setDeleteState(res.data);
+        fetchComments(currentPage);
+        handleDeleteClose();
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   };
 
   return (
@@ -35,9 +46,25 @@ const DeleteModal = ({ deleteShow, handleDeleteClose,id,fetchComments ,currentPa
           <Button onClick={handleDeleteClose} className="products-enseraf">
             انصراف
           </Button>
-          <Button className="products-add" onClick={() => removeData()}>
-            حذف
-          </Button>
+          <button
+            className="products-add"
+            onClick={() => removeData()}
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                درحال پردازش
+              </>
+            ) : (
+              <>حذف</>
+            )}
+          </button>
         </Modal.Footer>
       </Modal>
     </>

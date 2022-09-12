@@ -18,6 +18,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [files, setFiles] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
 
@@ -69,10 +70,12 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
         description: description,
         category: category,
       };
+      setLoading(true)
       axios.post(`http://localhost:3002/products`, entiresData).then(() => {
         console.log("entiresData", entiresData);
         fetchComments(currentPage);
         handleAddClose();
+        setLoading(false);
       });
     } catch (error) {
       console.log("error!");
@@ -209,13 +212,25 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
               <Button onClick={handleAddClose} className="products-enseraf">
                 انصراف
               </Button>
-              <Button
+              <button
                 className="products-add"
-                type="submit"
                 onClick={() => toggleShowA()}
+                type="submit"
+                disabled={loading}
               >
-                افزودن
-              </Button>
+                {loading ? (
+                  <>
+                    <span
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    درحال پردازش
+                  </>
+                ) : (
+                  <>ذخیره</>
+                )}
+              </button>
             </div>
           </form>
         </Modal.Body>
