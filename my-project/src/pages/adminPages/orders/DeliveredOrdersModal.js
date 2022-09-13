@@ -14,7 +14,7 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost}) => {
        state: true,
       };
       axios
-        .patch(`http://localhost:3002/orders/${currentPost}`, entiresData)
+        .patch(`http://localhost:3002/orders/${currentPost[0].id}`, entiresData)
         .then((res) => {
           console.log("ress", res.data);
           handleClose();

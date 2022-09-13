@@ -1,16 +1,18 @@
 import NavBar from "layout/userLayoute/navbar";
 import Check from "assets/images/check.png";
 import React, { useEffect } from "react";
-// import { useDispatch} from "react-redux";
-// import { finalSend, clearCart } from "redux/features/cart/CartSlice";
+import { useDispatch } from "react-redux";
+import { finalSend, clearCart } from "redux/features/cart/CartSlice";
 
 const Result = () => {
-  // const state = useSelector((state) => state.cart.userForm);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-    // dispatch(finalSend());
-  //   dispatch(clearCart());
-  // }, [dispatch]);
+
+  const dispatch = useDispatch();
+  console.log("##");
+  useEffect(() => {
+    console.log("$")
+    dispatch(finalSend())
+      dispatch(clearCart());
+  }, []);
 
   return (
     <>

@@ -23,9 +23,11 @@ const CartSlice = createSlice({
       state.cartItems = [];
       state.userForm = {};
       state.cartTotalAmount = "";
-      localStorage.removeItem("cartItems");
-      localStorage.setItem("userForm");
-      localStorage.setItem("cartTotalAmount");
+      // localStorage.removeItem("cartItems");
+      localStorage.clear();
+      // localStorage.clear();
+      // localStorage.setItem("userForm" );
+      // localStorage.setItem("cartTotalAmount");
     },
     // remove
     removeFromCart(state, action) {
@@ -51,7 +53,7 @@ const CartSlice = createSlice({
     finalSend(state, action) {
       if (localStorage.getItem("userForm") !== null) {
         axios
-          .post("http://localhost:3002/orders", state.userForm)
+          .post("http://localhost:3002/orders", JSON.parse(localStorage.getItem("userForm")))
           .then((res) => {
             console.log("res", res);
           })

@@ -65,7 +65,7 @@ const Finalize = () => {
           <div className="main-finalize">
             <p className="title-final">نهایی کردن خرید</p>
             <div className="lastname-final">
-              <label className="lastname-final-label">نام کاربری:</label>
+              <label className="lastname-final-label"> نام و نام خانوادگی:</label>
               <br />
               <input
                 className="lastname-final-input"
