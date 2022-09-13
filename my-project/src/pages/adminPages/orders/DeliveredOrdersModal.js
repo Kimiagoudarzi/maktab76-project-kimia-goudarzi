@@ -1,14 +1,28 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import "./tableorder.css";
 
-const DeliveredOrdersModal = ({ show, handleClose, currentPost, mode }) => {
+const DeliveredOrdersModal = ({ show, handleClose, currentPost}) => {
   const [order, setOrder] = useState(currentPost[0]);
 
- 
-
+  const handlePatch = () => {
+    try {
+      let entiresData = {
+       state: true,
+      };
+      axios
+        .patch(`http://localhost:3002/orders/${currentPost}`, entiresData)
+        .then((res) => {
+          console.log("ress", res.data);
+          handleClose();
+        });
+    } catch (error) {
+      console.log("error!");
+    }
+  };
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -64,13 +78,23 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost, mode }) => {
             </Table>
           </form>
 
-          <Button
-            variant="primary"
-            onClick={handleClose}
-            className="orders-modal-btn"
-          >
-            {currentPost[0]?.state ? "تحویل داده شده" : "در انتظار ارسال"}
-          </Button>
+          {currentPost[0]?.state ? (
+            <Button
+              variant="primary"
+              onClick={handleClose}
+              className="orders-modal-btn"
+            >
+              تحویل داده شده
+            </Button>
+          ) : (
+            <Button
+              variant="primary"
+              onClick={handlePatch}
+              className="orders-modal-btn"
+            >
+              در انتظار ارسال
+            </Button>
+          )}
         </Modal.Body>
       </Modal>
     </>

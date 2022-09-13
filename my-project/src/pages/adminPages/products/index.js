@@ -40,7 +40,7 @@ const ProductsAdmin = () => {
 
   const fetchComments = useCallback(
     async (currentPage) => {
-      setLoading(true);
+     
       const res = await fetch(
         `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
       );
@@ -49,7 +49,7 @@ const ProductsAdmin = () => {
       setPageCount(Math.ceil(total / limit));
       setPosts(data);
       setCurrentPage(currentPage);
-      setLoading(false);
+      
     },
     [limit]
   );
@@ -59,8 +59,10 @@ const ProductsAdmin = () => {
   }, [fetchComments]);
 
   const handlePageClick = async (data) => {
+    setLoading(true);
     let currentPage = data.selected + 1;
     fetchComments(currentPage);
+    setLoading(false);
   };
 
   return (

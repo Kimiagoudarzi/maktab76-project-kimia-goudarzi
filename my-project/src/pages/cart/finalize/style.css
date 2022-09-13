@@ -1,12 +1,13 @@
 .finalize {
   height: 100vh;
   position: relative;
+  background-color: #f6f3f3;
 }
 .img-inputs{
-  width: 40rem;
-  height: 40rem;
-  margin-right: 66rem;
-  margin-top: 10rem;
+  width: 48rem;
+  height: 48rem;
+  margin-right: 61rem;
+  margin-top: 8rem;
 }
 .title-final {
   position: absolute;
@@ -14,27 +15,24 @@
   margin-right: 170px;
   color: #b32939;
   font-size: 28px;
- 
 }
 .main-finalize {
   position: absolute;
   width: 520px;
-  height: 850px;
-  margin-right: 400px;
-  margin-top: 46px;
-  background-color: #ffecec;
- 
+  height: 750px;
+  margin-right: 380px;
+  margin-top: 86px;
+  background-color: #ffffff;
   border-radius: 20px;
 }
 .firstname-final {
   position: absolute;
-  margin-top: 110px;
-  margin-right: 88px;
+ 
 }
 .firstname-final-label {
   color: #E85A6A;
   font-size: 18px;
-  margin-bottom: 10px;
+  
 }
 .firstname-final-input {
   border: 2px solid #E85A6A;
@@ -44,7 +42,7 @@
 }
 .lastname-final {
   position: absolute;
-  margin-top: 230px;
+  margin-top: 130px;
   margin-right: 88px;
 }
 .lastname-final-label {
@@ -60,7 +58,7 @@
 }
 .address-final {
   position: absolute;
-  margin-top: 350px;
+  margin-top: 250px;
   margin-right: 88px;
 }
 .address-final-label {
@@ -72,12 +70,11 @@
   border: 2px solid #E85A6A;
   width: 350px;
   height: 45px;
-
   border-radius: 10px;
 }
 .phone-final {
   position: absolute;
-  margin-top: 470px;
+  margin-top: 370px;
   margin-right: 88px;
 }
 .phone-final-label {
@@ -93,7 +90,7 @@
 }
 .date-final {
   position: absolute;
-  margin-top: 595px;
+  margin-top: 495px;
   margin-right: 88px;
 }
 .date-final-label {
@@ -115,7 +112,7 @@
   background-color: #e85a6a;
   border: none;
   color: white;
-  margin-top: 760px;
+  margin-top: 660px;
 }
 .errors-finalize {
   color: rgb(197, 0, 0);

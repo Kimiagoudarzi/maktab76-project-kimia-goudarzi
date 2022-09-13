@@ -1,28 +1,39 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import inputImg from "assets/images/inputsimg.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import inputImg from "assets/images/inputsimg.png";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import { userForm, getTotals } from "redux/features/cart/CartSlice";
 import "./style.css";
 
 const Finalize = () => {
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const initialValues = {
-    firstname: "",
-    lastname: "",
+    username: "",
     address: "",
     phone: "",
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  // const [isSubmit, setIsSubmit] = useState(false);
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [dispatch]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
+
   const handleClick = () => {
+    formValues.totalPrice = state.cart.cartTotalAmount;
+    formValues.deliveryTime = "1401/06/06";
+    formValues.products = state.cart.cartItems;
+    formValues.state = false;
+    dispatch(userForm(formValues));
+    console.log(formValues, "formValues", state);
     window.location.href = "http://localhost:3001";
   };
 
@@ -33,11 +44,8 @@ const Finalize = () => {
 
   const validate = (values) => {
     const errors = {};
-    if (!values.firstname) {
-      errors.firstname = "نام الزامی است";
-    }
-    if (!values.lastname) {
-      errors.lastname = "نام خانوادگی الزامی است";
+    if (!values.username) {
+      errors.username = "نام الزامی است";
     }
     if (!values.address) {
       errors.address = "آدرس الزامی است";
@@ -56,30 +64,17 @@ const Finalize = () => {
         <form onSubmit={handleSubmit}>
           <div className="main-finalize">
             <p className="title-final">نهایی کردن خرید</p>
-            <div className="firstname-final">
-              <label className="firstname-final-label">نام:</label>
-              <br />
-              <input
-                className="firstname-final-input"
-                name="firstname"
-                type="text"
-                value={formValues.firstname}
-                onChange={handleChange}
-              />
-              <p className="errors-finalize">{formErrors.firstname}</p>
-            </div>
-
             <div className="lastname-final">
-              <label className="lastname-final-label">نام خانوادگی:</label>
+              <label className="lastname-final-label">نام کاربری:</label>
               <br />
               <input
                 className="lastname-final-input"
-                name="lastname"
+                name="username"
                 type="text"
-                value={formValues.lastname}
+                value={formValues.username}
                 onChange={handleChange}
               />
-              <p className="errors-finalize">{formErrors.lastname}</p>
+              <p className="errors-finalize">{formErrors.username}</p>
             </div>
 
             <div className="address-final">
@@ -112,6 +107,7 @@ const Finalize = () => {
               <label className="phone-final-label">زمان سفارش :</label>
 
               <DatePicker
+                // onChange={(e) => console.log("onChange ", e)}
                 calendar={persian}
                 locale={persian_fa}
                 calendarPosition="bottom-right"

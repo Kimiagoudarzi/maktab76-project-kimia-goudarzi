@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
-  cartTotalAmount: 0,
+  cartTotalAmount: localStorage.getItem("cartTotalAmount")
+    ? JSON.parse(localStorage.getItem("cartTotalAmount"))
+    : "",
+  userForm: localStorage.getItem("userForm")
+    ? JSON.parse(localStorage.getItem("userForm"))
+    : {},
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [],
@@ -12,47 +18,52 @@ const CartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    clearCart(state) {
+    // clear
+    clearCart(state, action) {
       state.cartItems = [];
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      state.userForm = {};
+      state.cartTotalAmount = "";
+      localStorage.removeItem("cartItems");
+      localStorage.setItem("userForm");
+      localStorage.setItem("cartTotalAmount");
     },
+    // remove
     removeFromCart(state, action) {
-      // state.cartItems.map((cartItem) => {
-      //   if (cartItem.id === action.payload.id) {
-      //     const nextCartItems = state.cartItems.filter(
-      //       (item) => item.id !== cartItem.id
-      //     );
-      //     state.cartItems = nextCartItems;
-      //   }
-      //   localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-      //   return state;
-      // });
       let remainingArr = state.cartItems.filter(
-        (item) => item.id != action.payload.id
+        (item) => item.id !== action.payload.id
       );
       state.cartItems = remainingArr;
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-      // console.log("remainingArr", remainingArr);
-      // console.log("action payload delete is", action.payload);
     },
+    // Add
     addToCart(state, action) {
-      // console.log("state is", state);
-      // console.log("state.cartItems is", state.cartItems);
-      // const existingIndex = state.cartItems.findIndex(
-      //   (item) => item.id === action.payload.id
-      // );
       state.cartItems = [...state.cartItems, action.payload];
-      // if (action.payload.entity >= 0) {
-      //   state.cartItems[existingIndex] = {
-      //     ...state.cartItems[existingIndex],
-      //     cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
-      //   };
-      // } else {
-      //   let tempProductItem = { ...action.payload, cartQuantity: 1 };
-      //   state.cartItems.push(tempProductItem);
-      // }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+    
+    userForm(state, action) {
+      console.log("action", action.payload);
+      state.userForm = action.payload;
+      localStorage.setItem("userForm", JSON.stringify(state.userForm));
+    },
+
+    // PostData
+    finalSend(state, action) {
+      if (localStorage.getItem("userForm") !== null) {
+        axios
+          .post("http://localhost:3002/orders", state.userForm)
+          .then((res) => {
+            console.log("res", res);
+          })
+          .catch((err) => {
+            console.log("error", err);
+          });
+      } else {
+        console.log("we r in else mode");
+      }
+    },
+    
+    // Total
     getTotals(state, action) {
       let { total, quantity } = state.cartItems.reduce(
         (cartTotal, cartItems) => {
@@ -71,10 +82,20 @@ const CartSlice = createSlice({
       total = parseFloat(total.toFixed(2));
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
+      localStorage.setItem(
+        "cartTotalAmount",
+        JSON.stringify(state.cartTotalAmount)
+      );
     },
   },
 });
 
-export const { getTotals, addToCart, clearCart, removeFromCart } =
-  CartSlice.actions;
+export const {
+  getTotals,
+  addToCart,
+  clearCart,
+  removeFromCart,
+  userForm,
+  finalSend,
+} = CartSlice.actions;
 export default CartSlice.reducer;

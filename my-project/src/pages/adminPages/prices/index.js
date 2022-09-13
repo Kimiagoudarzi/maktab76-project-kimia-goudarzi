@@ -61,7 +61,7 @@ const Prices = () => {
 
   const saveEdit = (e) => {
     e.preventDefault();
-    // console.log(newPrice);
+    
 
     newPrice.forEach((element) => {
       try {
