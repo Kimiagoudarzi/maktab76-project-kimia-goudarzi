@@ -7,9 +7,9 @@ import { finalSend, clearCart } from "redux/features/cart/CartSlice";
 const Result = () => {
 
   const dispatch = useDispatch();
-  console.log("##");
+  
   useEffect(() => {
-    console.log("$")
+   
     dispatch(finalSend())
       dispatch(clearCart());
   }, []);

@@ -44,7 +44,7 @@ const CartSlice = createSlice({
     },
     
     userForm(state, action) {
-      console.log("action", action.payload);
+      // console.log("action", action.payload);
       state.userForm = action.payload;
       localStorage.setItem("userForm", JSON.stringify(state.userForm));
     },
@@ -80,7 +80,7 @@ const CartSlice = createSlice({
           quantity: 0,
         }
       );
-      console.log("total", total);
+      // console.log("total", total);
       total = parseFloat(total.toFixed(2));
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;

@@ -114,11 +114,12 @@ const Cart = () => {
               </p>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={handleDeleteClose} className="products-enseraf">
+              <Button onClick={handleDeleteClose} className="products-cancel">
                 انصراف
               </Button>
               <Button
-                className="products-add"
+                className="products-delete"
+                style={{backgroundColor: "#E85A6A"}}
                 onClick={() => handleDeleteCart(currentId)}
               >
                 حذف

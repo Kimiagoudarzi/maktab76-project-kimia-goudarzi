@@ -1,17 +1,18 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import "./tableorder.css";
 
-const DeliveredOrdersModal = ({ show, handleClose, currentPost}) => {
-  const [order, setOrder] = useState(currentPost[0]);
+const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
+  // const [order, setOrder] = useState(currentPost[0]);
+  console.log("%", currentPost[0]);
 
   const handlePatch = () => {
     try {
       let entiresData = {
-       state: true,
+        state: true,
       };
       axios
         .patch(`http://localhost:3002/orders/${currentPost[0].id}`, entiresData)
@@ -60,20 +61,22 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost}) => {
                 </tr>
               </thead>
               <tbody>
-                {currentPost.length > 0 ? (
-                  <tr>
-                    <td>{currentPost[0].products.name}</td>
-                    <td>
-                      {currentPost[0].products.price
-                        ? currentPost[0].products.price
-                            .toString()
-                            .replace(/\./g, "")
-                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
-                        : null}
-                    </td>
-                    <td>{currentPost[0].products.count}</td>
-                  </tr>
-                ) : null}
+                {currentPost[0]?.products.map((item) => (
+                  <>
+                    <tr>
+                      <td>{item.name}</td>
+                      <td>
+                        {item.price
+                          ? item.price
+                              .toString()
+                              .replace(/\./g, "")
+                              .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                          : null}
+                      </td>
+                      <td>{item.entity}</td>
+                    </tr>
+                  </>
+                ))}
               </tbody>
             </Table>
           </form>

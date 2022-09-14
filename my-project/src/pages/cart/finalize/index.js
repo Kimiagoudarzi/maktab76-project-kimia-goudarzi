@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import inputImg from "assets/images/inputsimg.png";
+// import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
@@ -18,6 +19,9 @@ const Finalize = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
 
+
+  const [time, setTime] = useState(null);
+
   useEffect(() => {
     dispatch(getTotals());
   }, [dispatch]);
@@ -31,15 +35,20 @@ const Finalize = () => {
     formValues.totalPrice = state.cart.cartTotalAmount;
     formValues.deliveryTime = "1401/06/06";
     formValues.products = state.cart.cartItems;
+    formValues.time = time;
     formValues.state = false;
     dispatch(userForm(formValues));
     console.log(formValues, "formValues", state);
-    window.location.href = "http://localhost:3001";
+    // window.location.href = "http://localhost:3001";
   };
+  const handleTime = (data)=>{
+    setTime(data)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    console.log("#", time);
   };
 
   const validate = (values) => {
@@ -65,7 +74,9 @@ const Finalize = () => {
           <div className="main-finalize">
             <p className="title-final">نهایی کردن خرید</p>
             <div className="lastname-final">
-              <label className="lastname-final-label"> نام و نام خانوادگی:</label>
+              <label className="lastname-final-label">
+                نام و نام خانوادگی:
+              </label>
               <br />
               <input
                 className="lastname-final-input"
@@ -105,12 +116,14 @@ const Finalize = () => {
 
             <div className="date-final">
               <label className="phone-final-label">زمان سفارش :</label>
-
               <DatePicker
-                // onChange={(e) => console.log("onChange ", e)}
-                calendar={persian}
-                locale={persian_fa}
-                calendarPosition="bottom-right"
+              selected ={time}
+              onChange={handleTime}
+              name="time"
+              calendar={persian}
+              locale={persian_fa}
+              calendarPosition="bottom-right"
+              dateFormat='yyyy/MM/dd'
                 style={{
                   width: "350px",
                   height: "45px",

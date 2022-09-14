@@ -42,3 +42,24 @@
   margin-top: 10px;
   margin-right: 275px;
 }
+.products-delete{
+  margin-top: 40px;
+  background-color: #E85A6A !important;
+  width: 75px;
+  height: 40px;
+  border: none !important;
+  margin-right: 20px;
+  color: #fff;
+  border-radius: 8px;
+}
+.products-delete:hover {
+  background-color: #E85A6A !important;
+}
+.products-cancel {
+  width: 75px;
+  height: 40px;
+  margin-top: 40px;
+  background-color: #756175 !important;
+  border: none !important;
+  
+}
