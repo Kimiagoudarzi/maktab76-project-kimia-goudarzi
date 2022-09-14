@@ -1,0 +1,181 @@
+.main-payment {
+  background-color: rgb(184, 184, 184);
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.payment-table {
+  background-color: white;
+  width: 41vw;
+  height: 76vh;
+  margin-top: 6.5rem;
+  margin-right: 36rem;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px 10px rgb(117, 117, 117);
+  position: absolute;
+}
+.payment-card {
+  border-bottom: 3px solid rgb(253, 65, 106);
+  color: rgb(253, 65, 106);
+  font-size: 18px;
+  background-color: rgb(255, 234, 239) !important;
+  width: 120px;
+  height: 38px;
+  margin-right: 55px;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: -0.5px;
+}
+.payment-title {
+  margin-top: 22px;
+  margin-right: 55px;
+  font-size: 18px;
+}
+.payment-span {
+  font-size: 13px;
+  color: gray;
+}
+.payment-input {
+  margin-right: 30px;
+  width: 370px;
+  height: 47px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-top: 30px;
+  position: relative;
+  padding-right: 50px;
+}
+.payment-input:focus {
+  outline: none;
+}
+.card-icon {
+  position: absolute;
+  margin-top: 43px;
+  margin-right: 50px;
+  z-index: 2;
+  font-size: 24px;
+  color: gray;
+}
+.payment-cvv2-input {
+  margin-right: 17px;
+  width: 370px;
+  height: 47px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-top: 30px;
+  position: relative;
+}
+.payment-cvv2-input:focus {
+  outline: none;
+}
+.month {
+  margin-top: 25px;
+  height: 47px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-right: 20px;
+  margin-left: 10px;
+  width: 50px;
+}
+.year {
+  margin-top: 25px;
+  height: 47px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-right: 15px;
+  width: 50px;
+}
+.security1 {
+  margin-right: 20px;
+  width: 140px;
+  height: 47px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-top: 30px;
+  position: relative;
+}
+.security1:focus {
+  outline: none;
+}
+.security2 {
+  margin-right: 19px;
+  width: 140px;
+  height: 47px;
+  border: 1px solid rgb(211, 211, 211);
+  font-size: larger;
+  margin-top: 30px;
+  position: relative;
+  padding-right: 50px;
+  background-color: rgb(177, 177, 177);
+}
+.security2:focus {
+  outline: none;
+}
+.refresh-icon {
+  position: absolute;
+  margin-right: -40px;
+  margin-top: 46px;
+  font-size: 20px;
+  color: rgb(239, 239, 239);
+}
+.second-pass1 {
+  margin-right: 60px;
+  width: 170px;
+  height: 47px;
+  border: 1px solid gray;
+  margin-top: 30px;
+  position: relative;
+
+  border-radius: 10px;
+}
+.second-pass1:focus {
+  outline: none;
+}
+.second-pass2 {
+  margin-right: 13px;
+  width: 170px;
+  height: 47px;
+  border: 1px solid rgb(253, 65, 106);
+  margin-top: 30px;
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  color: rgb(253, 65, 106);
+}
+.second-pass2:focus {
+  outline: none;
+}
+.payment-email {
+  margin-right: 65px;
+  width: 360px;
+  height: 47px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-top: 30px;
+  position: relative;
+}
+.payment-email:focus {
+  outline: none;
+}
+.pardakht {
+  width: 278px;
+  margin-right: 57px;
+  border-radius: 10px;
+  height: 50px;
+  margin-top: 30px;
+  font-size: 18px;
+  background-color: rgb(62, 193, 88);
+  color: white;
+  border: none;
+}
+.enseraf {
+  width: 278px;
+  height: 50px;
+  margin-right: 17px;
+  border-radius: 10px;
+  margin-top: 30px;
+  background-color: rgb(219, 77, 72);
+  color: white;
+  font-size: 18px;
+  border: none;
+}

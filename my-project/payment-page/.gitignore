@@ -1,6 +1,4 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-/server/node_modules
-/payment-page/node_modules
 
 # dependencies
 /node_modules
