@@ -17,11 +17,11 @@ const ProductPage = () => {
         `http://localhost:3002/products?category=${id}`
       );
       setProduct(res.data);
-
-      // console.log(res.data);
     };
     fetchProducts();
   }, [id]);
+
+
   return (
     <>
       <NavBar />

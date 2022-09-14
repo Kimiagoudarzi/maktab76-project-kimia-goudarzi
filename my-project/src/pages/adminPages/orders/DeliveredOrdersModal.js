@@ -13,6 +13,7 @@ const DeliveredOrdersModal = ({ show, handleClose, currentPost }) => {
     try {
       let entiresData = {
         state: true,
+        deliveryTime : new Date().toLocaleDateString('fa-IR')
       };
       axios
         .patch(`http://localhost:3002/orders/${currentPost[0].id}`, entiresData)
