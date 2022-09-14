@@ -1,13 +1,13 @@
 .finalize {
-  height: 100vh;
+  height: 110vh;
   position: relative;
   background-color: #f6f3f3;
 }
-.img-inputs{
+.img-inputs {
   width: 48rem;
   height: 48rem;
-  margin-right: 61rem;
-  margin-top: 8rem;
+  margin-right: 56rem;
+  margin-top: 4rem;
 }
 .title-final {
   position: absolute;
@@ -20,22 +20,20 @@
   position: absolute;
   width: 520px;
   height: 750px;
-  margin-right: 380px;
-  margin-top: 86px;
+  margin-right: 300px;
+  margin-top: 60px;
   background-color: #ffffff;
   border-radius: 20px;
 }
 .firstname-final {
   position: absolute;
- 
 }
 .firstname-final-label {
-  color: #E85A6A;
+  color: #e85a6a;
   font-size: 18px;
-  
 }
 .firstname-final-input {
-  border: 2px solid #E85A6A;
+  border: 2px solid #e85a6a;
   width: 350px;
   height: 45px;
   border-radius: 10px;
@@ -46,12 +44,12 @@
   margin-right: 88px;
 }
 .lastname-final-label {
-  color: #E85A6A;
+  color: #e85a6a;
   font-size: 18px;
   margin-bottom: 10px;
 }
 .lastname-final-input {
-  border: 2px solid #E85A6A;
+  border: 2px solid #e85a6a;
   width: 350px;
   height: 45px;
   border-radius: 10px;
@@ -62,12 +60,12 @@
   margin-right: 88px;
 }
 .address-final-label {
-  color: #E85A6A;
+  color: #e85a6a;
   font-size: 18px;
   margin-bottom: 10px;
 }
 .address-final-input {
-  border: 2px solid #E85A6A;
+  border: 2px solid #e85a6a;
   width: 350px;
   height: 45px;
   border-radius: 10px;
@@ -78,12 +76,12 @@
   margin-right: 88px;
 }
 .phone-final-label {
-  color: #E85A6A;
+  color: #e85a6a;
   font-size: 18px;
   margin-bottom: 10px;
 }
 .phone-final-input {
-  border: 2px solid #E85A6A;
+  border: 2px solid #e85a6a;
   width: 350px;
   height: 45px;
   border-radius: 10px;
@@ -94,12 +92,12 @@
   margin-right: 88px;
 }
 .date-final-label {
-  color: #E85A6A;
+  color: #e85a6a;
   font-size: 18px;
   margin-bottom: 10px;
 }
 .date-final-input {
-  border: 2px solid #E85A6A;
+  border: 2px solid #e85a6a;
   width: 350px;
   height: 45px;
   border-radius: 10px;
@@ -119,3 +117,16 @@
   font-size: 14px;
   margin-top: 10px;
 }
+.btn-back-cart {
+  background-color: #e85a6a;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  margin-top: 4rem;
+  margin-right: 97rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+

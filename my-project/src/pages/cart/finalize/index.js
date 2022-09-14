@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import inputImg from "assets/images/inputsimg.png";
-// import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
-import DatePicker from "react-multi-date-picker";
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
+import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
+import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
+// import TimePicker from "react-multi-date-picker/plugins/time_picker";
+// import DatePanel from "react-multi-date-picker/plugins/date_panel";
+// import DatePicker from "react-multi-date-picker";
+// import persian from "react-date-object/calendars/persian";
+// import persian_fa from "react-date-object/locales/persian_fa";
 import { userForm, getTotals } from "redux/features/cart/CartSlice";
+import { FaAngleLeft } from "react-icons/fa";
 import "./style.css";
 
 const Finalize = () => {
@@ -19,8 +24,20 @@ const Finalize = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
 
+  const [selectedDay, setSelectedDay] = useState(null);
 
-  const [time, setTime] = useState(null);
+  const renderCustomInput = ({ ref }) => {
+    <input
+      readOnly
+      ref={ref}
+      name="expectAt"
+      value={
+        selectedDay
+          ? `${selectedDay.year}/${selectedDay.month}/${selectedDay.day}`
+          : ""
+      }
+    />;
+  };
 
   useEffect(() => {
     dispatch(getTotals());
@@ -35,20 +52,20 @@ const Finalize = () => {
     formValues.totalPrice = state.cart.cartTotalAmount;
     formValues.deliveryTime = "1401/06/06";
     formValues.products = state.cart.cartItems;
-    formValues.time = time;
+    formValues.time = `${selectedDay.year}/${selectedDay.month}/${selectedDay.day}`;
     formValues.state = false;
     dispatch(userForm(formValues));
-    console.log(formValues, "formValues", state);
-    // window.location.href = "http://localhost:3001";
+    console.log(formValues, "formValues");
+    window.location.href = "http://localhost:3001";
   };
-  const handleTime = (data)=>{
-    setTime(data)
-  }
+
+  //const handleTime = (date) => {
+  //   setTime(date);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
-    console.log("#", time);
   };
 
   const validate = (values) => {
@@ -69,6 +86,14 @@ const Finalize = () => {
 
   return (
     <div className="finalize">
+      <div className="d-flex justify-content-start back-div">
+        <Link to="/cart">
+          <button type="button" className=" btn-back-cart">
+            بازگشت به سبد خرید
+            <FaAngleLeft />
+          </button>
+        </Link>
+      </div>
       <div className="d-flex">
         <form onSubmit={handleSubmit}>
           <div className="main-finalize">
@@ -117,19 +142,12 @@ const Finalize = () => {
             <div className="date-final">
               <label className="phone-final-label">زمان سفارش :</label>
               <DatePicker
-              selected ={time}
-              onChange={handleTime}
-              name="time"
-              calendar={persian}
-              locale={persian_fa}
-              calendarPosition="bottom-right"
-              dateFormat='yyyy/MM/dd'
-                style={{
-                  width: "350px",
-                  height: "45px",
-                  borderRadius: "10px",
-                  border: "2px solid #E85A6A",
-                }}
+                renderInput={renderCustomInput}
+                value={selectedDay}
+                onChange={setSelectedDay}
+                shouldHighlightWeekends
+                inputPlaceholder="یک روز را انتخاب کنید..."
+                calendarPopperPosition="bottom"
               />
             </div>
             <div>

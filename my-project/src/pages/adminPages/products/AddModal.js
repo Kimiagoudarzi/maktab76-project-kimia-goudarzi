@@ -13,7 +13,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [count, setCount] = useState("");
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState(0);
   const [Grouping, setGrouping] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
@@ -29,7 +29,6 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
   // postImage
   const handleImage = () => {
     const formData = new FormData();
-
     formData.append("image", files, files.name);
     console.log(formData);
     axios
@@ -42,24 +41,28 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
         console.log("error!");
       });
   };
+  const handleGrouping = (e) => {
+    setGrouping(e.target.value);
+    switch (Grouping) {
+      case "لوازم آراایشی":
+        setCategory(1);
+        break;
+      case "مراقبت پوستی":
+        setCategory(2);
+        break;
+      case "مراقبت مو":
+        setCategory(3);
+        break;
+      case "عطر و ادکلن":
+        setCategory(4);
+        break;
+    }
+  };
 
   // fetchPost
   const handelAddItem = (e) => {
-    // switch (Grouping) {
-    //   case "لوازم آراایشی":
-    //     setCategory(1);
-    //     break;
-    //   case "مراقبت پوستی":
-    //     setCategory(2);
-    //     break;
-    //   case "مراقبت مو":
-    //     setCategory(3);
-    //     break;
-    //   case "عطر و ادکلن":
-    //     setCategory(4);
-    //     break;
-    // }
     e.preventDefault();
+    console.log(Grouping);
     try {
       let entiresData = {
         name: name,
@@ -70,7 +73,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
         description: description,
         category: category,
       };
-      setLoading(true)
+      setLoading(true);
       axios.post(`http://localhost:3002/products`, entiresData).then(() => {
         console.log("entiresData", entiresData);
         fetchComments(currentPage);
@@ -86,7 +89,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
     setCount("");
     setGrouping("");
     setDescription("");
-    setCategory("");
+    setCategory(0);
   };
 
   return (
@@ -177,10 +180,7 @@ const AddModal = ({ handleAddClose, addShow, fetchComments, currentPage }) => {
                 aria-label="Default select example"
                 className="products-select"
                 value={Grouping}
-                onChange={(e) => {
-                  setGrouping(e.target.value);
-                  console.log(Grouping);
-                }}
+                onChange={(e)=>handleGrouping(e)}
               >
                 <option value="default">دسته بندی را انتخاب کنید</option>
                 <option value="لوازم آرایشی">لوازم آرایشی</option>
