@@ -7,8 +7,6 @@ import HomePishNahad from "./homepishnahad/index"
 import HomeBrand from "./homeBrandfav/index";
 import { IoIosArrowDropupCircle } from "react-icons/io";
 import TableProduct from "./productTable/index"
-
-
 import "./home.css";
 
 const Home = () => {

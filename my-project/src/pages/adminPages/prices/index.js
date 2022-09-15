@@ -14,7 +14,7 @@ const Prices = () => {
   const [pageCount, setPageCount] = useState(0);
   const [newPrice, setNewPrice] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // price
   const handleChange = (e, id) => {
@@ -85,7 +85,7 @@ const Prices = () => {
 
   const fetchComments = useCallback(
     async (currentPage) => {
-      setLoading(true);
+      // setLoading(true);
       const res = await fetch(
         `http://localhost:3002/products?_page=${currentPage}&_limit=${limit}`
       );
@@ -95,7 +95,7 @@ const Prices = () => {
 
       setPosts(data);
       setCurrentPage(currentPage);
-      setLoading(false);
+      // setLoading(false);
     },
     [limit]
   );
@@ -113,18 +113,7 @@ const Prices = () => {
     <>
       <div className="price-admin-container">
         <NavBar />
-        {loading ? (
-          <div
-            style={{
-              position: "absolute",
-              marginTop: "24rem",
-              zIndex: "2",
-              marginRight: "55.9rem",
-            }}
-          >
-            <Spinner animation="border" style={{ color: "#FD2C7A" }} />
-          </div>
-        ) : (
+        
           <>
             <div className="d-flex mt-5">
               <h1 className="h1-admin-price">مدیریت موجودی و قیمت ها </h1>
@@ -204,7 +193,7 @@ const Prices = () => {
             />
             <img src={wave} alt="wave" className="img-admin" />
           </>
-        )}
+        
       </div>
     </>
   );
