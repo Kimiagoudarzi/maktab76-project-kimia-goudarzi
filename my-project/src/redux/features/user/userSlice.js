@@ -9,8 +9,8 @@ const initialState = {
   error: "",
 };
 
-export const login = createAsyncThunk("users/login", (user) => {
-  return loginRequest(user)
+export const login = createAsyncThunk("users/login", async (user) => {
+  return await loginRequest(user)
     .then((response) => {
       localStorage.setItem(ACCESS_TOKEN, response.accessToken);
       localStorage.setItem(REFRESH_TOKEN, response.refreshToken);
@@ -23,7 +23,7 @@ export const login = createAsyncThunk("users/login", (user) => {
 });
 
 export const refreshToken = createAsyncThunk("users/refreshToken", (user) => {
-  return refreshTokenRequest()
+  return refreshTokenRequest(user)
     .then((response) => {
       localStorage.setItem(ACCESS_TOKEN, response.accessToken);
       return response;

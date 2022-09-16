@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import ReactPaginate from "react-paginate";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
-import Spinner from "react-bootstrap/Spinner";
+// import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 import "./tableprice.css";
 import { EditText } from "react-edit-text";
@@ -61,7 +61,6 @@ const Prices = () => {
 
   const saveEdit = (e) => {
     e.preventDefault();
-    
 
     newPrice.forEach((element) => {
       try {
@@ -113,87 +112,84 @@ const Prices = () => {
     <>
       <div className="price-admin-container">
         <NavBar />
-        
-          <>
-            <div className="d-flex mt-5">
-              <h1 className="h1-admin-price">مدیریت موجودی و قیمت ها </h1>
-              <button
-                className="btn-save-price"
-                onClick={(e) => saveEdit(e, currentId)}
-              >
-                ذخیره
-              </button>
-            </div>
-            <div className="table-main">
-              <MDBTable bordered style={{ borderColor: "#521850" }}>
-                <MDBTableHead>
+
+        <div className="d-flex mt-5">
+          <h1 className="h1-admin-price">مدیریت موجودی و قیمت ها </h1>
+          <button
+            className="btn-save-price"
+            onClick={(e) => saveEdit(e, currentId)}
+          >
+            ذخیره
+          </button>
+        </div>
+        <div className="table-main">
+          <MDBTable bordered style={{ borderColor: "#521850" }}>
+            <MDBTableHead>
+              <tr>
+                <th scope="col">شماره کالا</th>
+                <th scope="col">نام کالا</th>
+                <th scope="col">قیمت</th>
+                <th scope="col">موجودی</th>
+              </tr>
+            </MDBTableHead>
+            <MDBTableBody>
+              {posts.map((post) => {
+                const { id } = post;
+                return (
                   <tr>
-                    <th scope="col">شماره کالا</th>
-                    <th scope="col">نام کالا</th>
-                    <th scope="col">قیمت</th>
-                    <th scope="col">موجودی</th>
+                    <th scope="row">{id}</th>
+                    <td>{post.name}</td>
+                    <td>
+                      <EditText
+                        value={
+                          post?.price
+                            ? post?.price
+                                .toString()
+                                .replace(/\./g, "")
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                            : null
+                        }
+                        onChange={(e) => handleChange(e, id)}
+                      />
+                    </td>
+                    {post.stock !== 0 ? (
+                      <td>
+                        <EditText
+                          value={post.stock}
+                          onChange={(e) => handleChangeStock(e, id)}
+                        />
+                      </td>
+                    ) : (
+                      <td>
+                        <EditText
+                          value="0"
+                          onChange={(e) => handleChangeStock(e, id)}
+                        />
+                      </td>
+                    )}
                   </tr>
-                </MDBTableHead>
-                <MDBTableBody>
-                  {posts.map((post) => {
-                    const { id } = post;
-                    return (
-                      <tr>
-                        <th scope="row">{id}</th>
-                        <td>{post.name}</td>
-                        <td>
-                          <EditText
-                            value={
-                              post?.price
-                                ? post?.price
-                                    .toString()
-                                    .replace(/\./g, "")
-                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
-                                : null
-                            }
-                            onChange={(e) => handleChange(e, id)}
-                          />
-                        </td>
-                        {post.stock !== 0 ? (
-                          <td>
-                            <EditText
-                              value={post.stock}
-                              onChange={(e) => handleChangeStock(e, id)}
-                            />
-                          </td>
-                        ) : (
-                          <td>
-                            <EditText
-                              value="0"
-                              onChange={(e) => handleChangeStock(e, id)}
-                            />
-                          </td>
-                        )}
-                      </tr>
-                    );
-                  })}
-                </MDBTableBody>
-              </MDBTable>
-            </div>
-            <ReactPaginate
-              previousLabel={"قبلی"}
-              nextLabel={"بعدی"}
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
-              containerClassName={"pagination justify-content-center"}
-              pageClassName={"page-item"}
-              pageLinkClassName={"page-link"}
-              previousClassName={"page-item"}
-              previousLinkClassName={"page-link"}
-              nextClassName={"page-item"}
-              nextLinkClassName={"page-link"}
-              breakClassName={"page-item"}
-              breakLinkClassName={"page-link"}
-              activeClassName={"active"}
-            />
-            <img src={wave} alt="wave" className="img-admin" />
-          </>
-        
+                );
+              })}
+            </MDBTableBody>
+          </MDBTable>
+        </div>
+        <ReactPaginate
+          previousLabel={"قبلی"}
+          nextLabel={"بعدی"}
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination justify-content-center"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
+          activeClassName={"active"}
+        />
+        <img src={wave} alt="wave" className="img-admin" />
       </div>
     </>
   );

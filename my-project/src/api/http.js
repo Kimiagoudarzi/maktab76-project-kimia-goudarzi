@@ -9,7 +9,7 @@ export const injectStore = (_store) => {
   store = _store;
 };
 export const axiosInstance = axios.create({
-  baseURL: URL,
+  baseURL: BASE_URL,
   headers: {
     "content-type": "application/json",
   },

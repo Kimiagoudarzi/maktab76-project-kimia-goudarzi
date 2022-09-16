@@ -102,7 +102,7 @@ const Payment = () => {
                   className="pardakht"
                   onClick={() => {
                     window.open(
-                      "http://localhost:3000/result/success",
+                      "http://localhost:3000/payment/success",
                       "_blank"
                     );
                   }}
@@ -114,7 +114,7 @@ const Payment = () => {
                   className="enseraf"
                   onClick={() => {
                     window.open(
-                      "http://localhost:3000/wrongResult/failed",
+                      "http://localhost:3000/payment/failed",
                       "_blank"
                     );
                   }}
