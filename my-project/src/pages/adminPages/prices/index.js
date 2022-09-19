@@ -3,8 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import ReactPaginate from "react-paginate";
 import NavBar from "layout/adminLayout/navbar";
 import wave from "assets/images/wave.png";
-// import Spinner from "react-bootstrap/Spinner";
-import axios from "axios";
+import axios from "api/http";
 import "./tableprice.css";
 import { EditText } from "react-edit-text";
 
@@ -94,7 +93,6 @@ const Prices = () => {
 
       setPosts(data);
       setCurrentPage(currentPage);
-      // setLoading(false);
     },
     [limit]
   );

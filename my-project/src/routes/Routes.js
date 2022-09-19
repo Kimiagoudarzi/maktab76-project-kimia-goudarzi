@@ -11,8 +11,6 @@ import Orders from "pages/adminPages/orders";
 import PrivateRoute from "./privetRout";
 import Finalize from "pages/cart/finalize/index";
 import { ProductPage } from "components/productsPages/ProductPage";
-// import Result from "pages/result/Result";
-// import WrongResult from "pages/result/WrongResult";
 import Payment from "pages/result/Payment";
 
 const AppRoutes = () => {
@@ -23,8 +21,6 @@ const AppRoutes = () => {
         <Route path="/category/:id" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/cart/finalize" element={<Finalize />} />
-        {/* <Route path="/result/success" element={<Result/>}/>
-        <Route path="/wrongResult/failed" element={<WrongResult/>}/> */}
         <Route path="/payment/:result" element={<Payment/>}/>
         <Route path="/loginForm" element={<Login />} />
     
@@ -43,9 +39,9 @@ const AppRoutes = () => {
         <Route>
           <Route path="/products/:id" element={<AboutProduct />} />
         </Route>
-        {/* <Route>
+        <Route>
           <Route path="/:id" element={<AboutProduct />} />
-        </Route> */}
+        </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>

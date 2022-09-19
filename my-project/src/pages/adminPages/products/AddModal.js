@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FaCamera } from "react-icons/fa";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-// import Toast from "react-bootstrap/Toast";
 import axios from "axios";
 import "./table.css";
 
